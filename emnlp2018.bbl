@@ -1,0 +1,231 @@
+\begin{thebibliography}{34}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Aho and Ullman(1972)}]{Aho:72}
+Alfred~V. Aho and Jeffrey~D. Ullman. 1972.
+\newblock \emph{The Theory of Parsing, Translation and Compiling}, volume~1.
+\newblock Prentice-Hall, Englewood Cliffs, NJ.
+
+\bibitem[{{American Psychological Association}(1983)}]{APA:83}
+{American Psychological Association}. 1983.
+\newblock \emph{Publications Manual}.
+\newblock American Psychological Association, Washington, DC.
+
+\bibitem[{Ando and Zhang(2005)}]{Ando2005}
+Rie~Kubota Ando and Tong Zhang. 2005.
+\newblock A framework for learning predictive structures from multiple tasks
+  and unlabeled data.
+\newblock \emph{Journal of Machine Learning Research}, 6:1817--1853.
+
+\bibitem[{Andrew and Gao(2007)}]{andrew2007scalable}
+Galen Andrew and Jianfeng Gao. 2007.
+\newblock Scalable training of {L1}-regularized log-linear models.
+\newblock In \emph{Proceedings of the 24th International Conference on Machine
+  Learning}, pages 33--40.
+
+\bibitem[{Borschinger and Johnson(2011)}]{borsch2011}
+Benjamin Borschinger and Mark Johnson. 2011.
+\newblock A particle filter algorithm for {B}ayesian wordsegmentation.
+\newblock In \emph{Proceedings of the Australasian Language Technology
+  Association Workshop 2011}, pages 10--18, Canberra, Australia.
+
+\bibitem[{Chandra et~al.(1981)Chandra, Kozen, and Stockmeyer}]{Chandra:81}
+Ashok~K. Chandra, Dexter~C. Kozen, and Larry~J. Stockmeyer. 1981.
+\newblock Alternation.
+\newblock \emph{Journal of the Association for Computing Machinery},
+  28(1):114--133.
+
+\bibitem[{for Computing~Machinery(1983)}]{ACM:83}
+Association for Computing~Machinery. 1983.
+\newblock \emph{Computing Reviews}, 24(11):503--512.
+
+\bibitem[{Corcoglioniti et~al.(2016)Corcoglioniti, Rospocher, and
+  Aprosio}]{corcoglioniti2016frame}
+Francesco Corcoglioniti, Marco Rospocher, and Alessio~Palmero Aprosio. 2016.
+\newblock Frame-based ontology population with pikes.
+\newblock \emph{IEEE Transactions on Knowledge and Data Engineering},
+  28(12):3261--3275.
+
+\bibitem[{Corcoglioniti et~al.(2015)Corcoglioniti, Rospocher, Mostarda, and
+  Amadori}]{rdfpro2015sac}
+Francesco Corcoglioniti, Marco Rospocher, Michele Mostarda, and Marco Amadori.
+  2015.
+\newblock Processing billions of {RDF} triples on a single machine using
+  streaming and sorting.
+\newblock In \emph{Proc. of ACM Symposium on Applied Computing (SAC)}, pages
+  368--375. ACM.
+
+\bibitem[{Doddington et~al.(2004)Doddington, Mitchell, Przybocki, Ramshaw,
+  Strassel, and Weischedel}]{doddington2004automatic}
+George~R Doddington, Alexis Mitchell, Mark~A Przybocki, Lance~A Ramshaw,
+  Stephanie Strassel, and Ralph~M Weischedel. 2004.
+\newblock The automatic content extraction (ace) program-tasks, data, and
+  evaluation.
+\newblock In \emph{LREC}, volume~2, page~1.
+
+\bibitem[{Goodman et~al.(2016)Goodman, Vlachos, and Naradowsky}]{P16-1001}
+James Goodman, Andreas Vlachos, and Jason Naradowsky. 2016.
+\newblock Noise reduction and targeted exploration in imitation learning for
+  abstract meaning representation parsing.
+\newblock In \emph{Proceedings of the 54th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 1--11.
+  Association for Computational Linguistics.
+
+\bibitem[{Goyal et~al.(2018)Goyal, Gupta, and Kumar}]{goyal2018recent}
+Archana Goyal, Vishal Gupta, and Manish Kumar. 2018.
+\newblock Recent named entity recognition and classification techniques: A
+  systematic review.
+\newblock \emph{Computer Science Review}, 29:21--43.
+
+\bibitem[{Gusfield(1997)}]{Gusfield:97}
+Dan Gusfield. 1997.
+\newblock \emph{Algorithms on Strings, Trees and Sequences}.
+\newblock Cambridge University Press, Cambridge, UK.
+
+\bibitem[{Han et~al.(2018)Han, Zhang, Cheng, Liu, and Xu}]{han2018advanced}
+Junwei Han, Dingwen Zhang, Gong Cheng, Nian Liu, and Dong Xu. 2018.
+\newblock Advanced deep-learning techniques for salient and category-specific
+  object detection: a survey.
+\newblock \emph{IEEE Signal Processing Magazine}, 35(1):84--100.
+
+\bibitem[{Harper(2014)}]{C14-1001}
+Mary Harper. 2014.
+\newblock Learning from 26 languages: Program management and science in the
+  {B}abel program.
+\newblock In \emph{Proceedings of COLING 2014, the 25th International
+  Conference on Computational Linguistics: Technical Papers}, page~1. Dublin
+  City University and Association for Computational Linguistics.
+
+\bibitem[{Huang et~al.(2017)Huang, Lim, Fei-Fei, and
+  Niebles}]{huang2017unsupervised}
+D.~Huang, J.~J. Lim, L.~Fei-Fei, and J.~C. Niebles. 2017.
+\newblock Unsupervised visual-linguistic reference resolution in instructional
+  videos.
+\newblock In \emph{2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 1032--1041.
+
+\bibitem[{Karpathy and Fei-Fei(2015)}]{karpathy2015deep}
+Andrej Karpathy and Li~Fei-Fei. 2015.
+\newblock Deep visual-semantic alignments for generating image descriptions.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 3128--3137.
+
+\bibitem[{Kong et~al.(2014)Kong, Lin, Bansal, Urtasun, and Fidler}]{KongCVPR14}
+Chen Kong, Dahua Lin, Mohit Bansal, Raquel Urtasun, and Sanja Fidler. 2014.
+\newblock What are you talking about? text-to-image coreference.
+\newblock In \emph{CVPR}.
+
+\bibitem[{Krishna et~al.(2016)Krishna, Zhu, Groth, Johnson, Hata, Kravitz,
+  Chen, Kalantidis, Li, Shamma, Bernstein, and Fei-Fei}]{krishnavisualgenome}
+Ranjay Krishna, Yuke Zhu, Oliver Groth, Justin Johnson, Kenji Hata, Joshua
+  Kravitz, Stephanie Chen, Yannis Kalantidis, Li-Jia Li, David~A. Shamma,
+  Michael~S. Bernstein, and Li~Fei-Fei. 2016.
+\newblock Visual genome: Connecting language and vision using crowdsourced
+  dense image annotations.
+\newblock \emph{International Journal of Computer Vision}, 123:32--73.
+
+\bibitem[{Lin et~al.(2014)Lin, Maire, Belongie, Hays, Perona, Ramanan,
+  Doll{\'a}r, and Zitnick}]{lin2014microsoft}
+Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva
+  Ramanan, Piotr Doll{\'a}r, and C~Lawrence Zitnick. 2014.
+\newblock Microsoft coco: Common objects in context.
+\newblock In \emph{European conference on computer vision}, pages 740--755.
+  Springer.
+
+\bibitem[{Lu et~al.(2016)Lu, Krishna, Bernstein, and Fei-Fei}]{lu2016visual}
+Cewu Lu, Ranjay Krishna, Michael Bernstein, and Li~Fei-Fei. 2016.
+\newblock Visual relationship detection with language priors.
+\newblock In \emph{European Conference on Computer Vision}, pages 852--869.
+  Springer.
+
+\bibitem[{Martinez-Rodriguez et~al.(2018)Martinez-Rodriguez, Hogan, and
+  Lopez-Arevalo}]{martinez2018information}
+Jose~L Martinez-Rodriguez, Aidan Hogan, and Ivan Lopez-Arevalo. 2018.
+\newblock Information extraction meets the semantic web: A survey.
+\newblock \emph{Semantic Web}, pages 1--81.
+\newblock Preprint.
+
+\bibitem[{Miller(1995)}]{wordnet}
+George~A. Miller. 1995.
+\newblock Wordnet: A lexical database for english.
+\newblock \emph{Commun. ACM}, 38(11):39--41.
+
+\bibitem[{Plummer et~al.(2015)Plummer, Wang, Cervantes, Caicedo, Hockenmaier,
+  and Lazebnik}]{plummer2015flickr30k}
+Bryan~A Plummer, Liwei Wang, Chris~M Cervantes, Juan~C Caicedo, Julia
+  Hockenmaier, and Svetlana Lazebnik. 2015.
+\newblock Flickr30k entities: Collecting region-to-phrase correspondences for
+  richer image-to-sentence models.
+\newblock In \emph{Proceedings of the IEEE international conference on computer
+  vision}, pages 2641--2649.
+
+\bibitem[{Ramanathan et~al.(2014)Ramanathan, Joulin, Liang, and
+  Fei-Fei}]{ramanathan2014linking}
+Vignesh Ramanathan, Armand Joulin, Percy Liang, and Li~Fei-Fei. 2014.
+\newblock Linking people in videos with “their” names using coreference
+  resolution.
+\newblock In \emph{European Conference on Computer Vision}, pages 95--110.
+  Springer.
+
+\bibitem[{Rasooli and Tetreault(2015)}]{rasooli-tetrault-2015}
+Mohammad~Sadegh Rasooli and Joel~R. Tetreault. 2015.
+\newblock Yara parser: {A} fast and accurate dependency parser.
+\newblock \emph{Computing Research Repository}, arXiv:1503.06733.
+\newblock Version 2.
+
+\bibitem[{Sharma et~al.(2018)Sharma, Ding, Goodman, and
+  Soricut}]{sharma2018conceptual}
+Piyush Sharma, Nan Ding, Sebastian Goodman, and Radu Soricut. 2018.
+\newblock Conceptual captions: A cleaned, hypernymed, image alt-text dataset
+  for automatic image captioning.
+\newblock In \emph{Proceedings of ACL}.
+
+\bibitem[{Shen et~al.(2015)Shen, Wang, and Han}]{shen2015entity}
+Wei Shen, Jianyong Wang, and Jiawei Han. 2015.
+\newblock Entity linking with a knowledge base: Issues, techniques, and
+  solutions.
+\newblock \emph{IEEE Transactions on Knowledge and Data Engineering},
+  27(2):443--460.
+
+\bibitem[{Suchanek et~al.(2007)Suchanek, Kasneci, and Weikum}]{yago}
+Fabian~M. Suchanek, Gjergji Kasneci, and Gerhard Weikum. 2007.
+\newblock {Yago: A Core of Semantic Knowledge}.
+\newblock In \emph{16th International Conference on the World Wide Web}, pages
+  697--706.
+
+\bibitem[{Sukthanker et~al.(2018)Sukthanker, Poria, Cambria, and
+  Thirunavukarasu}]{sukthanker2018anaphora}
+Rhea Sukthanker, Soujanya Poria, Erik Cambria, and Ramkumar Thirunavukarasu.
+  2018.
+\newblock Anaphora and coreference resolution: A review.
+\newblock \emph{arXiv preprint arXiv:1805.11824}.
+
+\bibitem[{Tilak et~al.(2017)Tilak, Gandhi, and Oates}]{tilak2017visual}
+Neha Tilak, Sunil Gandhi, and Tim Oates. 2017.
+\newblock Visual entity linking.
+\newblock In \emph{Neural Networks (IJCNN), 2017 International Joint Conference
+  on}, pages 665--672. IEEE.
+
+\bibitem[{Venkitasubramanian et~al.(2017)Venkitasubramanian, Tuytelaars, and
+  Moens}]{venkitasubramanian2017entity}
+Aparna~Nurani Venkitasubramanian, Tinne Tuytelaars, and Marie-Francine Moens.
+  2017.
+\newblock Entity linking across vision and language.
+\newblock \emph{Multimedia Tools and Applications}, 76(21):22599--22622.
+
+\bibitem[{Weiland et~al.(2017)Weiland, Hulpus, Ponzetto, and
+  Dietz}]{weiland2017using}
+Lydia Weiland, Ioana Hulpus, Simone~Paolo Ponzetto, and Laura Dietz. 2017.
+\newblock Using object detection, nlp, and knowledge bases to understand the
+  message of images.
+\newblock In \emph{International Conference on Multimedia Modeling}, pages
+  405--418. Springer.
+
+\bibitem[{Weiland et~al.(2018)Weiland, Hulpu{\c{s}}, Ponzetto, Effelsberg, and
+  Dietz}]{weiland2018knowledge}
+Lydia Weiland, Ioana Hulpu{\c{s}}, Simone~Paolo Ponzetto, Wolfgang Effelsberg,
+  and Laura Dietz. 2018.
+\newblock Knowledge-rich image gist understanding beyond literal meaning.
+\newblock \emph{Data \& Knowledge Engineering}, 117:114--132.
+
+\end{thebibliography}
