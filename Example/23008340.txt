@@ -1,0 +1,5 @@
+[/EN#39958/people A young woman] with [/EN#39964/other her back] turned on [/EN#39962/scene a tennis court] with [/EN#39959/other a ball] coming from behind [/EN#0/notvisual her] .
+[/EN#39958/people A female tennis player] stands on [/EN#39962/other a court] , looking away from [/EN#39959/other the ball] .
+[/EN#39958/people A female tennis player] is casually swinging [/EN#39960/other her racket] .
+[/EN#39958/people Woman] in [/EN#39961/clothing a white shirt] and [/EN#39963/clothing black skirt] playing [/EN#39965/other tennis] .
+[/EN#39958/people A woman] in [/EN#39961/clothing a white shirt] holds [/EN#39960/other a tennis racket] .
