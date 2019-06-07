@@ -1,11 +1,11 @@
 # Baseline framework for Visual-Textual-Knowledge entity linking (VTKEL) task
-This repositroy includes problems, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking** and related files and folders to test and run for your problem.
+This repositroy includes problem, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking**, related files and folders to test and run for your problem.
 
 ### Introduction:
-In this reposirtoy cosnsits of problem, novel dataset for the task of *Visual-Textual-Knowledge Entity linking* and first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using **YOLO version 3**, entity recognition and linking to ontologies in text using **PIKES**, and alignment and mapping of visual-textual mentions using **YAGO knowledgebase**. The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be consider as a first baseline for further improvements. 
+In this reposirtoy consists of problem, novel dataset for the task of *Visual-Textual-Knowledge Entity linking* and first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using **YOLO version 3**, entity recognition and linking to ontologies in text using **PIKES**, and alignment and mapping of visual-textual mentions using **YAGO knowledgebase**. The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be considered as a first baseline for further improvements. 
 
 ### Problem (Visual-Textual-Knowledge Entity Linking):
-Given a document *d* composed of a text *d<sub>t</sub>* and an image *d<sub>i</sub>* and a knowledge base **K**, VTKEL is the problem of detecting all the entities mentioned in *d<sub>t</sub>* and and/or shown in *d<sub>i</sub>*, and linking them to the corresponding named entities in **K**, if they are present, or linking them to new entities, extending the **A-box** of **K** with its type assertion(s),  i.e. adding *C(e<sup>new</sup>)* for each new entity *C(e<sup>new</sup>)* of type **C** mentioned in *d*.
+Given a document *d* composed of a text *d<sub>t</sub>* and an image *d<sub>i</sub>* and a knowledge base **K**, *VTKEL* is the problem of detecting all the entities mentioned in *d<sub>t</sub>* and and/or shown in *d<sub>i</sub>*, and linking them to the corresponding named entities in **K**, if they are present, or linking them to new entities, extending the **A-box** of **K** with its type assertion(s),  i.e. adding *C(e<sup>new</sup>)* for each new entity *C(e<sup>new</sup>)* of type **C** mentioned in *d*.
 
 Consider the document shown in *Figure 1*, which is composed of one picture	and a short sentence (caption) in natural language. As shown in	*Figure 1*, one can find four visual mentions, shown in coloured rectangles in the picture, and five textual mentions, underlined in the text. One could find many more visual mentions in the picture (e.g., *racket, ball, logo-on-shirt*) but let us suppose	we are only interested in the mentions of certain types.
 
@@ -16,17 +16,17 @@ Consider the document shown in *Figure 1*, which is composed of one picture	and 
 The solution of the *VTKEL* task requires:
 (i) detecting the visual and	textual entity mentions of the considered types, and linking them to	either (ii) the correct, existing, named entities, or (iii) newly	created entities, adding the corresponding type assertions.
 
-The visual and textual mentions of a *man* shown in the red text and in	the red box refer to the same entity, and they should be linked together. The other visual mention i.e. *racket*,*ball* and *logo* should be linked to different entities. These three	entities are not known (i.e., they are not part of the initial	knowledge base **K**), and therefore three new entities of type *racket, ball* and *logo* should be added to the knowledge base, i.e., the **A-box** of **K** should be extended with the assertions *Racket(e<sup>new1</sup>)*, *Ball(e<sup>new2</sup>)* and *Logo(e<sup>new3</sup>)*. The visual and textual mentions of *R.Federer* are also referring to the same entity. However, this time the entity is known (i.e., **YAGO** contains an	entity for *man*) and  therefore the two mentions should be linked to the same entity.	For the other textual mentions, i.e.,*Lukas Lacko*,	*Wimbledon*, *London*, *2018*,  we already have instances in the **knowledgebase**, so we	have to link them to these entities.
+The visual and textual mentions of a *man* shown in the red text and in	the red box refer to the same entity, and they should be linked together. The other visual mention i.e. *racket*, *ball* and *logo* should be linked to different entities. These three	entities are not known (i.e., they are not part of the initial	knowledge base **K**), and therefore three new entities of type *racket, ball* and *logo* should be added to the knowledge base, i.e., the **A-box** of **K** should be extended with the assertions *Racket(e<sup>new1</sup>)*, *Ball(e<sup>new2</sup>)* and *Logo(e<sup>new3</sup>)*. The visual and textual mentions of *R.Federer* are also referring to the same entity. However, this time the entity is known (i.e., **YAGO** contains an	entity for *man*) and  therefore the two mentions should be linked to the same entity.	For the other textual mentions, i.e., *Lukas Lacko*,	*Wimbledon*, *London*, *2018*, we already have instances in the **knowledgebase**, so we	have to link them to these entities.
 
 ### VTKEL Baseline architecture:
-*VTKEL* is a multimodal complex problem, which closed the loop between *natural language processing*, *computer vision* and *knowledge representation*. *Figure 2* shows the architecture of baseline (the numbering shows the sub-modules of architecture).
+*VTKEL* is a multimodal complex problem, which closed the loop between *natural language processing*, *computer vision* and *knowledge representation*. *Figure 2* shows the architecture of baseline system in details (the numbering shows the sub-modules of architecture).
 
 <p align="center">
   <img width="800" height="400" src="https://user-images.githubusercontent.com/25593410/59091278-4401e380-890f-11e9-8f5e-80605c0ce831.png">
 </p>
 
 ### VTKEL annotations instantiantions:
-VTKEL baseline produced a terse **RDF** (Resource Description Framework) triple language (Turtle) file (i.e. *.ttl* file) to store the annotations of resultant visual and textual mentions and entity content, as well as its links to the region of image and text where it derives from. The annotated file is organized in three distinct yet interlinked representations layers: *Resource, Mention* and *Entity*. The details of instantiantions are showns in *Figure 3* in details for visual mentions *person*, and details files are stored in *Example* folder for complete details.
+VTKEL baseline produced a terse **RDF** (Resource Description Framework) triple language (Turtle) file (i.e. *.ttl* file) to store the annotations of resultant visual and textual mentions and entity content, as well as its links to the region of image and text where it derives from. The annotated file is organized in three distinct yet interlinked representations layers: *Resource, Mention* and *Entity*. The details of instantiantions are showns in *Figure 3* in details for visual mentions *person*, (Complete details can be found in the *Example* folder files).
 
 <p align="center">
   <img width="700" height="700" src="https://user-images.githubusercontent.com/25593410/59091806-65170400-8910-11e9-91c4-1cf774de7876.png">
@@ -45,16 +45,16 @@ VTKEL baseline produced a terse **RDF** (Resource Description Framework) triple 
 - xml.etree.ElementTree library(+)
 - Inernet connection for enabling PIKES tool
 
-### Running VTKEL framework:
+### Running VTKEL baseline:
 
-### Quality of VTKEL framework:
+### Quality of VTKEL baseline:
 The quality of *VTKEL* system evaluation is shown in below *Table* and for details evaluations please read our paper:
 
 <p align="center">
   <img width="600" height="120" src="https://user-images.githubusercontent.com/25593410/59092675-719c5c00-8912-11e9-9249-5eed3c213970.png">
 </p>
 
-### Citing VTKEL framework:
+### Citing VTKEL baseline:
 
 ### License:
 The VTKEL baseline system and their codes are licensed under [CC BY 4.0](https://creativecommons.org/2014/01/07/plaintext-versions-of-creative-commons-4-0-licenses/).
@@ -74,4 +74,4 @@ The VTKEL baseline system and their codes are licensed under [CC BY 4.0](https:/
 
 
 ### Contact
-If you have any query regarding VTKEL baseline system and want to contribute to the baseline system contact on ***sdost[at]fbk.eu***.
+If you have any query regarding VTKEL baseline system and want to contribute to the system contact on ***sdost[at]fbk.eu***.
