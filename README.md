@@ -1,4 +1,4 @@
-# Baseline framework for Visual-Textual-Knowledge entity linking (VTKEL) task
+# Baseline system for Visual-Textual-Knowledge entity linking (VTKEL)
 This repositroy includes problem, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking**, related files and folders to test and run for your problem.
 
 ### Introduction:
@@ -51,7 +51,7 @@ VTKEL baseline produced a terse **RDF** (Resource Description Framework) triple 
 The quality of *VTKEL* system evaluation is shown in below *Table* and for details evaluations please read our paper:
 
 <p align="center">
-  <img width="600" height="120" src="https://user-images.githubusercontent.com/25593410/59092675-719c5c00-8912-11e9-9249-5eed3c213970.png">
+  <img width="500" height="120" src="https://user-images.githubusercontent.com/25593410/59092675-719c5c00-8912-11e9-9249-5eed3c213970.png">
 </p>
 
 ### Citing VTKEL baseline:
