@@ -14,66 +14,101 @@
 @prefix yago: <http://dbpedia.org/class/yago/> .
 
 vtkel: a <http://purl.org/dc/dcmitype/Dataset> ;
-    dct:created "2019-5-13:-16:10:8" ;
+    dct:created "2019-5-30:-16:38:3" ;
     dct:creator "Shahi Dost & Luciano Serafini" ;
     dct:language <http://lexvo.org/id/iso639-3/eng> ;
     dct:title "Visual-Textual-Knowledge-Entity-Linking (VTKEL) annotations" .
 
 <http://vksflickr30k.fbk.edu/resource/#23008340> a <http://purl.org/dc/dcmitype/Collection> .
 
-<http://vksflickr30k.fbk.edu/resource/23008340#t1> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C0/#woman>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C3/#woman>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C4/#woman> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t2> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C0/#ball>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C1/#ball> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t3> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C0/#tennis>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C1/#tennis>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C2/#tennis>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C3/#tennis>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C4/#tennis> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t4> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C0/#back> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t5> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C0/#court>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C1/#court> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t6> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C1/#player>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C2/#player> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t7> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C2/#racket>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C4/#racket> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t8> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C3/#shirt>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C4/#shirt> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#t9> a ks:TextualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340C3/#skirt> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#v1> a ks:VisualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340I/#racket> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#v2> a ks:VisualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340I/#ball> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340#v3> a ks:VisualEntity ;
-    owl:sameAs <http://vksflickr30k.fbk.edu/resource/23008340I/#person> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C0/#back> a yago:Back102767433 ;
+<http://vksflickr30k.fbk.edu/resource/23008340C0/#back> a yago:Back102767433,
+        ks:TextualEntity ;
     gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=23,27> .
 
-<http://vksflickr30k.fbk.edu/resource/23008340C0/#ball> a yago:Ball102778669 ;
+<http://vksflickr30k.fbk.edu/resource/23008340C0/#ball> a yago:Ball102778669,
+        ks:TextualEntity ;
     ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#ball> ;
     gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=60,64> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C0/#court> a yago:Court108329453,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=47,52> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C0/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=40,46> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C0/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=8,13> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C1/#ball> a yago:Ball102778669,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#ball> ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=65,69> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C1/#court> a yago:Court108329453,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=35,40> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C1/#player> a yago:Player110439851,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=16,22> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C1/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=9,15> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C2/#player> a yago:Player110439851,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=16,22> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C2/#racket> a yago:Racket104039381,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#racket> ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=48,54> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C2/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=9,15> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C3/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=17,22> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C3/#skirt> a yago:Skirt104230808,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=33,38> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C3/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=47,53> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C3/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> .
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=1,6> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C4/#racket> a yago:Racket104039381,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#racket> ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=40,46> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C4/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=19,24> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C4/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=33,39> .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C4/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
+    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=2,7> .
 
 <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=23,27> a ks:TextualEntityMention ;
     ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C0/> ;
@@ -96,20 +131,6 @@ vtkel: a <http://purl.org/dc/dcmitype/Dataset> ;
     nif:endIndex 52 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
-<http://vksflickr30k.fbk.edu/resource/23008340C0/#court> a yago:Court108329453 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=47,52> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C0/#tennis> a yago:Tennis100482298 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=40,46> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C0/#woman> a yago:Woman110787470 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=8,13> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C1/#ball> a yago:Ball102778669 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#ball> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=65,69> .
-
 <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=35,40> a ks:TextualEntityMention ;
     ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C1/> ;
     nif:anchorOf "court" ;
@@ -124,16 +145,6 @@ vtkel: a <http://purl.org/dc/dcmitype/Dataset> ;
     nif:endIndex 15 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
-<http://vksflickr30k.fbk.edu/resource/23008340C1/#court> a yago:Court108329453 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=35,40> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C1/#player> a yago:Player110439851 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=16,22> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C1/#tennis> a yago:Tennis100482298 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=9,15> .
-
 <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=9,15> a ks:TextualEntityMention ;
     ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C2/> ;
     nif:anchorOf "tennis" ;
@@ -141,26 +152,8 @@ vtkel: a <http://purl.org/dc/dcmitype/Dataset> ;
     nif:endIndex 15 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
-<http://vksflickr30k.fbk.edu/resource/23008340C2/#player> a yago:Player110439851 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=16,22> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C2/#racket> a yago:Racket104039381 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#racket> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=48,54> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C2/#tennis> a yago:Tennis100482298 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=9,15> .
-
 <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=-1,4> a ks:TextualEntityMention ;
     ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C3/> ;
-    prov:wasAttributedTo vtkel:PikesAnnotator .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C3/#char=0,0> a ks:TextualEntityMention ;
-    ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C3/> ;
-    nif:anchorOf "" ;
-    nif:beginIndex 0 ;
-    nif:endIndex 0 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
 <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=17,22> a ks:TextualEntityMention ;
@@ -184,19 +177,6 @@ vtkel: a <http://purl.org/dc/dcmitype/Dataset> ;
     nif:endIndex 53 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
-<http://vksflickr30k.fbk.edu/resource/23008340C3/#shirt> a yago:Shirt104197391 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=17,22> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C3/#skirt> a yago:Skirt104230808 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=33,38> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C3/#tennis> a yago:Tennis100482298 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=47,53> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C3/#woman> a yago:Woman110787470 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=0,0> .
-
 <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=19,24> a ks:TextualEntityMention ;
     ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C4/> ;
     nif:anchorOf "shirt" ;
@@ -210,20 +190,6 @@ vtkel: a <http://purl.org/dc/dcmitype/Dataset> ;
     nif:beginIndex 33 ;
     nif:endIndex 39 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C4/#racket> a yago:Racket104039381 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#racket> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=40,46> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C4/#shirt> a yago:Shirt104197391 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=19,24> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C4/#tennis> a yago:Tennis100482298 ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=33,39> .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C4/#woman> a yago:Woman110787470 ;
-    ks:shownIn <http://vksflickr30k.fbk.edu/resource/23008340I/#person> ;
-    gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=2,7> .
 
 <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=60,64> a ks:TextualEntityMention ;
     ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C0/> ;
@@ -281,21 +247,12 @@ vtkel: a <http://purl.org/dc/dcmitype/Dataset> ;
     nif:endIndex 46 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
-yago:Player110439851 rdfs:subClassOf yago:Person100007846 .
-
-<http://vksflickr30k.fbk.edu/resource/23008340C2/> a ks:Resource,
-        ks:Text ;
-    ks:storedAs <http://vksflickr30k.fbk.edu/resource/23008340C2.txt/> ;
-    dct:identifier "23008340C2" ;
-    dct:isPartOf <http://vksflickr30k.fbk.edu/resource/23008340> ;
-    dct:isString "A female tennis player is casually swinging her racket ." .
-
 <http://vksflickr30k.fbk.edu/resource/23008340I/#ball> a yago:Ball102778669,
         ks:VisualEntityMention ;
-    ks:xmax 174 ;
-    ks:xmin 52 ;
-    ks:ymax 360 ;
-    ks:ymin 123 ;
+    ks:xmax 376 ;
+    ks:xmin 360 ;
+    ks:ymax 310 ;
+    ks:ymin 294 ;
     gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=60,64>,
         <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=65,69>,
         <http://vksflickr30k.fbk.edu/resource/23008340I/#xywh=360,294,376,310> ;
@@ -312,6 +269,15 @@ yago:Player110439851 rdfs:subClassOf yago:Person100007846 .
         <http://vksflickr30k.fbk.edu/resource/23008340I/#xywh=41,52,123,174> ;
     prov:wasAttributedTo vtkel:YOLOAnnotator .
 
+yago:Player110439851 rdfs:subClassOf yago:Person100007846 .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.edu/resource/23008340C2.txt/> ;
+    dct:identifier "23008340C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.edu/resource/23008340> ;
+    dct:isString "A female tennis player is casually swinging her racket ." .
+
 yago:Woman110787470 rdfs:subClassOf yago:Person100007846 .
 
 <http://vksflickr30k.fbk.edu/resource/23008340C1/> a ks:Resource,
@@ -320,6 +286,13 @@ yago:Woman110787470 rdfs:subClassOf yago:Person100007846 .
     dct:identifier "23008340C1" ;
     dct:isPartOf <http://vksflickr30k.fbk.edu/resource/23008340> ;
     dct:isString "A female tennis player stands on a court , looking away from the ball ." .
+
+<http://vksflickr30k.fbk.edu/resource/23008340C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.edu/resource/23008340C3.txt/> ;
+    dct:identifier "23008340C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.edu/resource/23008340> ;
+    dct:isString "Woman in a white shirt and black skirt playing tennis ." .
 
 <http://vksflickr30k.fbk.edu/resource/23008340C4/> a ks:Resource,
         ks:Text ;
@@ -335,26 +308,18 @@ yago:Woman110787470 rdfs:subClassOf yago:Person100007846 .
     dct:isPartOf <http://vksflickr30k.fbk.edu/resource/23008340> ;
     dct:isString "A young woman with her back turned on a tennis court with a ball coming from behind her ." .
 
-<http://vksflickr30k.fbk.edu/resource/23008340C3/> a ks:Resource,
-        ks:Text ;
-    ks:storedAs <http://vksflickr30k.fbk.edu/resource/23008340C3.txt/> ;
-    dct:identifier "23008340C3" ;
-    dct:isPartOf <http://vksflickr30k.fbk.edu/resource/23008340> ;
-    dct:isString "Woman in a white shirt and black skirt playing tennis ." .
-
 <http://vksflickr30k.fbk.edu/resource/23008340I/#person> a yago:Person100007846,
         yago:Player110439851,
         yago:Woman110787470,
         ks:VisualEntityMention ;
-    ks:xmax 360 ;
-    ks:xmin 123 ;
-    ks:ymax 294 ;
-    ks:ymin 174 ;
+    ks:xmax 240 ;
+    ks:xmin 98 ;
+    ks:ymax 372 ;
+    ks:ymin 18 ;
     gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=8,13>,
         <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=16,22>,
         <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=16,22>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=-1,4>,
+        <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=1,6>,
         <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=2,7>,
         <http://vksflickr30k.fbk.edu/resource/23008340I/#xywh=98,18,240,372> ;
     prov:wasAttributedTo vtkel:YOLOAnnotator .
-
