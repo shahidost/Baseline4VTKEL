@@ -1,8 +1,8 @@
 # Baseline system for Visual-Textual-Knowledge entity linking (VTKEL)
-This repositroy includes problem, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking**, related files and folders to test and run for your problem.
+This repositroy includes problem, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking**, related files and folders to test and run in your local machine.
 
 ### Introduction:
-In this reposirtoy consists of problem, novel dataset for the task of *Visual-Textual-Knowledge Entity linking* and first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using **YOLO version 3**, entity recognition and linking to ontologies in text using **PIKES**, and alignment and mapping of visual-textual mentions using **YAGO knowledgebase**. The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be considered as a first baseline for further improvements. 
+This reposirtoy consists of problem, novel dataset for the task of *Visual-Textual-Knowledge Entity linking* and the first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using [**YOLO version 3**](https://pjreddie.com/darknet/yolo/), entity recognition and linking to ontologies in text using [**PIKES**](kes.fbk.eu), and alignment and mapping of visual-textual mentions using [**YAGO knowledgebase**](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/). The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be considered as a first baseline for further improvements. 
 
 ### Problem (Visual-Textual-Knowledge Entity Linking):
 Given a document *d* composed of a text *d<sub>t</sub>* and an image *d<sub>i</sub>* and a knowledge base **K**, *VTKEL* is the problem of detecting all the entities mentioned in *d<sub>t</sub>* and and/or shown in *d<sub>i</sub>*, and linking them to the corresponding named entities in **K**, if they are present, or linking them to new entities, extending the **A-box** of **K** with its type assertion(s),  i.e. adding *C(e<sup>new</sup>)* for each new entity *C(e<sup>new</sup>)* of type **C** mentioned in *d*.
@@ -26,7 +26,7 @@ The visual and textual mentions of a *man* shown in the red text and in	the red 
 </p>
 
 ### VTKEL annotations instantiantions:
-VTKEL baseline produced a terse **RDF** (Resource Description Framework) triple language (Turtle) file (i.e. *.ttl* file) to store the annotations of resultant visual and textual mentions and entity content, as well as its links to the region of image and text where it derives from. The annotated file is organized in three distinct yet interlinked representations layers: *Resource, Mention* and *Entity*. The details of instantiantions are showns in *Figure 3* in details for visual mentions *person*, (Complete details can be found in the *Example* folder files).
+VTKEL baseline produced a terse [**RDF**](https://www.w3.org/TR/turtle/) (Resource Description Framework) triple language (Turtle) file (i.e. *.ttl* file) to store the annotations of resultant visual and textual mentions and entity content, as well as its links to the region of image and text where it derives from. The annotated file is organized in three distinct yet interlinked representations layers: *Resource, Mention* and *Entity*. The details of instantiantions are showns in *Figure 3* in details for visual mentions *person*, (Complete details can be found in the *Example* folder files).
 
 <p align="center">
   <img width="700" height="700" src="https://user-images.githubusercontent.com/25593410/59091806-65170400-8910-11e9-91c4-1cf774de7876.png">
@@ -69,6 +69,7 @@ The VTKEL baseline system and their codes are licensed under [CC BY 4.0](https:/
 - [YOLOv3](https://pjreddie.com/darknet/yolo/)
 - [PIKES](http://pikes.fbk.eu)
 - [Flickr30k](http://bryanplummer.com/Flickr30kEntities/)
+- [RDF](https://www.w3.org/TR/turtle/)
 
 
 ### Contact
