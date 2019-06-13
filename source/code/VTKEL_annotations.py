@@ -10,6 +10,7 @@ from rdflib import Graph, URIRef, BNode, Literal, Namespace
 from YAGO_texonomy import yago_taxo_fun, image_id_input
 from textblob import TextBlob
 from get_sentence_data import *
+#from Evaluations_Visual_Texual_Konwledge_v4_2 import g1
 
 vtkel1 = Namespace('http://vksflickr30k.fbk.edu/resource/')
 ks1 = Namespace('http://dkm.fbk.eu/ontologies/knowledgestore#')
@@ -24,9 +25,8 @@ image_id=image_id_input
 #==> Read image and save Id of respective image
 image = cv2.imread(image_id)
 image_id=image_id[85:]
-
-out_fun=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id[:-4]+'.txt')
-
+image_id_annotation=image_id[:-4]
+out_fun=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id_annotation+'.txt')
 def VTKEL_annotations():
     """
     This function stored the meta-data information by using RDF graph triple to stored in .ttl file for VTKEL baseline.
@@ -34,7 +34,7 @@ def VTKEL_annotations():
     
     Output:
     """
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C0/'])
+    RDF1_s=URIRef(vtkel1[image_id_annotation+'C0/'])
     RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
     RDF1_o=URIRef(ks1['Resource'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
@@ -43,15 +43,15 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
     
     RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C0.txt/'])
+    RDF1_o=URIRef(vtkel1[image_id_annotation+'C0.txt/'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
     
     RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C0')
+    RDF1_o=Literal(image_id_annotation+'C0')
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
+    RDF1_o=URIRef(vtkel1[image_id_annotation])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isString'])
@@ -59,7 +59,7 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
     ##captions C1
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C1/'])
+    RDF1_s=URIRef(vtkel1[image_id_annotation+'C1/'])
     RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
     RDF1_o=URIRef(ks1['Resource'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
@@ -68,15 +68,15 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
     
     RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C1.txt/'])
+    RDF1_o=URIRef(vtkel1[image_id_annotation+'C1.txt/'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
     
     RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C1')
+    RDF1_o=Literal(image_id_annotation+'C1')
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
+    RDF1_o=URIRef(vtkel1[image_id_annotation])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isString'])
@@ -84,7 +84,7 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
     ##captions C2
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C2/'])
+    RDF1_s=URIRef(vtkel1[image_id_annotation+'C2/'])
     RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
     RDF1_o=URIRef(ks1['Resource'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
@@ -93,15 +93,15 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
     
     RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C2.txt/'])
+    RDF1_o=URIRef(vtkel1[image_id_annotation+'C2.txt/'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
     
     RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C2')
+    RDF1_o=Literal(image_id_annotation+'C2')
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
+    RDF1_o=URIRef(vtkel1[image_id_annotation])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isString'])
@@ -109,7 +109,7 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
 
     ##captions C3
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C3/'])
+    RDF1_s=URIRef(vtkel1[image_id_annotation+'C3/'])
     RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
     RDF1_o=URIRef(ks1['Resource'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
@@ -118,15 +118,15 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
     
     RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C3.txt/'])
+    RDF1_o=URIRef(vtkel1[image_id_annotation+'C3.txt/'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
     
     RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C3')
+    RDF1_o=Literal(image_id_annotation+'C3')
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
+    RDF1_o=URIRef(vtkel1[image_id_annotation])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isString'])
@@ -134,7 +134,7 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
     ##captions C4
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C4/'])
+    RDF1_s=URIRef(vtkel1[image_id_annotation+'C4/'])
     RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
     RDF1_o=URIRef(ks1['Resource'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
@@ -143,18 +143,18 @@ def VTKEL_annotations():
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
     
     RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C4.txt/'])
+    RDF1_o=URIRef(vtkel1[image_id_annotation+'C4.txt/'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
     
     RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C4')
+    RDF1_o=Literal(image_id_annotation+'C4')
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
+    RDF1_o=URIRef(vtkel1[image_id_annotation])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
     
     RDF1_p=URIRef(dct1['isString'])
     RDF1_o=Literal(out_fun[4]['sentence'])
     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-
+    return g1

@@ -75,6 +75,7 @@ image_id=image_id_input
 #==> Read image and save Id of respective image
 image = cv2.imread(image_id)
 image_id=image_id[85:]
+
 #==> End of Read image and save Id of respective image
 
 def read_glove_vecs(glove_file):
@@ -128,20 +129,20 @@ def cosine_similarity(u, v):
     return cosine_similarity
 
 #==> read the caption files with respect to Image Id
-out_fun=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id[:-4]+'.txt')
+image_id_annotation=image_id[:-4]
+out_fun=get_sentence_data('insert image caption file .txt from Flickr30k entities datasets->captions files')
 out_fun=out_fun
 #==> to test the results
-print('\n------------------------------------\nCaption Part:\n')
-print('\n','Captions->\n')
-print('0:',out_fun[0]['sentence'])
-print('1:',out_fun[1]['sentence'])
-print('2:',out_fun[2]['sentence'])
-print('3:',out_fun[3]['sentence'])
-print('4:',out_fun[4]['sentence'])
+print('----------------------------------------------------\nImage captions processing....\n')
+print('C0:',out_fun[0]['sentence'])
+print('C1:',out_fun[1]['sentence'])
+print('C2:',out_fun[2]['sentence'])
+print('C3:',out_fun[3]['sentence'])
+print('C4:',out_fun[4]['sentence'])
 
 
 ###====> PIKES System tool Phase
-print('\n------------------------------------\nPIKES Part:\n')
+print('\n-------------------------------------------------\nPIKES processing....')
 ### connect to 'PIKES server' for knowledge graph in RDF Trig format
 PUBLIC_PIKES_SERVER = 'https://knowledgestore2.fbk.eu/pikes-demo/api/'
 LOCAL_PIKES_SERVER = 'http://localhost:8011/'
@@ -181,7 +182,7 @@ def get_entities_from_text(text):
     return g.query(sparql_query)
 
 def PIKES_entities():
-    
+    print('\n-------------------------------------------------\nPIKES entities processing....')
     """
     This function extract and stored all the entities from PIKES in caption base (five captions for one image).  
     input:
@@ -230,12 +231,11 @@ def PIKES_entities():
                 YAGO_class_c4.append(row[1])
         for row in caption_entities:
             if 'http://groundedannotationframework.org/gaf#denotedBy' in row[1] and i==0:
-                print('==>>',row[0],row[1])
-    print('\n')
+                print('...')
     return pikes_mention_c0,pikes_mention_c1,pikes_mention_c2,pikes_mention_c3,pikes_mention_c4,YAGO_class_c0,YAGO_class_c1,YAGO_class_c2,YAGO_class_c3,YAGO_class_c4
 pikes_mention_c0,pikes_mention_c1,pikes_mention_c2,pikes_mention_c3,pikes_mention_c4,YAGO_class_c0,YAGO_class_c1,YAGO_class_c2,YAGO_class_c3,YAGO_class_c4=PIKES_entities()
 
-
+print('\n-------------------------------------------------\nAlignment processing....')
 def allignment_Flickr30k_PIKES(caption_c0,pikes_mention_c0,YAGO_class_c0):
     """
     This function find alignment between entities mentions of Flickr30k entities dataset caption(s) and PIKES extracted textual entities mentions. 
@@ -259,7 +259,6 @@ def allignment_Flickr30k_PIKES(caption_c0,pikes_mention_c0,YAGO_class_c0):
     mention_align_YAGO=[]
     second_word=''
     flag=True
-    print(pikes_mention_c0)
     for j in range(len(pikes_mention_c0)):
         min_similarity=-100
         for i in range(len(caption_c0_words_list)):
@@ -307,6 +306,7 @@ mention_align_pikes_c2,mention_align_flickr_c2,mention_align_YAGO_c2=allignment_
 mention_align_pikes_c3,mention_align_flickr_c3,mention_align_YAGO_c3=allignment_Flickr30k_PIKES(out_fun[3]['sentence'],pikes_mention_c3,YAGO_class_c3)
 mention_align_pikes_c4,mention_align_flickr_c4,mention_align_YAGO_c4=allignment_Flickr30k_PIKES(out_fun[4]['sentence'],pikes_mention_c4,YAGO_class_c4)
 
+print('\n-------------------------------------------------\nYAGO mapping....')
 def Mapping_of_YAGO(g3,word1,word2):
     """
     This function takes two YAGO classes (Woman110787470, Person100007846) and find if they are in sub-class or same class hierarchy by mapping on YAGO taxonomy file.  
@@ -361,10 +361,10 @@ Pre-train YOLO version 3 model for detecting visual objects.
 """    
 # read class names from text file
 classes = None
-with open('yolov3.txt', 'r') as f:
+with open('insert file yolov3.txt from YOLO folder', 'r') as f:
     classes = [line.strip() for line in f.readlines()]
 COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
-net = cv2.dnn.readNet('yolov3_.weights', 'yolov3.cfg')
+net = cv2.dnn.readNet('insert file yolov3_.weights from YOLO', 'insert yolov3.cfg from YOLO')
 
 # create input blob
 blob = cv2.dnn.blobFromImage(image, scale, (416,416), (0,0,0), True, crop=False)
@@ -392,6 +392,7 @@ def get_output_layers(net):
 class_names=[]
 bounding_boxes=[]
 YOLO_class_names=[]
+print('\n-------------------------------------------------\nYOLO objects detection processing....')
 def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     """
     Pre-train YOLO version 3 model for detecting visual objects.
@@ -521,48 +522,48 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                     RDF1_o=URIRef(yago1[word2])
                     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 if same_visual_mention_count==1:
-                    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                    RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                     RDF1_p=URIRef(ks1['shownIn'])
-                    RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                    RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 elif same_visual_mention_count==2:
                     for k in range(len(YOLO_class_names)):
                         if YOLO_class_names[k][-2:]=='_2':
                             visual_mention=YOLO_class_names[k]
-                            RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                            RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                             RDF1_p=URIRef(ks1['shownIn'])
-                            RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                            RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                         elif word1==word2:
-                            RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                            RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                             RDF1_p=URIRef(ks1['shownIn'])
-                            RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                            RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 elif same_visual_mention_count==3:
                     for k in range(len(YOLO_class_names)):
                         if YOLO_class_names[k][-2:]=='_2':
                             visual_mention=YOLO_class_names[k]
-                            RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                            RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                             RDF1_p=URIRef(ks1['shownIn'])
-                            RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                            RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                         elif word1==word2:
-                            RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                            RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                             RDF1_p=URIRef(ks1['shownIn'])
-                            RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                            RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 elif same_visual_mention_count==4:
                     for k in range(len(YOLO_class_names)):
                         if YOLO_class_names[k][-2:]=='_2':
                             visual_mention=YOLO_class_names[k]
-                            RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                            RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                             RDF1_p=URIRef(ks1['shownIn'])
-                            RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                            RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                         elif word1==word2:
-                            RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                            RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                             RDF1_p=URIRef(ks1['shownIn'])
-                            RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                            RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                                                  
                     
@@ -577,7 +578,7 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                 end_index=len(mention_align_flickr[j])+start_index
                 RDF4_s=RDF2_s
                 RDF4_p=URIRef(gaf1['denotedBy'])
-                RDF4_o=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)+'/#char='+str(start_index)+','+str(end_index)])
+                RDF4_o=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)+'/#char='+str(start_index)+','+str(end_index)])
                 g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                 
                 RDF5_s=RDF4_o
@@ -587,7 +588,7 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                 
                 RDF6_s=RDF4_o
                 RDF6_p=URIRef(ks1['mentionOf'])
-                RDF6_o=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)+'/'])
+                RDF6_o=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)+'/'])
                 g1.add( (RDF6_s, RDF6_p, RDF6_o) )
 
                 RDF7_s=RDF4_o
@@ -619,52 +620,48 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                         RDF1_o=URIRef(yago1[word1])
                         g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     if same_visual_mention_count==1:
-                        RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                        RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                         RDF1_p=URIRef(ks1['shownIn'])
-                        RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                        RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                         g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     elif same_visual_mention_count==2:
                         for k in range(len(YOLO_class_names)):
                             if YOLO_class_names[k][-2:]=='_2':
                                 visual_mention=YOLO_class_names[k]
-                                RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                                RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                                 RDF1_p=URIRef(ks1['shownIn'])
-                                RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                                RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                             elif word1==word2:
-                                RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                                RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                                 RDF1_p=URIRef(ks1['shownIn'])
-                                RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                                RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     elif same_visual_mention_count==3:
                         for k in range(len(YOLO_class_names)):
                             if YOLO_class_names[k][-2:]=='_2':
                                 visual_mention=YOLO_class_names[k]
-                                RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                                RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                                 RDF1_p=URIRef(ks1['shownIn'])
-                                RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
+                                RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                             elif word1==word2:
-                                RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                                RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                                 RDF1_p=URIRef(ks1['shownIn'])
-                                RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
-                                print('thirdcase->',RDF1_s,RDF1_p,RDF1_o)
+                                RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     elif same_visual_mention_count==4:
-                        print('same_visual->',same_visual_mention_count)
                         for k in range(len(YOLO_class_names)):
                             if YOLO_class_names[k][-2:]=='_2':
                                 visual_mention=YOLO_class_names[k]
-                                RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                                RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                                 RDF1_p=URIRef(ks1['shownIn'])
-                                RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
-                                print('thirdcase->',RDF1_s,RDF1_p,RDF1_o)
+                                RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                             elif word1==word2:
-                                RDF1_s=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
+                                RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
                                 RDF1_p=URIRef(ks1['shownIn'])
-                                RDF1_o=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+visual_mention])
-                                print('thirdcase->',RDF1_s,RDF1_p,RDF1_o)
+                                RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
                     total_visual_mentions.append(mention_align_pikes[j])
@@ -677,9 +674,8 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                     end_index=len(mention_align_flickr[j])+start_index
                     RDF4_s=RDF2_s
                     RDF4_p=URIRef(gaf1['denotedBy'])
-                    RDF4_o=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)+'/#char='+str(start_index)+','+str(end_index)])
+                    RDF4_o=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)+'/#char='+str(start_index)+','+str(end_index)])
                     g1.add( (RDF4_s, RDF4_p, RDF4_o) )
-                    print(RDF4_s, RDF4_p, RDF4_o,mention_align_flickr[j])
                     
                     RDF5_s=RDF4_o
                     RDF5_p=URIRef(rdf1['type'])
@@ -688,7 +684,7 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                     
                     RDF6_s=RDF4_o
                     RDF6_p=URIRef(ks1['mentionOf'])
-                    RDF6_o=URIRef(vtkel1[image_id[:-4]+'C'+str(caption_no)+'/'])
+                    RDF6_o=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)+'/'])
                     g1.add( (RDF6_s, RDF6_p, RDF6_o) )
     
                     RDF7_s=RDF4_o
@@ -742,9 +738,11 @@ for x in total_mentions:
         index_yago+=1
     else:
         index_yago+=1
+print('\n-------------------------------------------------\nCoreference processing....')
+rdf_mentions_pikes,rdf_mentions_yago=removed_duplicate_mentions(total_number_mentions,total_mentions_YAGO_class)
 
-total_number_mentions,total_mentions_YAGO_class=Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_number_mentions,total_mentions_YAGO_class,mention_align_pikes_c0,mention_align_pikes_c1,mention_align_pikes_c2,mention_align_pikes_c3,mention_align_pikes_c4)
-
+g4,total_number_mentions,total_mentions_YAGO_class=Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_number_mentions,total_mentions_YAGO_class,mention_align_pikes_c0,mention_align_pikes_c1,mention_align_pikes_c2,mention_align_pikes_c3,mention_align_pikes_c4)
+g1=g1+g4
 #=> YOLO class merging
 b = set()
 unique_YOLO_class_in_YAGO = []
@@ -754,7 +752,6 @@ for x in YOLO_class_in_YAGO:
         b.add(x)
 
 end=time.time()
-print('time before YAGO file loading->',end-start)
 flag_for_yago=False
 if flag_for_yago==False:
     flag_for_yago=True
@@ -762,14 +759,15 @@ if flag_for_yago==False:
     qres2=g4
 mention_id=0
 end=time.time()
-print('time after YAGO file loading->',end-start)
-####checking time
-end=time.time()
-print('time before YAGO mapping->',end-start)
+#print('time after YAGO file loading->',end-start)
+#####checking time
+#end=time.time()
+#print('time before YAGO mapping->',end-start)
 
                         
 YOLO_class_names_unique=duplicate_visual_mentions(YOLO_class_names)
-Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_names_unique) 
+g3=Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_names_unique)
+g1=g1+g3
 mention_id,total_visual_mentions=Allignment_YOLO_PIKES(0,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c0,mention_align_pikes_c0,mention_align_flickr_c0,total_visual_mentions)
 mention_id,total_visual_mentions=Allignment_YOLO_PIKES(1,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c1,mention_align_pikes_c1,mention_align_flickr_c1,total_visual_mentions)
 mention_id,total_visual_mentions=Allignment_YOLO_PIKES(2,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c2,mention_align_pikes_c2,mention_align_flickr_c2,total_visual_mentions)
@@ -779,7 +777,7 @@ RDF1_s=URIRef(vtkel1)
 
 #==> Stored meta-data information in RDF graph for VTKEL annotations instantiations
 RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-RDF1_o=URIRef("http://purl.org/dc/dcmitype/Dataset")
+RDF1_o=URIRef("http://purl.org/dc/dcmitype/Software")
 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
 RDF110_p=URIRef("http://purl.org/dc/terms/creator")
@@ -799,147 +797,16 @@ RDFf1_p=URIRef("http://purl.org/dc/terms/title")
 RDFf1_o=Literal("Visual-Textual-Knowledge-Entity-Linking (VTKEL) Baseline system")
 g1.add( (RDF1_s, RDFf1_p, RDFf1_o) )
 
-RDF1_s=URIRef(vtkel1["#"+image_id[:-4]])
+RDF1_s=URIRef(vtkel1["#"+image_id_annotation])
 RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
 RDF1_o=URIRef("http://purl.org/dc/dcmitype/Collection")
 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
-def VTKEL_annotations():
-    """
-    This function stored the meta-data information by using RDF graph triple to stored in .ttl file for VTKEL baseline.
-    Input:
-    
-    Output:
-    """
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C0/'])
-    RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-    RDF1_o=URIRef(ks1['Resource'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_o=URIRef(ks1['Text'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C0.txt/'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
-    
-    RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C0')
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isString'])
-    RDF1_o=Literal(out_fun[0]['sentence'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-
-    ##captions C1
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C1/'])
-    RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-    RDF1_o=URIRef(ks1['Resource'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_o=URIRef(ks1['Text'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C1.txt/'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
-    
-    RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C1')
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isString'])
-    RDF1_o=Literal(out_fun[1]['sentence'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-
-    ##captions C2
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C2/'])
-    RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-    RDF1_o=URIRef(ks1['Resource'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_o=URIRef(ks1['Text'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C2.txt/'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
-    
-    RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C2')
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isString'])
-    RDF1_o=Literal(out_fun[2]['sentence'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
-
-    ##captions C3
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C3/'])
-    RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-    RDF1_o=URIRef(ks1['Resource'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_o=URIRef(ks1['Text'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C3.txt/'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
-    
-    RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C3')
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isString'])
-    RDF1_o=Literal(out_fun[3]['sentence'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-
-    ##captions C4
-    RDF1_s=URIRef(vtkel1[image_id[:-4]+'C4/'])
-    RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-    RDF1_o=URIRef(ks1['Resource'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_o=URIRef(ks1['Text'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-    
-    RDF1_p=URIRef(ks1['storedAs'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]+'C4.txt/'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )    
-    
-    RDF1_p=URIRef(dct1['identifier'])
-    RDF1_o=Literal(image_id[:-4]+'C4')
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isPartOf'])
-    RDF1_o=URIRef(vtkel1[image_id[:-4]])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )        
-    
-    RDF1_p=URIRef(dct1['isString'])
-    RDF1_o=Literal(out_fun[4]['sentence'])
-    g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-
-
-VTKEL_annotations()
+g2=VTKEL_annotations()
+g1=g1+g2
 #==> stored VTKEL baseline annotated file in turtle formate
-g1.serialize(destination='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/annotations/'+image_id[:-4]+'VTKEL_annotations.ttl', format='turtle')
+g1.serialize(destination='insert output directory path where you want to stored annotated RDF graph of VTKEL baseline'+image_id_annotation+'VTKEL_annotations.ttl', format='turtle')
 print('end')
 #==> stored the resultant image file .jpg form
-cv2.imwrite('F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/output images/'+image_id[:-4]+'_yolo.jpg', image)
+cv2.imwrite('insert output directory path where you want to stored .jpg output image file of VTKEL baseline'+image_id_annotation+'_yolo.jpg', image)
 cv2.destroyAllWindows()

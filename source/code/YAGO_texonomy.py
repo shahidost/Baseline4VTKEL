@@ -22,10 +22,10 @@ def yago_taxo_fun():
     output:
         g4 - YAGO parsed turtle file 
     """
-    rdffile3="F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/yago_test_empy.ttl"
-#    rdffile3="C:/Users/aa/Desktop/YOLO/object-detection-opencv-master/yago_taxonomy-v1.1.ttl"
+#    rdffile3="F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/yago_test_empy.ttl"
+    rdffile3="C:/Users/aa/Desktop/YOLO/object-detection-opencv-master/yago_taxonomy-v1.1.ttl"
     g3=rdflib.ConjunctiveGraph()
     g4=g3.parse(rdffile3, format="turtle")
     return g4
 
-image_id_input='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/input images/123101580.jpg'
+image_id_input='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/input images/23008340.jpg'

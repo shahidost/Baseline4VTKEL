@@ -69,4 +69,3 @@ def get_sentence_data(fn):
         annotations.append(sentence_data)
 
     return annotations
-

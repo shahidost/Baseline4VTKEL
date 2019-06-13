@@ -37,6 +37,7 @@ image_id=image_id_input
 #==> Read image and save Id of respective image
 image = cv2.imread(image_id)
 image_id=image_id[85:]
+image_id_annotation=image_id[:-4]
 ###==>> Bounding boxes annotations
 def Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_names):
     """
@@ -49,10 +50,10 @@ def Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_name
     """
     for i in range(len(YOLO_class_names)):
         if i==0:
-            RDF3_s=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+YOLO_class_names[i]])
+            RDF3_s=URIRef(vtkel1[image_id_annotation+'I'+'/#'+YOLO_class_names[i]])
             RDF3_p=URIRef(gaf1['denotedBy'])
             xywh=str(bounding_boxes[i])+','+str(bounding_boxes[i+1])+','+str(bounding_boxes[i+2])+','+str(bounding_boxes[i+3])
-            xywh=str(image_id[:-4])+'I'+'/#xywh='+xywh
+            xywh=str(image_id_annotation)+'I'+'/#xywh='+xywh
             RDF3_o=URIRef(vtkel1[xywh])
             g1.add( (RDF3_s, RDF3_p, RDF3_o) )
             
@@ -92,11 +93,11 @@ def Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_name
             g1.add( (RDF10_s, RDF10_p, RDF10_o) )
 
         else:
-            RDF3_s=URIRef(vtkel1[image_id[:-4]+'I'+'/#'+YOLO_class_names[i]])
+            RDF3_s=URIRef(vtkel1[image_id_annotation+'I'+'/#'+YOLO_class_names[i]])
             RDF3_p=URIRef(gaf1['denotedBy'])
             index=i*4
             xywh=str(bounding_boxes[index])+','+str(bounding_boxes[index+1])+','+str(bounding_boxes[index+2])+','+str(bounding_boxes[index+3])
-            xywh=str(image_id[:-4])+'I'+'/#xywh='+xywh
+            xywh=str(image_id_annotation)+'I'+'/#xywh='+xywh
             RDF3_o=URIRef(vtkel1[xywh])
             g1.add( (RDF3_s, RDF3_p, RDF3_o) )
             RDF4_s=RDF3_s
@@ -133,3 +134,4 @@ def Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_name
             RDF10_p=URIRef(prov1['wasAttributedTo'])
             RDF10_o=URIRef(vtkel1['YOLOAnnotator'])
             g1.add( (RDF10_s, RDF10_p, RDF10_o) )
+    return g1

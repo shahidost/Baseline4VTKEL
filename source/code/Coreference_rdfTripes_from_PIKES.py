@@ -34,8 +34,8 @@ image_id=image_id_input
 #==> Read image and save Id of respective image
 image = cv2.imread(image_id)
 image_id=image_id[85:]
-
-out_fun=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id[:-4]+'.txt')
+image_id_annotation=image_id[:-4]
+out_fun=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id_annotation+'.txt')
 def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_number_mentions,total_mentions_YAGO_class,mention_align_pikes_c0,mention_align_pikes_c1,mention_align_pikes_c2,mention_align_pikes_c3,mention_align_pikes_c4):
     """
     This function takes textual data from PIKES, visual data from YOLO and corresponding mapped entity mentions from YAGO and process these data for entity alignment and visual-textual coreference chains resolution. All the aligned visual-textual entity mentions are stored in a RDF .ttl file in graph form with coreference chains information. This function process caption wise alignment with visual information and recognized and linked to YAGO knowledgebase.
@@ -57,7 +57,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
     temp_mention_c0=''
     for i in range(len(total_number_mentions)):
         temp_mention_c0=total_number_mentions[i]
-        RDF0_s=URIRef(vtkel1[image_id[:-4]+'#t'+str(i+1)])
+        RDF0_s=URIRef(vtkel1[image_id_annotation+'#t'+str(i+1)])
         RDF0_p=URIRef('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
         RDF0_o=URIRef(ks1['TextualEntity'])
 #        g1.add( (RDF0_s, RDF0_p, RDF0_o) )
@@ -69,7 +69,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
 ###==> Caption 0:
         for j in range(len(mention_align_pikes_c0)):
             if temp_mention_c0 in mention_align_pikes_c0[j]:
-                RDF01_s=URIRef(vtkel1[image_id[:-4]]+'C0/#'+total_number_mentions[i])
+                RDF01_s=URIRef(vtkel1[image_id_annotation]+'C0/#'+total_number_mentions[i])
                 RDF01_p=RDF0_p
                 RDF01_o=RDF0_o
                 g1.add( (RDF01_s, RDF01_p, RDF01_o) )
@@ -100,7 +100,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c0)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C0'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C0'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )  
                     
                         RDF3_s=RDF2_o
@@ -110,7 +110,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C0/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C0/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                     
                         RDF5_s=RDF2_o
@@ -152,7 +152,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c0)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C0'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C0'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )                      
 
                         RDF3_s=RDF2_o
@@ -162,7 +162,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C0/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C0/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                     
                         RDF5_s=RDF2_o
@@ -188,7 +188,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
 ###==> Caption 1:
         for j in range(len(mention_align_pikes_c1)):
             if temp_mention_c0 in mention_align_pikes_c1[j]:
-                RDF01_s=URIRef(vtkel1[image_id[:-4]]+'C1/#'+total_number_mentions[i])
+                RDF01_s=URIRef(vtkel1[image_id_annotation]+'C1/#'+total_number_mentions[i])
                 RDF01_p=RDF0_p
                 RDF01_o=RDF0_o
                 g1.add( (RDF01_s, RDF01_p, RDF01_o) )
@@ -218,7 +218,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c1)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C1'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C1'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )  
                         
                         RDF3_s=RDF2_o
@@ -228,7 +228,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C1/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C1/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                         
                         RDF5_s=RDF2_o
@@ -270,7 +270,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c1)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C1'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C1'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )                      
     
                         RDF3_s=RDF2_o
@@ -280,7 +280,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C1/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C1/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                         
                         RDF5_s=RDF2_o
@@ -306,7 +306,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
 ###==> Caption 2:
         for j in range(len(mention_align_pikes_c2)):
             if temp_mention_c0 in mention_align_pikes_c2[j]:
-                RDF01_s=URIRef(vtkel1[image_id[:-4]]+'C2/#'+total_number_mentions[i])
+                RDF01_s=URIRef(vtkel1[image_id_annotation]+'C2/#'+total_number_mentions[i])
                 RDF01_p=RDF0_p
                 RDF01_o=RDF0_o
                 g1.add( (RDF01_s, RDF01_p, RDF01_o) )
@@ -336,7 +336,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c2)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C2'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C2'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )  
                         
                         RDF3_s=RDF2_o
@@ -346,7 +346,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C2/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C2/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                         
                         RDF5_s=RDF2_o
@@ -389,7 +389,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c2)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C2'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C2'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )                      
     
                         RDF3_s=RDF2_o
@@ -424,7 +424,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
 ###==> Caption 3:
         for j in range(len(mention_align_pikes_c3)):
             if temp_mention_c0 in mention_align_pikes_c3[j]:
-                RDF01_s=URIRef(vtkel1[image_id[:-4]]+'C3/#'+total_number_mentions[i])
+                RDF01_s=URIRef(vtkel1[image_id_annotation]+'C3/#'+total_number_mentions[i])
                 RDF01_p=RDF0_p
                 RDF01_o=RDF0_o
                 g1.add( (RDF01_s, RDF01_p, RDF01_o) )
@@ -454,7 +454,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c3)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C3'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C3'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )  
                         
                         RDF3_s=RDF2_o
@@ -464,7 +464,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C3/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C3/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                         
                         RDF5_s=RDF2_o
@@ -507,7 +507,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c3)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C3'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C3'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )                      
     
                         RDF3_s=RDF2_o
@@ -517,7 +517,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C3/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C3/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                         
                         RDF5_s=RDF2_o
@@ -542,7 +542,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
 ###==> Caption 4:
         for j in range(len(mention_align_pikes_c4)):
             if temp_mention_c0 in mention_align_pikes_c4[j]:
-                RDF01_s=URIRef(vtkel1[image_id[:-4]]+'C4/#'+total_number_mentions[i])
+                RDF01_s=URIRef(vtkel1[image_id_annotation]+'C4/#'+total_number_mentions[i])
                 RDF01_p=RDF0_p
                 RDF01_o=RDF0_o
                 g1.add( (RDF01_s, RDF01_p, RDF01_o) )
@@ -572,7 +572,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c4)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C4'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C4'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )  
                         
                         RDF3_s=RDF2_o
@@ -582,7 +582,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C4/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C4/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                         
                         RDF5_s=RDF2_o
@@ -625,7 +625,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                     if len(anchor_word_c4)>0:
                         RDF2_s=RDF01_s
                         RDF2_p=URIRef(gaf1['denotedBy'])
-                        RDF2_o=URIRef(vtkel1[image_id[:-4]+'C4'+'/#char='+str(start_index)+','+str(end_index)])
+                        RDF2_o=URIRef(vtkel1[image_id_annotation+'C4'+'/#char='+str(start_index)+','+str(end_index)])
                         g1.add( (RDF2_s, RDF2_p, RDF2_o) )                      
     
                         RDF3_s=RDF2_o
@@ -635,7 +635,7 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         
                         RDF4_s=RDF2_o
                         RDF4_p=URIRef(ks1['mentionOf'])
-                        RDF4_o=URIRef(vtkel1[image_id[:-4]]+'C4/')
+                        RDF4_o=URIRef(vtkel1[image_id_annotation]+'C4/')
                         g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                         
                         RDF5_s=RDF2_o
@@ -658,5 +658,4 @@ def Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_n
                         RDF8_o=URIRef(vtkel1['PikesAnnotator'])
                         g1.add( (RDF8_s, RDF8_p, RDF8_o) )
                     
-    return total_number_mentions,total_mentions_YAGO_class
-
+    return g1,total_number_mentions,total_mentions_YAGO_class
