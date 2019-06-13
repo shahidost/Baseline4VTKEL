@@ -32,10 +32,6 @@ VTKEL baseline produced a terse **RDF** (Resource Description Framework) triple 
   <img width="700" height="700" src="https://user-images.githubusercontent.com/25593410/59091806-65170400-8910-11e9-91c4-1cf774de7876.png">
 </p>
 
-### Folders:
-
-### Files:
-
 ### Prerequisites:
 - Python 3.6(+) or 2.7(+)
 - window or unix machine
@@ -46,6 +42,7 @@ VTKEL baseline produced a terse **RDF** (Resource Description Framework) triple 
 - Inernet connection for enabling PIKES tool
 
 ### Running VTKEL baseline:
+Follow step by step [guidelines](https://github.com/shahidost/Baseline4VTKEL/tree/master/source) to run VTKEL system.
 
 ### Quality of VTKEL baseline:
 The quality of *VTKEL* system evaluation is shown in below *Table* and for details evaluations please read our paper:
@@ -55,6 +52,7 @@ The quality of *VTKEL* system evaluation is shown in below *Table* and for detai
 </p>
 
 ### Citing VTKEL baseline:
+TBW
 
 ### License:
 The VTKEL baseline system and their codes are licensed under [CC BY 4.0](https://creativecommons.org/2014/01/07/plaintext-versions-of-creative-commons-4-0-licenses/).
@@ -74,4 +72,4 @@ The VTKEL baseline system and their codes are licensed under [CC BY 4.0](https:/
 
 
 ### Contact
-If you have any query regarding VTKEL baseline system and want to contribute to the system contact on ***sdost[at]fbk.eu***.
+If you have any query regarding VTKEL system or want to contribute to the system contact on ***sdost[at]fbk.eu***.
