@@ -1,5 +1,5 @@
 # Baseline system for Visual-Textual-Knowledge entity linking (VTKEL)
-This repositroy includes problem, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking**, related files and folders to test and run in your local machine.
+This repositroy includes problem, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking**, related files and folders.
 
 ### Introduction:
 This reposirtoy consists of problem, novel dataset for the task of *Visual-Textual-Knowledge Entity linking* and the first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using [**YOLO version 3**](https://pjreddie.com/darknet/yolo/), entity recognition and linking to ontologies in text using [**PIKES**](kes.fbk.eu), and alignment and mapping of visual-textual mentions using [**YAGO knowledgebase**](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/). The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be considered as a first baseline for further improvements. 
