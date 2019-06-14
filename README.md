@@ -1,8 +1,7 @@
-# Baseline system for Visual-Textual-Knowledge entity linking (VTKEL)
-This repositroy includes problem, dataset and baseline system for the task of **Vistual-Textual-Knowledge entity linking**, related files and folders.
+# Baseline system for Visual-Textual-Knowledge entity linking
 
 ### Introduction:
-This reposirtoy consists of problem, novel dataset for the task of *Visual-Textual-Knowledge Entity linking* and the first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using [**YOLO version 3**](https://pjreddie.com/darknet/yolo/), entity recognition and linking to ontologies in text using [**PIKES**](kes.fbk.eu), and alignment and mapping of visual-textual mentions using [**YAGO knowledgebase**](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/). The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be considered as a first baseline for further improvements. 
+This reposirtoy consists of problem, novel dataset for the task of **Visual-Textual-Knowledge Entity linking** and the first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using [**YOLO version 3**](https://pjreddie.com/darknet/yolo/), entity recognition and linking to ontologies in text using [**PIKES**](kes.fbk.eu), and alignment and mapping of visual-textual mentions using [**YAGO knowledgebase**](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/). The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be considered as a first baseline for further improvements. 
 
 ### Problem (Visual-Textual-Knowledge Entity Linking):
 Given a document *d* composed of a text *d<sub>t</sub>* and an image *d<sub>i</sub>* and a knowledge base **K**, *VTKEL* is the problem of detecting all the entities mentioned in *d<sub>t</sub>* and and/or shown in *d<sub>i</sub>*, and linking them to the corresponding named entities in **K**, if they are present, or linking them to new entities, extending the **A-box** of **K** with its type assertion(s),  i.e. adding *C(e<sup>new</sup>)* for each new entity *C(e<sup>new</sup>)* of type **C** mentioned in *d*.
@@ -18,7 +17,7 @@ The solution of the *VTKEL* task requires:
 
 The visual and textual mentions of a *man* shown in the red text and in	the red box refer to the same entity, and they should be linked together. The other visual mention i.e. *racket*, *ball* and *logo* should be linked to different entities. These three	entities are not known (i.e., they are not part of the initial	knowledge base **K**), and therefore three new entities of type *racket, ball* and *logo* should be added to the knowledge base, i.e., the **A-box** of **K** should be extended with the assertions *Racket(e<sup>new1</sup>)*, *Ball(e<sup>new2</sup>)* and *Logo(e<sup>new3</sup>)*. The visual and textual mentions of *R.Federer* are also referring to the same entity. However, this time the entity is known (i.e., **YAGO** contains an	entity for *man*) and  therefore the two mentions should be linked to the same entity.	For the other textual mentions, i.e., *Lukas Lacko*,	*Wimbledon*, *London*, *2018*, we already have instances in the **knowledgebase**, so we	have to link them to these entities.
 
-### VTKEL Baseline architecture:
+### VTKEL system architecture:
 *VTKEL* is a multimodal complex problem, which closed the loop between *natural language processing*, *computer vision* and *knowledge representation*. *Figure 2* shows the architecture of baseline system in details (the numbering shows the sub-modules of architecture).
 
 <p align="center">
@@ -41,7 +40,7 @@ VTKEL baseline produced a terse [**RDF**](https://www.w3.org/TR/turtle/) (Resour
 - xml.etree.ElementTree library(+)
 - Inernet connection for enabling PIKES tool
 
-### Running VTKEL baseline:
+### Running VTKEL system:
 Follow step by step [guidelines](https://github.com/shahidost/Baseline4VTKEL/tree/master/source) to run VTKEL system.
 
 ### Quality of VTKEL baseline:
