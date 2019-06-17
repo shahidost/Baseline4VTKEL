@@ -1,6 +1,6 @@
 # Running VTKEL System in your local machine
 
-To run **VTKEL Baseline system** in your local machine follow below steps carefully.
+To run **VTKEL system** in your local machine follow below steps carefully.
 
 **Step 1:**
 
