@@ -40,6 +40,10 @@ Update below python files in your local machine.
 -	Line 25: insert the path of YAGO taxonomy file downloaded from YAGO files.
 -	Line 30: insert the path of image to be uploaded for processing (downloaded from Flickr30k entities dataset).
 
-6. You can see the output .ttl and .jpg files for your required annotations.
+6. Run *main_VTKEL_Baseline_System.py* by using the command for VTKEL running:
+```
+> python main_VTKEL_Baseline_System.py
+```
+7. You can see the output .ttl and .jpg files for your required annotations.
 
-7. The debugging/execution of VTKEL system will take some time due to the processing of huge YAGO ontology according to the speed of your local machine.
+8. The debugging/execution of VTKEL system will take some time due to the processing of huge YAGO ontology according to the speed of your local machine.
