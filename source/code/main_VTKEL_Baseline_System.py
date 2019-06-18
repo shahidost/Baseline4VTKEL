@@ -523,7 +523,7 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 if same_visual_mention_count==1:
                     RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                    RDF1_p=URIRef(ks1['shownIn'])
+                    RDF1_p=URIRef(owl1['sameAs'])
                     RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                     g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 elif same_visual_mention_count==2:
@@ -531,12 +531,12 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                         if YOLO_class_names[k][-2:]=='_2':
                             visual_mention=YOLO_class_names[k]
                             RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                            RDF1_p=URIRef(ks1['shownIn'])
+                            RDF1_p=URIRef(owl1['sameAs'])
                             RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                         elif word1==word2:
                             RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                            RDF1_p=URIRef(ks1['shownIn'])
+                            RDF1_p=URIRef(owl1['sameAs'])
                             RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 elif same_visual_mention_count==3:
@@ -544,12 +544,12 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                         if YOLO_class_names[k][-2:]=='_2':
                             visual_mention=YOLO_class_names[k]
                             RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                            RDF1_p=URIRef(ks1['shownIn'])
+                            RDF1_p=URIRef(owl1['sameAs'])
                             RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                         elif word1==word2:
                             RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                            RDF1_p=URIRef(ks1['shownIn'])
+                            RDF1_p=URIRef(owl1['sameAs'])
                             RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                 elif same_visual_mention_count==4:
@@ -557,12 +557,12 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                         if YOLO_class_names[k][-2:]=='_2':
                             visual_mention=YOLO_class_names[k]
                             RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                            RDF1_p=URIRef(ks1['shownIn'])
+                            RDF1_p=URIRef(owl1['sameAs'])
                             RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                         elif word1==word2:
                             RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                            RDF1_p=URIRef(ks1['shownIn'])
+                            RDF1_p=URIRef(owl1['sameAs'])
                             RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                             g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                                                  
@@ -621,7 +621,7 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                         g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     if same_visual_mention_count==1:
                         RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                        RDF1_p=URIRef(ks1['shownIn'])
+                        RDF1_p=URIRef(owl1['sameAs'])
                         RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                         g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     elif same_visual_mention_count==2:
@@ -629,12 +629,12 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                             if YOLO_class_names[k][-2:]=='_2':
                                 visual_mention=YOLO_class_names[k]
                                 RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                                RDF1_p=URIRef(ks1['shownIn'])
+                                RDF1_p=URIRef(owl1['sameAs'])
                                 RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                             elif word1==word2:
                                 RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                                RDF1_p=URIRef(ks1['shownIn'])
+                                RDF1_p=URIRef(owl1['sameAs'])
                                 RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     elif same_visual_mention_count==3:
@@ -642,12 +642,12 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                             if YOLO_class_names[k][-2:]=='_2':
                                 visual_mention=YOLO_class_names[k]
                                 RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                                RDF1_p=URIRef(ks1['shownIn'])
+                                RDF1_p=URIRef(owl1['sameAs'])
                                 RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                             elif word1==word2:
                                 RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                                RDF1_p=URIRef(ks1['shownIn'])
+                                RDF1_p=URIRef(owl1['sameAs'])
                                 RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                     elif same_visual_mention_count==4:
@@ -655,12 +655,12 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                             if YOLO_class_names[k][-2:]=='_2':
                                 visual_mention=YOLO_class_names[k]
                                 RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                                RDF1_p=URIRef(ks1['shownIn'])
+                                RDF1_p=URIRef(owl1['sameAs'])
                                 RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
                             elif word1==word2:
                                 RDF1_s=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)]+'/#'+mention_align_pikes[j])
-                                RDF1_p=URIRef(ks1['shownIn'])
+                                RDF1_p=URIRef(owl1['sameAs'])
                                 RDF1_o=URIRef(vtkel1[image_id_annotation+'I'+'/#'+visual_mention])
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
