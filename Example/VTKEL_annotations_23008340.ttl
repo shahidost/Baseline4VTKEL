@@ -151,7 +151,7 @@ vtkel: a <http://purl.org/dc/dcmitype/Software> ;
     nif:endIndex 15 ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
-<http://vksflickr30k.fbk.edu/resource/23008340C3/#char=-1,4> a ks:TextualEntityMention ;
+<http://vksflickr30k.fbk.edu/resource/23008340C3/#char=1,4> a ks:TextualEntityMention ;
     ks:mentionOf <http://vksflickr30k.fbk.edu/resource/23008340C3/> ;
     prov:wasAttributedTo vtkel:PikesAnnotator .
 
@@ -318,8 +318,7 @@ yago:Woman110787470 rdfs:subClassOf yago:Person100007846 .
     gaf:denotedBy <http://vksflickr30k.fbk.edu/resource/23008340C0/#char=8,13>,
         <http://vksflickr30k.fbk.edu/resource/23008340C1/#char=16,22>,
         <http://vksflickr30k.fbk.edu/resource/23008340C2/#char=16,22>,
-        <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=-1,4>,
+        <http://vksflickr30k.fbk.edu/resource/23008340C3/#char=1,4>,
         <http://vksflickr30k.fbk.edu/resource/23008340C4/#char=2,7>,
         <http://vksflickr30k.fbk.edu/resource/23008340I/#xywh=98,18,240,372> ;
     prov:wasAttributedTo vtkel:YOLOAnnotator .
-
