@@ -6,7 +6,7 @@ Created on Monday June 10 11:19:47 2019
 
 main_source_code.py
 
-This scripts is []...... 
+This scripts is to be write...... 
 
 
 """
@@ -23,11 +23,9 @@ import numpy as np
 from textblob import TextBlob
 from rdflib import Graph, URIRef, BNode, Literal, Namespace
 import datetime
-from YAGO_texonomy import yago_taxo_fun, image_id_input
+from YAGO_texonomy import yago_taxo_fun
 from get_sentence_data import *
 from YOLO_classes_to_YAGO import *
-from duplicate_visual_mentions import *
-from removed_duplicate_mentions import *
 from Coreference_rdfTripes_from_PIKES import *
 from Bounding_boxes_annotations import *
 from VTKEL_annotations import *
@@ -68,15 +66,6 @@ g1.bind("yago",yago1)
 
 #==> End of Prefixes to use for RDF graph (triples)
 
-#==> Read input image file
-image_id=image_id_input
-#==> End of Read input image file
-
-#==> Read image and save Id of respective image
-image = cv2.imread(image_id)
-image_id=image_id[85:]
-
-#==> End of Read image and save Id of respective image
 
 def read_glove_vecs(glove_file):
     """
@@ -128,21 +117,6 @@ def cosine_similarity(u, v):
 
     return cosine_similarity
 
-#==> read the caption files with respect to Image Id
-image_id_annotation=image_id[:-4]
-out_fun=get_sentence_data('insert image caption file .txt from Flickr30k entities datasets->captions files')
-out_fun=out_fun
-#==> to test the results
-print('----------------------------------------------------\nImage captions processing....\n')
-print('C0:',out_fun[0]['sentence'])
-print('C1:',out_fun[1]['sentence'])
-print('C2:',out_fun[2]['sentence'])
-print('C3:',out_fun[3]['sentence'])
-print('C4:',out_fun[4]['sentence'])
-
-
-###====> PIKES System tool Phase
-print('\n-------------------------------------------------\nPIKES processing....')
 ### connect to 'PIKES server' for knowledge graph in RDF Trig format
 PUBLIC_PIKES_SERVER = 'https://knowledgestore2.fbk.eu/pikes-demo/api/'
 LOCAL_PIKES_SERVER = 'http://localhost:8011/'
@@ -200,6 +174,10 @@ def PIKES_entities():
     YAGO_class_c3 – YAGO classes of fourth caption
     YAGO_class_c4 – YAGO classes of fifth caption
     """    
+    pikes_TEM=[]
+    pikes_EMT=[]
+    pikes_mention_temp=[]
+    YAGO_class_temp=[]
     pikes_mention_c0=[]
     pikes_mention_c1=[]
     pikes_mention_c2=[]
@@ -214,28 +192,28 @@ def PIKES_entities():
         caption=out_fun[i]['sentence']
         caption_entities = get_entities_from_text(caption)
         for row in caption_entities:
-            if 'http://dbpedia.org/class/yago/' in row[1] and i==0 and 'http://www.newsreader-project.eu/time/P1D' not in row[0]:
-                pikes_mention_c0.append(row[0][21:])
-                YAGO_class_c0.append(row[1])
-            elif 'http://dbpedia.org/class/yago/' in row[1] and i==1 and 'http://www.newsreader-project.eu/time/P1D' not in row[0]:
-                pikes_mention_c1.append(row[0][21:])
-                YAGO_class_c1.append(row[1])
-            elif 'http://dbpedia.org/class/yago/' in row[1] and i==2 and 'http://www.newsreader-project.eu/time/P1D' not in row[0]:
-                pikes_mention_c2.append(row[0][21:])
-                YAGO_class_c2.append(row[1])
-            elif 'http://dbpedia.org/class/yago/' in row[1] and i==3 and 'http://www.newsreader-project.eu/time/P1D' not in row[0]:
-                pikes_mention_c3.append(row[0][21:])
-                YAGO_class_c3.append(row[1])
-            elif 'http://dbpedia.org/class/yago/' in row[1] and i==4 and 'http://www.newsreader-project.eu/time/P1D' not in row[0]:
-                pikes_mention_c4.append(row[0][21:])
-                YAGO_class_c4.append(row[1])
+            if 'http://dbpedia.org/class/yago/' in row[1] and 'http://www.newsreader-project.eu/time/P1D' not in row[0]:
+                pikes_mention_temp.append(row[0][21:])
+                YAGO_class_temp.append(row[1])
+        pikes_TEM.append(pikes_mention_temp)
+        pikes_EMT.append(YAGO_class_temp)
+        pikes_mention_temp=[]
+        YAGO_class_temp=[]
         for row in caption_entities:
             if 'http://groundedannotationframework.org/gaf#denotedBy' in row[1] and i==0:
                 print('...')
+    pikes_mention_c0=pikes_TEM[0]
+    pikes_mention_c1=pikes_TEM[1]
+    pikes_mention_c2=pikes_TEM[2] 
+    pikes_mention_c3=pikes_TEM[3]    
+    pikes_mention_c4=pikes_TEM[4]
+    YAGO_class_c0=pikes_EMT[0]
+    YAGO_class_c1=pikes_EMT[1]    
+    YAGO_class_c2=pikes_EMT[2]
+    YAGO_class_c3=pikes_EMT[3]    
+    YAGO_class_c4=pikes_EMT[4] 
     return pikes_mention_c0,pikes_mention_c1,pikes_mention_c2,pikes_mention_c3,pikes_mention_c4,YAGO_class_c0,YAGO_class_c1,YAGO_class_c2,YAGO_class_c3,YAGO_class_c4
-pikes_mention_c0,pikes_mention_c1,pikes_mention_c2,pikes_mention_c3,pikes_mention_c4,YAGO_class_c0,YAGO_class_c1,YAGO_class_c2,YAGO_class_c3,YAGO_class_c4=PIKES_entities()
 
-print('\n-------------------------------------------------\nAlignment processing....')
 def allignment_Flickr30k_PIKES(caption_c0,pikes_mention_c0,YAGO_class_c0):
     """
     This function find alignment between entities mentions of Flickr30k entities dataset caption(s) and PIKES extracted textual entities mentions. 
@@ -299,14 +277,9 @@ def allignment_Flickr30k_PIKES(caption_c0,pikes_mention_c0,YAGO_class_c0):
         mention_align_pikes.append(pikes_word)
         mention_align_flickr.append(flickr_word)
         mention_align_YAGO.append(YAGO_word)
+#    print('-------------allignment_Flickr30k_PIKES()-------------------')
     return mention_align_pikes,mention_align_flickr,mention_align_YAGO
-mention_align_pikes_c0,mention_align_flickr_c0,mention_align_YAGO_c0=allignment_Flickr30k_PIKES(out_fun[0]['sentence'],pikes_mention_c0,YAGO_class_c0)
-mention_align_pikes_c1,mention_align_flickr_c1,mention_align_YAGO_c1=allignment_Flickr30k_PIKES(out_fun[1]['sentence'],pikes_mention_c1,YAGO_class_c1)
-mention_align_pikes_c2,mention_align_flickr_c2,mention_align_YAGO_c2=allignment_Flickr30k_PIKES(out_fun[2]['sentence'],pikes_mention_c2,YAGO_class_c2)
-mention_align_pikes_c3,mention_align_flickr_c3,mention_align_YAGO_c3=allignment_Flickr30k_PIKES(out_fun[3]['sentence'],pikes_mention_c3,YAGO_class_c3)
-mention_align_pikes_c4,mention_align_flickr_c4,mention_align_YAGO_c4=allignment_Flickr30k_PIKES(out_fun[4]['sentence'],pikes_mention_c4,YAGO_class_c4)
 
-print('\n-------------------------------------------------\nYAGO mapping....')
 def Mapping_of_YAGO(g3,word1,word2):
     """
     This function takes two YAGO classes (Woman110787470, Person100007846) and find if they are in sub-class or same class hierarchy by mapping on YAGO taxonomy file.  
@@ -322,7 +295,6 @@ def Mapping_of_YAGO(g3,word1,word2):
     word1=str('http://dbpedia.org/class/yago/'+word1)
     word2=str('http://dbpedia.org/class/yago/'+word2)    
     mapping_hierarchy=[]
-    end=time.time()
     success_flag=False
     taxonomy_loop_counter=0
     temp_word_o=word1
@@ -350,27 +322,10 @@ def Mapping_of_YAGO(g3,word1,word2):
             if success_flag==False and taxonomy_loop_counter==3:
                 break
     return success_flag,mapping_hierarchy
-start = time.time()
-total_visual_mentions=[]
-Width = image.shape[1]
-Height = image.shape[0]
-scale = 0.00392
 
 """
 Pre-train YOLO version 3 model for detecting visual objects.
 """    
-# read class names from text file
-classes = None
-with open('insert file yolov3.txt from YOLO folder', 'r') as f:
-    classes = [line.strip() for line in f.readlines()]
-COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
-net = cv2.dnn.readNet('insert file yolov3_.weights from YOLO', 'insert yolov3.cfg from YOLO')
-
-# create input blob
-blob = cv2.dnn.blobFromImage(image, scale, (416,416), (0,0,0), True, crop=False)
-
-# set input blob for the network
-net.setInput(blob)
 
 def get_output_layers(net):
     """
@@ -389,10 +344,6 @@ def get_output_layers(net):
     return output_layers
 
 # function to draw bounding box on the detected object with class name
-class_names=[]
-bounding_boxes=[]
-YOLO_class_names=[]
-print('\n-------------------------------------------------\nYOLO objects detection processing....')
 def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     """
     Pre-train YOLO version 3 model for detecting visual objects.
@@ -437,51 +388,173 @@ def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     cv2.rectangle(img, (x,y), (x_plus_w,y_plus_h), color, 2)
 
     cv2.putText(img, label, (x-10,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+def duplicate_visual_mentions(YOLO_class_names):
+    """
+    This function assigns names to two or more than two same visual objects detected by YOLO. For example if there are two people in visual objects, this function will differentiable person class between person_1 and person_2 objects.   
+    input:
+        YOLO_class_names – Objects detected by YOLO system 
+    Output:
+        list2 – Unique objects names
+    """
+
+    list1=YOLO_class_names
+    list2=[]
+    counts=Counter(list1)
     
-outs = net.forward(get_output_layers(net))
-
-# initialization
-class_ids = []
-confidences = []
-boxes = []
-conf_threshold = 0.3
-#Non-maximum suppression (NMS)
-nms_threshold = 0.4
-
-# for each detetion from each output layer 
-# get the confidence, class id, bounding box params
-# and ignore weak detections (confidence < 0.5)
-for out in outs:
-    for detection in out:
-        scores = detection[5:]
-        class_id = np.argmax(scores)
-        confidence = scores[class_id]
-        if confidence > 0.4:
-            center_x = int(detection[0] * Width)
-            center_y = int(detection[1] * Height)
-            w = int(detection[2] * Width)
-            h = int(detection[3] * Height)
-            x = center_x - w / 2
-            y = center_y - h / 2
-            class_ids.append(class_id)
-            confidences.append(float(confidence))
-            boxes.append([x, y, w, h])          
-# apply non-max suppression
-indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
-bb_count=0
-for i in indices:
-    bb_count+=1
-    i = i[0]
-    box = boxes[i]
-    x = box[0]
-    y = box[1]
-    w = box[2]
-    h = box[3]
+    #for two cases
+    First2=False
+    Second2=False
     
-    draw_bounding_box(image, class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h))
+    #for three objects
+    First3=False
+    Second3=False
+    Third3=False
+    
+    #for four objects
+    First4=False
+    Second4=False
+    Third4=False
+    Fourth4=False
+    
+    #for five objects
+    #for four objects
+    First5=False
+    Second5=False
+    Third5=False
+    Fourth5=False
+    Five5=False
+    Five6=False
+    #double case resolving
+    double_case=False
+    temp_word1=[]
+    
+    for i in range(len(list1)):
+        if counts[list1[i]]==1:
+            list2.append(list1[i])       
+        elif counts[list1[i]]==2:            
 
-YOLO_class_in_YAGO=YOLO_classes_to_YAGO(YOLO_class_names)   
+            if First2==False:
+                First2=True
+                list2.append(list1[i])
+                temp_word=list1[i]
+            elif Second2==False and temp_word==list1[i]:
+                Second2=True
+                double_case=True
+                list2.append(list1[i]+'_2')
+    
+            elif Second2==False and temp_word!=list1[i]:
+                Second2=True
+                double_case=True
+                list2.append(list1[i])
+                temp_word1=list1[i]
+                
+            elif (First2==True) and (Second2==True) and (double_case==True) and (temp_word!=list1[i]):
+                if temp_word!=temp_word1:
+                    list2.append(list1[i]+'_2') 
+                    temp_word=list1[i]
+                elif temp_word==temp_word1:
+                    list2.append(list1[i]+'_2') 
+                 
+            elif (First2==True) and (Second2==True) and (double_case==True) and (temp_word==list1[i]):
+                if temp_word==list1[i] and temp_word!=temp_word1:
+                    list2.append(list1[i]+'_2') 
+                elif temp_word==list1[i] and temp_word!=temp_word1:
+                    temp_word=list1[i]+'_2'           
+    
+        elif counts[list1[i]]==3:
+            if First3==False:
+                First3=True
+                list2.append(list1[i])
+            elif Second3==False:
+                Second3=True
+                list2.append(list1[i]+'_2')        
+            elif Third3==False:
+                Third3=True
+                list2.append(list1[i]+'_3')   
+        elif counts[list1[i]]==4:
+            if First4==False:
+                First4=True
+                list2.append(list1[i])
+            elif Second4==False:
+                Second4=True
+                list2.append(list1[i]+'_2')        
+            elif Third4==False:
+                Third4=True
+                list2.append(list1[i]+'_3')        
+            elif Fourth4==False:
+                Fourth4=True
+                list2.append(list1[i]+'_4')
+        elif counts[list1[i]]==5:
+            if First5==False:
+                First5=True
+                list2.append(list1[i])
+            elif Second5==False:
+                Second5=True
+                list2.append(list1[i]+'_2')        
+            elif Third5==False:
+                Third5=True
+                list2.append(list1[i]+'_3')        
+            elif Fourth5==False:
+                Fourth5=True
+                list2.append(list1[i]+'_4')
+            elif Five5==False:
+                Five5=True
+                list2.append(list1[i]+'_5')
+        elif counts[list1[i]]>=6:
+            if First5==False:
+                First5=True
+                list2.append(list1[i])
+            elif Second5==False:
+                Second5=True
+                list2.append(list1[i]+'_2')        
+            elif Third5==False:
+                Third5=True
+                list2.append(list1[i]+'_3')        
+            elif Fourth5==False:
+                Fourth5=True
+                list2.append(list1[i]+'_4')
+            elif Five5==False:
+                Five5=True
+                list2.append(list1[i]+'_5')
+            elif Five6==False:
+                Five5=True
+                list2.append(list1[i]+'_6')
+    return list2
 
+
+def removed_duplicate_mentions(total_number_mentions,total_mentions_YAGO_class):
+    """
+    This function removed the duplicate entity from captions with YAGO class and stored in two arrays (one for entity mentions and second for respective YAGO class).
+    Input:
+        total_number_mentions – total textual entity mentions
+        total_mentions_YAGO_class – respective YAGO class of entity mentions
+
+    output:
+        rdf_mentions_pikes – mentions of PIKES (after removing duplicate textual mentions)
+        rdf_mentions_yago – respective YAGO class
+    """
+    rdf_mentions_pikes=[]
+    rdf_mentions_yago=[]
+    temp_mention=''
+    temp_mention_yago=''
+    for i in range(len(total_number_mentions)):
+        temp_mention=total_number_mentions[i]
+        temp_mention_yago=total_mentions_YAGO_class[i]
+        
+        mention_id_flag=False
+        for j in range(len(rdf_mentions_pikes)):
+            if temp_mention in rdf_mentions_pikes[j]:
+                mention_id_flag=True
+        if mention_id_flag==True:
+            print('')
+        else:
+    #        print(temp_mention_yago)
+            rdf_mentions_pikes.append(temp_mention)
+            rdf_mentions_yago.append(temp_mention_yago)
+
+
+    return rdf_mentions_pikes,rdf_mentions_yago
 
 def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO_class_names,YOLO_class_in_YAGO,YAGO_class_c0,mention_align_pikes,mention_align_flickr,total_visual_mentions):
     """
@@ -568,10 +641,11 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                                                  
                     
                 total_visual_mentions.append(mention_align_pikes[j])
-                RDF2_s=RDF1_o
+                RDF2_s=RDF1_s
                 RDF2_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
                 RDF2_o=URIRef(YAGO_class_c0[j])
                 g1.add( (RDF2_s, RDF2_p, RDF2_o) )
+#                print(RDF2_s,RDF2_p,RDF2_o)
 
                 start_index=0
                 start_index=out_fun[caption_no]['sentence'].find(mention_align_flickr[j],start_index)
@@ -579,6 +653,7 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                 RDF4_s=RDF2_s
                 RDF4_p=URIRef(gaf1['denotedBy'])
                 RDF4_o=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)+'/#char='+str(start_index)+','+str(end_index)])
+#                print(RDF4_s,RDF4_p,RDF4_o)
                 g1.add( (RDF4_s, RDF4_p, RDF4_o) )
                 
                 RDF5_s=RDF4_o
@@ -665,10 +740,11 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                                 g1.add( (RDF1_s, RDF1_p, RDF1_o) )
 
                     total_visual_mentions.append(mention_align_pikes[j])
-                    RDF2_s=RDF1_o
+                    RDF2_s=RDF1_s
                     RDF2_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
                     RDF2_o=URIRef(YAGO_class_c0[j])
                     g1.add( (RDF2_s, RDF2_p, RDF2_o) )
+#                    print(RDF2_s,RDF2_p,RDF2_o)
                     start_index=0
                     start_index=out_fun[caption_no]['sentence'].find(mention_align_flickr[j],start_index)
                     end_index=len(mention_align_flickr[j])+start_index
@@ -676,6 +752,7 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                     RDF4_p=URIRef(gaf1['denotedBy'])
                     RDF4_o=URIRef(vtkel1[image_id_annotation+'C'+str(caption_no)+'/#char='+str(start_index)+','+str(end_index)])
                     g1.add( (RDF4_s, RDF4_p, RDF4_o) )
+#                    print(RDF4_s,RD1F4_p,RDF4_o)
                     
                     RDF5_s=RDF4_o
                     RDF5_p=URIRef(rdf1['type'])
@@ -708,105 +785,232 @@ def Allignment_YOLO_PIKES(caption_no,mention_id,total_number_mentions,qres1,YOLO
                     g1.add( (RDF10_s, RDF10_p, RDF10_o) )                    
     return mention_id,total_visual_mentions
 
-#==> Stored all textual entity mentions from five captions
-total_mentions=[]
-total_mentions_YAGO=[]
-for i in range(len(mention_align_pikes_c0)):
-    total_mentions.append(mention_align_pikes_c0[i])
-    total_mentions_YAGO.append(mention_align_YAGO_c0[i])
-for i in range(len(mention_align_pikes_c1)):
-    total_mentions.append(mention_align_pikes_c1[i])
-    total_mentions_YAGO.append(mention_align_YAGO_c1[i])
-for i in range(len(mention_align_pikes_c2)):
-    total_mentions.append(mention_align_pikes_c2[i])
-    total_mentions_YAGO.append(mention_align_YAGO_c2[i])
-for i in range(len(mention_align_pikes_c3)):
-    total_mentions.append(mention_align_pikes_c3[i])
-    total_mentions_YAGO.append(mention_align_YAGO_c3[i])
-for i in range(len(mention_align_pikes_c4)):
-    total_mentions.append(mention_align_pikes_c4[i])
-    total_mentions_YAGO.append(mention_align_YAGO_c4[i])
-b = set()
-total_number_mentions = []
-total_mentions_YAGO_class = []
-index_yago=0
-for x in total_mentions:
-    if x not in b:
-        total_number_mentions.append(x)
-        total_mentions_YAGO_class.append(total_mentions_YAGO[index_yago])
-        b.add(x)
-        index_yago+=1
-    else:
-        index_yago+=1
-print('\n-------------------------------------------------\nCoreference processing....')
-rdf_mentions_pikes,rdf_mentions_yago=removed_duplicate_mentions(total_number_mentions,total_mentions_YAGO_class)
+image_counter=0
+directory='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/input images/insert'
+for filename in os.listdir(directory):
+    same_visual_objects=0
+    flickr30K_visual_objects=0
+    VTKEL_visual_objects=0
+    TEM=0
+    image_counter=image_counter+1    
+    if filename.endswith(".jpg"):
+        
+        print('====================================================\n',image_counter,':','file->',filename,'---------------------')
+        image_id='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/input images/'+filename
+        image_temp=image_id
+        image = cv2.imread(image_id)
+        image_id=filename
+                
+        #==> read the caption files with respect to Image Id
+        image_id_annotation=image_id[:-4]
+        out_fun=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id_annotation+'.txt')
+        out_fun=out_fun
+        #==> to test the results
+        print('----------------------------------------------------\nImage captions processing....\n')
+        print('C0:',out_fun[0]['sentence'])
+        print('C1:',out_fun[1]['sentence'])
+        print('C2:',out_fun[2]['sentence'])
+        print('C3:',out_fun[3]['sentence'])
+        print('C4:',out_fun[4]['sentence'])
+                
+        ###====> PIKES System tool Phase
+        print('\n-------------------------------------------------\nPIKES processing....')
 
-g4,total_number_mentions,total_mentions_YAGO_class=Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_number_mentions,total_mentions_YAGO_class,mention_align_pikes_c0,mention_align_pikes_c1,mention_align_pikes_c2,mention_align_pikes_c3,mention_align_pikes_c4)
-g1=g1+g4
-#=> YOLO class merging
-b = set()
-unique_YOLO_class_in_YAGO = []
-for x in YOLO_class_in_YAGO:
-    if x not in b:
-        unique_YOLO_class_in_YAGO.append(x)
-        b.add(x)
+        pikes_mention_c0,pikes_mention_c1,pikes_mention_c2,pikes_mention_c3,pikes_mention_c4,YAGO_class_c0,YAGO_class_c1,YAGO_class_c2,YAGO_class_c3,YAGO_class_c4=PIKES_entities()
+        print('\n-------------------------------------------------\nAlignment processing....')
+        
+        mention_align_pikes_c0,mention_align_flickr_c0,mention_align_YAGO_c0=allignment_Flickr30k_PIKES(out_fun[0]['sentence'],pikes_mention_c0,YAGO_class_c0)
+        mention_align_pikes_c1,mention_align_flickr_c1,mention_align_YAGO_c1=allignment_Flickr30k_PIKES(out_fun[1]['sentence'],pikes_mention_c1,YAGO_class_c1)
+        mention_align_pikes_c2,mention_align_flickr_c2,mention_align_YAGO_c2=allignment_Flickr30k_PIKES(out_fun[2]['sentence'],pikes_mention_c2,YAGO_class_c2)
+        mention_align_pikes_c3,mention_align_flickr_c3,mention_align_YAGO_c3=allignment_Flickr30k_PIKES(out_fun[3]['sentence'],pikes_mention_c3,YAGO_class_c3)
+        mention_align_pikes_c4,mention_align_flickr_c4,mention_align_YAGO_c4=allignment_Flickr30k_PIKES(out_fun[4]['sentence'],pikes_mention_c4,YAGO_class_c4)
 
-end=time.time()
-flag_for_yago=False
-if flag_for_yago==False:
-    flag_for_yago=True
-    g4=yago_taxo_fun()
-    qres2=g4
-mention_id=0
-end=time.time()
-#print('time after YAGO file loading->',end-start)
-#####checking time
-#end=time.time()
-#print('time before YAGO mapping->',end-start)
+        pikes_entities=[]
+        pikes_entities_YAGO=[]
+        pikes_entities.append(mention_align_pikes_c0)
+        pikes_entities.append(mention_align_pikes_c1)
+        pikes_entities.append(mention_align_pikes_c2)
+        pikes_entities.append(mention_align_pikes_c3)
+        pikes_entities.append(mention_align_pikes_c4)
+        
+        pikes_entities_YAGO.append(mention_align_YAGO_c0)
+        pikes_entities_YAGO.append(mention_align_YAGO_c1)
+        pikes_entities_YAGO.append(mention_align_YAGO_c2)
+        pikes_entities_YAGO.append(mention_align_YAGO_c3)
+        pikes_entities_YAGO.append(mention_align_YAGO_c4)
+        print('\n-------------------------------------------------\nYAGO mapping....')
+        
+        start = time.time()
+        total_visual_mentions=[]
+        Width = image.shape[1]
+        Height = image.shape[0]
+        scale = 0.00392
+        
+        """
+        Pre-train YOLO version 3 model for detecting visual objects.
+        """    
+        # read class names from text file
+        classes = None
+        with open('yolov3.txt', 'r') as f:
+            classes = [line.strip() for line in f.readlines()]
+        COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
+        net = cv2.dnn.readNet('yolov3_.weights', 'yolov3.cfg')
+        
+        # create input blob
+        blob = cv2.dnn.blobFromImage(image, scale, (416,416), (0,0,0), True, crop=False)
+        
+        # set input blob for the network
+        net.setInput(blob)
+        
+        class_names=[]
+        bounding_boxes=[]
+        YOLO_class_names=[]
+        print('\n-------------------------------------------------\nYOLO objects detection processing....')
 
-                        
-YOLO_class_names_unique=duplicate_visual_mentions(YOLO_class_names)
-g3=Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_names_unique)
-g1=g1+g3
-mention_id,total_visual_mentions=Allignment_YOLO_PIKES(0,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c0,mention_align_pikes_c0,mention_align_flickr_c0,total_visual_mentions)
-mention_id,total_visual_mentions=Allignment_YOLO_PIKES(1,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c1,mention_align_pikes_c1,mention_align_flickr_c1,total_visual_mentions)
-mention_id,total_visual_mentions=Allignment_YOLO_PIKES(2,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c2,mention_align_pikes_c2,mention_align_flickr_c2,total_visual_mentions)
-mention_id,total_visual_mentions=Allignment_YOLO_PIKES(3,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c3,mention_align_pikes_c3,mention_align_flickr_c3,total_visual_mentions)
-mention_id,total_visual_mentions=Allignment_YOLO_PIKES(4,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c4,mention_align_pikes_c4,mention_align_flickr_c4,total_visual_mentions)
-RDF1_s=URIRef(vtkel1)
+        outs = net.forward(get_output_layers(net))
+        
+        # initialization
+        class_ids = []
+        confidences = []
+        boxes = []
+        conf_threshold = 0.3
+        #Non-maximum suppression (NMS)
+        nms_threshold = 0.4
+        
+        # for each detetion from each output layer 
+        # get the confidence, class id, bounding box params
+        # and ignore weak detections (confidence < 0.5)
+        for out in outs:
+            for detection in out:
+                scores = detection[5:]
+                class_id = np.argmax(scores)
+                confidence = scores[class_id]
+                if confidence > 0.4:
+                    center_x = int(detection[0] * Width)
+                    center_y = int(detection[1] * Height)
+                    w = int(detection[2] * Width)
+                    h = int(detection[3] * Height)
+                    x = center_x - w / 2
+                    y = center_y - h / 2
+                    class_ids.append(class_id)
+                    confidences.append(float(confidence))
+                    boxes.append([x, y, w, h])          
+        # apply non-max suppression
+        indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
+        bb_count=0
+        for i in indices:
+            bb_count+=1
+            i = i[0]
+            box = boxes[i]
+            x = box[0]
+            y = box[1]
+            w = box[2]
+            h = box[3]
+            
+            draw_bounding_box(image, class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h))
+        
+        YOLO_class_in_YAGO=YOLO_classes_to_YAGO(YOLO_class_names)   
 
-#==> Stored meta-data information in RDF graph for VTKEL annotations instantiations
-RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-RDF1_o=URIRef("http://purl.org/dc/dcmitype/Software")
-g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-
-RDF110_p=URIRef("http://purl.org/dc/terms/creator")
-RDF110_o=Literal("Shahi Dost & Luciano Serafini")
-g1.add( (RDF1_s, RDF110_p, RDF110_o) )
-
-t= datetime.datetime.now()
-RDF120_p=URIRef("http://purl.org/dc/terms/created")
-RDF120_o=Literal( str(t.year)+'-'+str(t.month)+'-'+str(t.day)+':'+'-'+str(t.hour)+':'+str(t.minute)+':'+str(t.second))
-g1.add( (RDF1_s, RDF120_p, RDF120_o) )
-
-RDF130_p=URIRef("http://purl.org/dc/terms/language")
-RDF130_o=URIRef("http://lexvo.org/id/iso639-3/eng")
-g1.add( (RDF1_s, RDF130_p, RDF130_o) )
-
-RDFf1_p=URIRef("http://purl.org/dc/terms/title")
-RDFf1_o=Literal("Visual-Textual-Knowledge-Entity-Linking (VTKEL) Baseline system")
-g1.add( (RDF1_s, RDFf1_p, RDFf1_o) )
-
-RDF1_s=URIRef(vtkel1["#"+image_id_annotation])
-RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-RDF1_o=URIRef("http://purl.org/dc/dcmitype/Collection")
-g1.add( (RDF1_s, RDF1_p, RDF1_o) )
-
-g2=VTKEL_annotations()
-g1=g1+g2
-#==> stored VTKEL baseline annotated file in turtle formate
-g1.serialize(destination='insert output directory path where you want to stored annotated RDF graph of VTKEL baseline'+image_id_annotation+'VTKEL_annotations.ttl', format='turtle')
-print('end')
-#==> stored the resultant image file .jpg form
-cv2.imwrite('insert output directory path where you want to stored .jpg output image file of VTKEL baseline'+image_id_annotation+'_yolo.jpg', image)
-cv2.destroyAllWindows()
+        #==> Stored all textual entity mentions from five captions
+        total_mentions=[]
+        total_mentions_YAGO=[]
+        for i in range(len(mention_align_pikes_c0)):
+            total_mentions.append(mention_align_pikes_c0[i])
+            total_mentions_YAGO.append(mention_align_YAGO_c0[i])
+        for i in range(len(mention_align_pikes_c1)):
+            total_mentions.append(mention_align_pikes_c1[i])
+            total_mentions_YAGO.append(mention_align_YAGO_c1[i])
+        for i in range(len(mention_align_pikes_c2)):
+            total_mentions.append(mention_align_pikes_c2[i])
+            total_mentions_YAGO.append(mention_align_YAGO_c2[i])
+        for i in range(len(mention_align_pikes_c3)):
+            total_mentions.append(mention_align_pikes_c3[i])
+            total_mentions_YAGO.append(mention_align_YAGO_c3[i])
+        for i in range(len(mention_align_pikes_c4)):
+            total_mentions.append(mention_align_pikes_c4[i])
+            total_mentions_YAGO.append(mention_align_YAGO_c4[i])
+        b = set()
+        total_number_mentions = []
+        total_mentions_YAGO_class = []
+        index_yago=0
+        for x in total_mentions:
+            if x not in b:
+                total_number_mentions.append(x)
+                total_mentions_YAGO_class.append(total_mentions_YAGO[index_yago])
+                b.add(x)
+                index_yago+=1
+            else:
+                index_yago+=1
+        print('\n-------------------------------------------------\nCoreference processing....')
+        rdf_mentions_pikes,rdf_mentions_yago=removed_duplicate_mentions(total_number_mentions,total_mentions_YAGO_class)
+        
+#        g4,total_number_mentions,total_mentions_YAGO_class=Coreference_rdfTripes_from_PIKES(YOLO_class_names,YOLO_class_in_YAGO,total_number_mentions,total_mentions_YAGO_class,mention_align_pikes_c0,mention_align_pikes_c1,mention_align_pikes_c2,mention_align_pikes_c3,mention_align_pikes_c4,image_id_annotation)
+        g4=Coreference_rdfTripes_from_PIKES(pikes_entities,pikes_entities_YAGO,image_id_annotation)
+        g1=g1+g4
+        #=> YOLO class merging
+        b = set()
+        unique_YOLO_class_in_YAGO = []
+        for x in YOLO_class_in_YAGO:
+            if x not in b:
+                unique_YOLO_class_in_YAGO.append(x)
+                b.add(x)
+        
+        end=time.time()
+        flag_for_yago=False
+        if flag_for_yago==False:
+            flag_for_yago=True
+            g4=yago_taxo_fun()
+            qres2=g4
+        mention_id=0
+        end=time.time()
+                                       
+        YOLO_class_names_unique=duplicate_visual_mentions(YOLO_class_names)
+        g3=Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_names_unique,image_id_annotation)
+        g1=g1+g3
+        mention_id,total_visual_mentions=Allignment_YOLO_PIKES(0,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c0,mention_align_pikes_c0,mention_align_flickr_c0,total_visual_mentions)
+        mention_id,total_visual_mentions=Allignment_YOLO_PIKES(1,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c1,mention_align_pikes_c1,mention_align_flickr_c1,total_visual_mentions)
+        mention_id,total_visual_mentions=Allignment_YOLO_PIKES(2,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c2,mention_align_pikes_c2,mention_align_flickr_c2,total_visual_mentions)
+        mention_id,total_visual_mentions=Allignment_YOLO_PIKES(3,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c3,mention_align_pikes_c3,mention_align_flickr_c3,total_visual_mentions)
+        mention_id,total_visual_mentions=Allignment_YOLO_PIKES(4,mention_id,total_number_mentions,qres2,YOLO_class_names_unique,unique_YOLO_class_in_YAGO,YAGO_class_c4,mention_align_pikes_c4,mention_align_flickr_c4,total_visual_mentions)
+        
+        RDF1_s=URIRef(vtkel1)
+        
+        #==> Stored meta-data information in RDF graph for VTKEL annotations instantiations
+        RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
+        RDF1_o=URIRef("http://purl.org/dc/dcmitype/Software")
+        g1.add( (RDF1_s, RDF1_p, RDF1_o) )
+        
+        RDF110_p=URIRef("http://purl.org/dc/terms/creator")
+        RDF110_o=Literal("Shahi Dost & Luciano Serafini")
+        g1.add( (RDF1_s, RDF110_p, RDF110_o) )
+        
+        t= datetime.datetime.now()
+        RDF120_p=URIRef("http://purl.org/dc/terms/created")
+        RDF120_o=Literal( str(t.year)+'-'+str(t.month)+'-'+str(t.day)+':'+'-'+str(t.hour)+':'+str(t.minute)+':'+str(t.second))
+        g1.add( (RDF1_s, RDF120_p, RDF120_o) )
+        
+        RDF130_p=URIRef("http://purl.org/dc/terms/language")
+        RDF130_o=URIRef("http://lexvo.org/id/iso639-3/eng")
+        g1.add( (RDF1_s, RDF130_p, RDF130_o) )
+        
+        RDFf1_p=URIRef("http://purl.org/dc/terms/title")
+        RDFf1_o=Literal("Visual Textual Linker of Entities with Knowledge (VT-LinKEr)")
+        g1.add( (RDF1_s, RDFf1_p, RDFf1_o) )
+        
+        RDF1_s=URIRef(vtkel1["#"+image_id_annotation])
+        RDF1_p=URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
+        RDF1_o=URIRef("http://purl.org/dc/dcmitype/Collection")
+        g1.add( (RDF1_s, RDF1_p, RDF1_o) )
+        
+        g2=VTKEL_annotations(image_id_annotation)
+        g1=g1+g2
+        #==> stored VTKEL baseline annotated file in turtle formate
+#        g1.serialize(destination='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/annotations/'+image_id_annotation+'VTKEL_annotations.ttl', format='turtle')
+        print('end')
+        #==> stored the resultant image file .jpg form
+        cv2.imwrite('F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/output images/'+image_id_annotation+'_yolo.jpg', image)
+        cv2.destroyAllWindows()        
+        
+g1.serialize(destination='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/annotations/'+image_id_annotation+'VTKEL_annotations.ttl', format='turtle')
+        
+        
