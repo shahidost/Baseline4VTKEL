@@ -486,8 +486,7 @@ def Allignment_of_visual_textual_entities(textual_entities,textual_entities_YAGO
 
 
 ###YAGO Taxonomy .ttl file path
-#yago_taxonomy_file_path="F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/yago_test_empy.ttl"
-yago_taxonomy_file_path="C:/Users/aa/Desktop/YOLO/object-detection-opencv-master/yago_taxonomy-v1.1.ttl"
+yago_taxonomy_file_path="yago taxonomy file path"
 graph_1=ConjunctiveGraph()
 yago_taxonomy=graph_1.parse(yago_taxonomy_file_path, format="turtle")
 
@@ -506,7 +505,7 @@ for filename in os.listdir(images_directory_path):
                 
         #==> read the image caption file
         image_id=image_id[:-4]
-        image_captions=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id+'.txt')
+        image_captions=get_sentence_data('flickr30k captions files path'+image_id+'.txt')
 
         #==> image captions
         print('----------------------------------------------------\nImage captions processing....\n')
@@ -536,7 +535,7 @@ for filename in os.listdir(images_directory_path):
         with open('yolov3.txt', 'r') as f:
             classes = [line.strip() for line in f.readlines()]
         COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
-        net = cv2.dnn.readNet('yolov3_.weights', 'yolov3.cfg')
+        net = cv2.dnn.readNet('yolov3_.weights file path of yolo', 'yolov3.cfg file path of yolo')
         
         # create input blob
         blob = cv2.dnn.blobFromImage(image, scale, (416,416), (0,0,0), True, crop=False)
@@ -644,9 +643,9 @@ for filename in os.listdir(images_directory_path):
         g1=g1+g2
         print('end of VT-LinkEr')
         #==> stored the resultant image file .jpg form
-        cv2.imwrite('F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/output images/'+image_id+'_yolo.jpg', image)
+        cv2.imwrite('directory to save images from yolo system'+image_id+'_yolo.jpg', image)
         cv2.destroyAllWindows()        
         
-g1.serialize(destination='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/annotations/VT-LinKEr_annotations.ttl', format='turtle')
+g1.serialize(destination='VT-LiKEr annoated file path (.ttl file)', format='turtle')
         
         
