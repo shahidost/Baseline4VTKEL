@@ -492,7 +492,7 @@ yago_taxonomy=graph_1.parse(yago_taxonomy_file_path, format="turtle")
 
 #upload image folder
 image_file_counter=0
-images_directory_path='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/input images/insert/'
+images_directory_path='image folder path'
 for filename in os.listdir(images_directory_path):
 
     image_file_counter+=1    
@@ -505,7 +505,7 @@ for filename in os.listdir(images_directory_path):
                 
         #==> read the image caption file
         image_id=image_id[:-4]
-        image_captions=get_sentence_data('flickr30k captions files path'+image_id+'.txt')
+        image_captions=get_sentence_data('image captions folder path'+image_id+'.txt')
 
         #==> image captions
         print('----------------------------------------------------\nImage captions processing....\n')
@@ -535,7 +535,7 @@ for filename in os.listdir(images_directory_path):
         with open('yolov3.txt', 'r') as f:
             classes = [line.strip() for line in f.readlines()]
         COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
-        net = cv2.dnn.readNet('yolov3_.weights file path of yolo', 'yolov3.cfg file path of yolo')
+        net = cv2.dnn.readNet('yolov3_.weights file path', 'yolov3.cfg file path')
         
         # create input blob
         blob = cv2.dnn.blobFromImage(image, scale, (416,416), (0,0,0), True, crop=False)
@@ -597,29 +597,25 @@ for filename in os.listdir(images_directory_path):
             bounding_boxes.append(temp_storing_bb)
             temp_storing_bb=[]
 
-#        YOLO_class_in_YAGO=YOLO_classes_to_YAGO(YOLO_class_names)         
         yolo_class_in_YAGO=[]
-        for i in range(len(YOLO_class_names)):
-            for x in COCO_TO_YAGO:
-                if YOLO_class_names[i]==x:
-                    yolo_class_in_YAGO.append(COCO_TO_YAGO[x])        
         
-        YOLO_class_in_YAGO=yolo_class_in_YAGO
+        for l in range(len(YOLO_class_names)):
+            yolo_class_in_YAGO.append(COCO_TO_YAGO[YOLO_class_names[l]])
 
         ###==> Visual-Textual alignment Phase
         print('\n-------------------------------------------------\nAlignment processing....')   
         graph_2=Textual_Entities_rdfTripes(textual_entities,textual_entities_YAGO_type,image_id,image_captions)
         g1=g1+graph_2
-        #=> YOLO class merging
+        #=> same YAGO class merge to avoid extrac processing of YAGO taxonomy
         b = set()
         unique_YOLO_class_in_YAGO = []
-        for x in YOLO_class_in_YAGO:
+        for x in yolo_class_in_YAGO:
             if x not in b:
                 unique_YOLO_class_in_YAGO.append(x)
                 b.add(x)
                                        
-        YOLO_class_names_unique=same_visual_mentions_handleing(YOLO_class_names)
-        graph_3=Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_names_unique,image_id)
+        YOLO_class_names_unique=same_visual_mentions_handleing(yolo_class_in_YAGO)
+        graph_3=Bounding_boxes_annotations(bounding_boxes,yolo_class_in_YAGO,YOLO_class_names_unique,image_id)
         g1=g1+graph_3
      
         Allignment_of_visual_textual_entities(textual_entities,textual_entities_YAGO_type,yago_taxonomy,YOLO_class_names_unique,unique_YOLO_class_in_YAGO)
@@ -643,9 +639,9 @@ for filename in os.listdir(images_directory_path):
         g1=g1+g2
         print('end of VT-LinkEr')
         #==> stored the resultant image file .jpg form
-        cv2.imwrite('directory to save images from yolo system'+image_id+'_yolo.jpg', image)
+        cv2.imwrite('folder path to stored resultant images from yolo/'+image_id+'_yolo.jpg', image)
         cv2.destroyAllWindows()        
         
-g1.serialize(destination='VT-LiKEr annoated file path (.ttl file)', format='turtle')
+g1.serialize(destination='file path to stored annotated file(.ttl format)'+'VT-LinKEr_annotations.ttl', format='turtle')
         
         
