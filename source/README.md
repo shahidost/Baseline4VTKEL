@@ -16,34 +16,21 @@ Save the source code and required files in a directory.
 
 **Step 4:**
 
-Update below python files in your local machine.
+Update below python file in your local machine.
 
-1. [main_VTKEL_Baseline_System](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/main_VTKEL_Baseline_System.py)
+1. [main_VT-LinKEr_System.py](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/main_VT-LinKEr_System.py)
 
--	Line 133: insert the path of image caption file downloaded from Flickr30k entities dataset.
--	Line 364: insert the path of YOLO pre-trained classes file downloaded from YOLO files.
--	Line 367: insert the path of YOLO weights and .cfg files downloaded from YOLO files.
--	Line 808: insert file path to store the annotated .ttl file in your local machine.
--	Line 811: insert file path to store the annotated .jpg file in your local machine.
--	Line 77: change the number *85* according to the directory path where you want to store the image(s). Count the string of directory path characters from root directory till image file (.i.e. [C:/files/images/]1234.jpg [16.jpg]).
+-	Line 489: insert YAGO taxonomy file path.
+-	Line 495: insert insert image directory.
+-	Line 508: insert image captions file path.
+-	Line 538: insert YOLO pre-train files path.
+-	Line 642: to save output images from YOLO object detector insert directory path.
+-	Line 645: to save output VT-LinKEr annotations file insert directory path.
 
-2. [VTKEL_annotations](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/VTKEL_annotations.py)
--	Line 27: insert the path of image caption [.txt] file downloaded from Flickr30k entities dataset (as described in Line:133 of 'main_VTKEL_Baseline_System.py'.
-
-3. [Bounding_boxes_annotations](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/Bounding_boxes_annotations.py)
--	Line 39: change as according to guideline of 'main_VTKEL_Baseline_System.py' line 77.
-
-4. [Coreference_rdfTripes_from_PIKES](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/Coreference_rdfTripes_from_PIKES.py)
--	Line 36: change as according to guideline of 'main_VTKEL_Baseline_System.py' line 77.
-
-5. [YAGO_Taxonomy](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/YAGO_texonomy.py)
--	Line 25: insert the path of YAGO taxonomy file downloaded from YAGO files.
--	Line 30: insert the path of image to be uploaded for processing (downloaded from Flickr30k entities dataset).
-
-6. Run *main_VTKEL_Baseline_System.py* by using the command for VTKEL running:
+2. Run *main_VT-LinKEr_System.py* by using the command for VT-LinKEr:
 ```
-> python main_VTKEL_Baseline_System.py
+> python main_VT-LinKEr_System.py
 ```
-7. You can see the output .ttl and .jpg files for your required annotations.
+3. You can see the output .ttl and .jpg files in your local machine respective directory.
 
-8. The debugging/execution of VTKEL system will take some time due to the processing of huge YAGO ontology according to the speed of your local machine.
+4. The debugging/execution of VTKEL system will take some time due to the processing of huge YAGO ontology according to the speed of your local machine.
