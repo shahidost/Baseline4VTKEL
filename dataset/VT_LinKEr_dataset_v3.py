@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Aug  7 11:41:21 2019
+Created on Friday September 13 11:45:21 2019
 
-@author: aa
+@author: Shahi Dost
 """
+#import external library
 import requests
 import os
 import cv2
-import numpy as np
 from rdflib import Graph, URIRef, Literal, Namespace, ConjunctiveGraph
 import datetime
 from collections import Counter
@@ -15,6 +15,7 @@ import re
 from KafNafParserPy import KafNafParser
 import xml.etree.ElementTree as ET
 
+#Prefixes
 g1 = Graph()
 dcmit=Namespace('http://purl.org/dc/dcmitype/')
 flickrOntology=Namespace('http://vksflickr30k.fbk.eu/flickrOntology/')
@@ -33,6 +34,7 @@ xml = Namespace('http://www.w3.org/XML/1998/namespace')
 xsd = Namespace('http://www.w3.org/2001/XMLSchema#')
 yago = Namespace('http://dbpedia.org/class/yago/')
 
+#prefix binding
 g1.bind("dcmit",dcmit)
 g1.bind("flickrOntology",flickrOntology)
 g1.bind("dc",dc)
@@ -50,8 +52,7 @@ g1.bind("xml",xml)
 g1.bind("xsd",xsd)
 g1.bind("yago",yago)
 
-
-### connect to 'PIKES server' for knowledge graph in RDF Trig format
+## connect to 'PIKES server' for knowledge graph in RDF Trig format
 PUBLIC_PIKES_SERVER = 'https://knowledgestore2.fbk.eu/pikes-demo/api/'
 LOCAL_PIKES_SERVER = 'http://localhost:8011/'
 
@@ -132,9 +133,6 @@ def get_entities_from_text(text):
 
     return entities_annotations
 
-##=>
-
-
 def pikes_textual_entities_annotation(image_id):
     """
     Takes a input document id (image) and stored in the textual entities annotations in .ttl file for producing the VTKEL dataset 
@@ -159,22 +157,18 @@ def pikes_textual_entities_annotation(image_id):
             for i in range(7):                    
                 if re.search(r'\b'+'http://dbpedia.org/class/yago/'+r'\b',row[i]):
                     if 'class/yago' in row[i]:
-
-                        if j<5:
-
-                            pikes_entities_data_temp.append(str(j))
-                            pikes_ent=row[2][:]
-                            pikes_entities_data_temp.append(pikes_ent)
-                            anchor_of=row[3][:]
-                            pikes_entities_data_temp.append(anchor_of)
-                            start_ind=int(row[0][:])-len(anchor_of)
-                            pikes_entities_data_temp.append(str(start_ind))
-                            end_index=row[0][:]
-                            pikes_entities_data_temp.append(end_index)
-                            pikes_entities_data.append(pikes_entities_data_temp)
-                            pikes_entities_data_temp=[]
-                            yago_type=row[5]
-
+                        pikes_entities_data_temp.append(str(j))
+                        pikes_ent=row[2][:]
+                        pikes_entities_data_temp.append(pikes_ent)
+                        anchor_of=row[3][:]
+                        pikes_entities_data_temp.append(anchor_of)
+                        start_ind=int(row[0][:])-len(anchor_of)
+                        pikes_entities_data_temp.append(str(start_ind))
+                        end_index=row[0][:]
+                        pikes_entities_data_temp.append(end_index)
+                        pikes_entities_data.append(pikes_entities_data_temp)
+                        pikes_entities_data_temp=[]
+                        yago_type=row[5]
                         pikes_entity=URIRef(vtkel[image_id+'C'+str(j)+'/'+pikes_ent[21:]])
                         g1.add(( pikes_entity, URIRef(rdf['type']),URIRef(yago_type)))
 
