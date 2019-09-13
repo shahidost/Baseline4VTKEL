@@ -81,11 +81,29 @@ def pikes_text2rdf(x):
     return requests.get(PUBLIC_PIKES_SERVER+"text2rdf?",{'text':x})
 
 def get_entities_annotations_from_text2naf(text):
+    """
+    Takes a input natural language sentence and passed through ‘PIKES server’ for NAF annotations extraction 
+    input:
+      text – input natural language text
+    
+    output:
+      pikes_answer – PIKES answer for NAF annotations
+
+    """
     pikes_answer = pikes_text2naf(text.lower())
-#    print(pikes_answer)
+
     return pikes_answer
 
 def get_entities_from_text(text):
+    """
+    Takes a input natural language sentence and passed through ‘PIKES server’ for entity recognitions and linking tasks 
+    input:
+      text – input natural language text
+    
+    output:
+      entities_annotations – Annotated recognized and linked textual entities by PIKES
+
+    """    
     pikes_answer = pikes_text2rdf(text.lower())
     
     g = ConjunctiveGraph()
@@ -118,12 +136,21 @@ def get_entities_from_text(text):
 
 
 def pikes_textual_entities_annotation(image_id):
+    """
+    Takes a input document id (image) and stored in the textual entities annotations in .ttl file for producing the VTKEL dataset 
+    input:
+      image_id – document id
+    
+    output:
+      pikes_entities_data – Textual entities id for further processing and storing
+
+    """    
     print('--------------------------PIKES-------------------------')
-#    for i in range(5):
-    pikes_entities_data_C0=[]
+
+    pikes_entities_data=[]
     pikes_entities_data_temp=[]
     start_ind=0
-#    pikes_entities_data_captions=[]
+
     for j in range(5):        
         caption=image_captions[j]['sentence']
         entities_annotations=get_entities_from_text(caption)
@@ -132,42 +159,26 @@ def pikes_textual_entities_annotation(image_id):
             for i in range(7):                    
                 if re.search(r'\b'+'http://dbpedia.org/class/yago/'+r'\b',row[i]):
                     if 'class/yago' in row[i]:
-#                    count+=1
+
                         if j<5:
-#                            print("=>",row[0],row[1],row[2][:],row[3],row[4],row[5],row[6])
-                            #caption no
+
                             pikes_entities_data_temp.append(str(j))
-                            
-                            #entity->http://pikes.fbk.eu/#shirt
                             pikes_ent=row[2][:]
-#                            print(pikes_ent)
                             pikes_entities_data_temp.append(pikes_ent)
-                            
-                            #anchor->shirt
                             anchor_of=row[3][:]
                             pikes_entities_data_temp.append(anchor_of)
-#                            pikes_entities_data_temp.append(row[5][:])
-                            
-#                            print(row[3][:])
-                            #begin Index->41 [EndIndex-len(anchor)]
                             start_ind=int(row[0][:])-len(anchor_of)
-#                            print(start_ind)
                             pikes_entities_data_temp.append(str(start_ind))
-                            #endIndex->46
                             end_index=row[0][:]
                             pikes_entities_data_temp.append(end_index)
-                            pikes_entities_data_C0.append(pikes_entities_data_temp)
+                            pikes_entities_data.append(pikes_entities_data_temp)
                             pikes_entities_data_temp=[]
-                            #Yago type->
                             yago_type=row[5]
 
-                        #http://pikes.fbk.eu/#shirt type http://dbpedia.org/class/yago/Shirt104197391
                         pikes_entity=URIRef(vtkel[image_id+'C'+str(j)+'/'+pikes_ent[21:]])
-#                        print(pikes_entity)
                         g1.add(( pikes_entity, URIRef(rdf['type']),URIRef(yago_type)))
 
                         #TEM->Textual Entity Mention
-                        #<http://vksflickr30k.fbk.eu/resource/6214447C2/#cameraman> <denotedby http://vksflickr30k.fbk.eu/resource/6214447C2#char=2,11>
                         TEM=URIRef(vtkel[image_id+'C'+str(j)+'#char='+str(start_ind)+','+str(end_index)])
                         g1.add(( pikes_entity, URIRef(gaf['denotedBy']),TEM ))
                         g1.add(( TEM, URIRef(rdf['type']),URIRef(ks['TextualEntityMention']) ))
@@ -176,10 +187,8 @@ def pikes_textual_entities_annotation(image_id):
                         g1.add(( TEM, URIRef(nif['beginIndex']),Literal(start_ind) ))                        
                         g1.add(( TEM, URIRef(nif['endIndex']),Literal(end_index) ))
                         g1.add(( TEM, URIRef(prov['wasAttributedTo']),URIRef(vtkel['PikesAnnotator']) ))
-            
-#        print('\n')
     
-    return pikes_entities_data_C0
+    return pikes_entities_data
     
 def get_sentence_data(fn):
     """
@@ -292,9 +301,18 @@ def get_annotations(fn):
 
     return anno_info
 
-##==> finding the head of word from NAF file processing
 def head_from_NAF(image_id,head_finding_temp,caption):
-#    print('--------------------------PIKES for NAF-------------------------')
+    """
+    Takes in inputs document id (image), headers values, and image caption to performed the syntactic analysis of text and find header if noun-phrase has two or more than two nouns
+    input:
+        image_id - document id 
+        head_finding_temp - headers information from NAF file extracted by PIKES
+        caption - image caption
+    
+    output:
+      head_id_sending - extracted header id
+      head_anchor_sending - extracted header anchor
+    """    
     term_saving=[]
     term_noun_saving=[]
     head_id_values=[]
@@ -304,25 +322,17 @@ def head_from_NAF(image_id,head_finding_temp,caption):
     success_flag_2=False
     success_flag_3=False
     success_flag_4=False    
-#    print(caption,head_finding_temp)
-#    print(caption,head_finding_temp[0][0],head_finding_temp[1][0],head_finding_temp[0][1],head_finding_temp[1][1])
-    my_NAF_parser = KafNafParser('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_naf_caption/'+image_id+'C'+str(caption)+'.naf')
-    
-    #case to hanndle 2 nouns in one phrase
+    my_NAF_parser = KafNafParser('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_naf_caption/'+image_id+'C'+str(caption)+'.naf')    
+
     if len(head_finding_temp)==2:
         for term_text in my_NAF_parser.get_tokens():
             if len(head_finding_temp)==2:
                 for i in range(len(head_finding_temp)):
-        #            print(head_finding_temp[i][0],term_text.get_text())
                     if head_finding_temp[i][1].lower() in term_text.get_text().lower() and head_finding_temp[i][2]==term_text.get_offset():
-#                        print('head_finding_temp[i][0]',i,head_finding_temp[i][0],head_finding_temp[i][1])
                         head_id_values.append(head_finding_temp[i][0])
                         head_id_values_anchor.append(head_finding_temp[i][1])
                         term=term_text.get_id().replace('w','t')
                         term_saving.append(term)
-#                        print('\n',head_finding_temp[i][0],term_text.get_text(),term_text.get_id(),term)
-#    print(term_saving)
-#    print('before',head_finding_temp)
     
         for dep_object in my_NAF_parser.get_dependencies():
             if len(term_saving)==1:
@@ -336,7 +346,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                     head_id_sending.append(head_id_values[1])
                     head_anchor_sending.append(head_id_values_anchor[0])
                     head_anchor_sending.append(head_id_values_anchor[1])
-#                    print('01',term_saving[0],term_saving[1],head_id_values[0],head_id_values[1])
                     success_flag_2=True
                 elif term_saving[1]==dep_object.get_from() and term_saving[0]==dep_object.get_to() and success_flag_2==False:
                     
@@ -344,7 +353,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                     head_id_sending.append(head_id_values[0])
                     head_anchor_sending.append(head_id_values_anchor[1])
                     head_anchor_sending.append(head_id_values_anchor[0])
-#                    print('02',term_saving[1],term_saving[0],head_id_values[1],head_id_values[0])
                     success_flag_2=True
 
         from_term1=0
@@ -360,35 +368,25 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                 head_id_sending.append(head_id_values[1])
                 head_anchor_sending.append(head_id_values_anchor[0])
                 head_anchor_sending.append(head_id_values_anchor[1])
-#                print('01',term_saving[0],term_saving[1],head_id_values[0],head_id_values[1])
             else:
                 head_id_sending.append(head_id_values[1])
                 head_id_sending.append(head_id_values[0])
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[0])
-#                print('02',term_saving[0],term_saving[1],head_id_values[1],head_id_values[0])
 
-    #            print('01',caption,head_sending)
-    #        print(0,caption,head_sending)
-
-    #case to hanndle 3 nouns in one phrase
     elif len(head_finding_temp)==3:
         for term_text in my_NAF_parser.get_tokens():
             if len(head_finding_temp)==3:
                 for i in range(len(head_finding_temp)):
-        #            print(head_finding_temp[i][0],term_text.get_text())
                     if head_finding_temp[i][1].lower() in term_text.get_text().lower() and head_finding_temp[i][2]==term_text.get_offset():
                         head_id_values.append(head_finding_temp[i][0])
                         head_id_values_anchor.append(head_finding_temp[i][1])
                         term=term_text.get_id().replace('w','t')
                         term_saving.append(term)
                         term_noun_saving.append(term_text.get_text())
-                    
-#                    print(term_saving)
-    
+                        
         for dep_object in my_NAF_parser.get_dependencies():
             if len(term_saving)==3:
-    #            print(term_saving)
                 if term_saving[2]==dep_object.get_from() and term_saving[1]==dep_object.get_to() and success_flag_3==False:
                     for dep_object1 in my_NAF_parser.get_dependencies():
                         if term_saving[2]==dep_object1.get_from() and term_saving[0]==dep_object1.get_to():
@@ -398,33 +396,29 @@ def head_from_NAF(image_id,head_finding_temp,caption):
 
                             head_anchor_sending.append(head_id_values_anchor[2])
                             head_anchor_sending.append(head_id_values_anchor[1])
-                            head_anchor_sending.append(head_id_values_anchor[0])
-#                            print('21',term_saving[2],term_saving[1],term_saving[1],head_id_values[2],head_id_values[1],head_id_values[0])
-                            
+                            head_anchor_sending.append(head_id_values_anchor[0])                            
                             success_flag_3=True
+
                 elif term_saving[1]==dep_object.get_from() and term_saving[2]==dep_object.get_to() and success_flag_3==False:
                     for dep_object1 in my_NAF_parser.get_dependencies():
                         if term_saving[1]==dep_object1.get_from() and term_saving[0]==dep_object1.get_to():
                             head_id_sending.append(head_id_values[1])
                             head_id_sending.append(head_id_values[2])
                             head_id_sending.append(head_id_values[0])
-
                             head_anchor_sending.append(head_id_values_anchor[1])
                             head_anchor_sending.append(head_id_values_anchor[2])
                             head_anchor_sending.append(head_id_values_anchor[0])
-#                            print('22',term_saving[1],term_saving[2],term_saving[0],head_id_values[1],head_id_values[2],head_id_values[0])
                             success_flag_3=True
+
                 elif term_saving[0]==dep_object.get_from() and term_saving[1]==dep_object.get_to() and success_flag_3==False:
                     for dep_object1 in my_NAF_parser.get_dependencies():
                         if term_saving[0]==dep_object1.get_from() and term_saving[2]==dep_object1.get_to():
                             head_id_sending.append(head_id_values[0])
                             head_id_sending.append(head_id_values[1])
                             head_id_sending.append(head_id_values[2])
-
                             head_anchor_sending.append(head_id_values_anchor[0])
                             head_anchor_sending.append(head_id_values_anchor[1])
                             head_anchor_sending.append(head_id_values_anchor[2])
-#                            print('23',term_saving[0],term_saving[1],term_saving[2],head_id_values[0],head_id_values[1],head_id_values[2])
                             success_flag_3=True
         from_term1=0
         from_term2=0
@@ -442,45 +436,36 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                 head_id_sending.append(head_id_values[0])
                 head_id_sending.append(head_id_values[1])
                 head_id_sending.append(head_id_values[2])
-
                 head_anchor_sending.append(head_id_values_anchor[0])
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[2])
-#                print('24',term_saving[0],ter1m_saving[1],term_saving[2],head_id_values[0],head_id_values[1],head_id_values[2])
             elif from_term2>=from_term3 and from_term2>=from_term1:
                 head_id_sending.append(head_id_values[1])
                 head_id_sending.append(head_id_values[2])
                 head_id_sending.append(head_id_values[0])
-
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[2])
                 head_anchor_sending.append(head_id_values_anchor[0])
-#                print('25',term_saving[1],term_saving[2],term_saving[0],head_id_values[1],head_id_values[2],head_id_values[0])
             elif from_term3>=from_term1 and from_term3>=from_term2:
                 head_id_sending.append(head_id_values[2])
                 head_id_sending.append(head_id_values[1])
                 head_id_sending.append(head_id_values[0])
-
                 head_anchor_sending.append(head_id_values_anchor[2])
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[0])
-#                print('26',term_saving[2],term_saving[1],term_saving[1],head_id_values[2],head_id_values[1],head_id_values[0])
+
             else:
                 head_id_sending.append(head_id_values[0])
                 head_id_sending.append(head_id_values[1])
                 head_id_sending.append(head_id_values[2])
-
                 head_anchor_sending.append(head_id_values_anchor[0])
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[2])
-#                print('27',term_saving[0],term_saving[1],term_saving[2],head_id_values[0],head_id_values[1],head_id_values[2])
 
-#    #case to hanndle 4 nouns in one phrase
     elif len(head_finding_temp)>=4:
         for term_text in my_NAF_parser.get_tokens():
             if len(head_finding_temp)>=4:
                 for i in range(len(head_finding_temp)):
-        #            print(head_finding_temp[i][0],term_text.get_text())
                     if head_finding_temp[i][1].lower() in term_text.get_text().lower() and head_finding_temp[i][2]==term_text.get_offset():
                         head_id_values.append(head_finding_temp[i][0])
                         head_id_values_anchor.append(head_finding_temp[i][1])
@@ -490,7 +475,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
 
         for dep_object in my_NAF_parser.get_dependencies():
             if len(term_saving)>=4:
-    #            print(term_saving)
                 if term_saving[0]==dep_object.get_from() and term_saving[1]==dep_object.get_to() and success_flag_4==False:
                     for dep_object1 in my_NAF_parser.get_dependencies():
                         if term_saving[0]==dep_object1.get_from() and term_saving[2]==dep_object1.get_to():
@@ -499,13 +483,11 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                                     head_id_sending.append(head_id_values[0])
                                     head_id_sending.append(head_id_values[1])
                                     head_id_sending.append(head_id_values[2])
-                                    head_id_sending.append(head_id_values[3])
-                                    
+                                    head_id_sending.append(head_id_values[3])                                    
                                     head_anchor_sending.append(head_id_values_anchor[0])
                                     head_anchor_sending.append(head_id_values_anchor[1])
                                     head_anchor_sending.append(head_id_values_anchor[2])
                                     head_anchor_sending.append(head_id_values_anchor[3])
-#                                    print('41',term_saving[0],term_saving[1],term_saving[2],head_id_values[0],head_id_values[1],head_id_values[2])
                                     success_flag_4=True
                 elif term_saving[1]==dep_object.get_from() and term_saving[0]==dep_object.get_to() and success_flag_4==False:
                     for dep_object1 in my_NAF_parser.get_dependencies():
@@ -521,7 +503,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                                     head_anchor_sending.append(head_id_values_anchor[0])
                                     head_anchor_sending.append(head_id_values_anchor[2])
                                     head_anchor_sending.append(head_id_values_anchor[3])
-#                                    print('42',term_saving[1],term_saving[0],term_saving[2],term_saving[3],head_id_values[1],head_id_values[0],head_id_values[2],head_id_values[3])
                                     success_flag_4=True
 
                 elif term_saving[2]==dep_object.get_from() and term_saving[0]==dep_object.get_to() and success_flag_4==False:
@@ -538,7 +519,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                                     head_anchor_sending.append(head_id_values_anchor[0])
                                     head_anchor_sending.append(head_id_values_anchor[1])
                                     head_anchor_sending.append(head_id_values_anchor[3])
-#                                    print('43',term_saving[2],term_saving[0],term_saving[1],term_saving[3],head_id_values[2],head_id_values[0],head_id_values[1],head_id_values[3])
                                     success_flag_4=True
                 elif term_saving[3]==dep_object.get_from() and term_saving[0]==dep_object.get_to() and success_flag_4==False:
                     for dep_object1 in my_NAF_parser.get_dependencies():
@@ -554,7 +534,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                                     head_anchor_sending.append(head_id_values_anchor[0])
                                     head_anchor_sending.append(head_id_values_anchor[1])
                                     head_anchor_sending.append(head_id_values_anchor[2])
-#                                    print('44',term_saving[3],term_saving[0],term_saving[1],term_saving[2],head_id_values[3],head_id_values[0],head_id_values[1],head_id_values[2])
                                     success_flag_4=True
 
         from_term1=0
@@ -582,7 +561,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[2])
                 head_anchor_sending.append(head_id_values_anchor[3])
-#                print('45',term_saving[0],term_saving[1],term_saving[2],head_id_values[0],head_id_values[1],head_id_values[2])
             elif from_term2>=from_term1 and from_term2>=from_term3 and from_term2>=from_term4:
                 head_id_sending.append(head_id_values[1])
                 head_id_sending.append(head_id_values[0])
@@ -593,7 +571,6 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                 head_anchor_sending.append(head_id_values_anchor[0])
                 head_anchor_sending.append(head_id_values_anchor[2])
                 head_anchor_sending.append(head_id_values_anchor[3])
-#                print('46',term_saving[1],term_saving[0],term_saving[2],term_saving[3],head_id_values[1],head_id_values[0],head_id_values[2],head_id_values[3])
             elif from_term3>=from_term1 and from_term3>=from_term2 and from_term3>=from_term4:
                 head_id_sending.append(head_id_values[2])
                 head_id_sending.append(head_id_values[0])
@@ -604,7 +581,7 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                 head_anchor_sending.append(head_id_values_anchor[0])
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[3])
-#                print('47',term_saving[2],term_saving[0],term_saving[1],term_saving[3],head_id_values[2],head_id_values[0],head_id_values[1],head_id_values[3])
+
             elif from_term4>=from_term1 and from_term4>=from_term2 and from_term4>=from_term3:
                 head_id_sending.append(head_id_values[3])
                 head_id_sending.append(head_id_values[0])
@@ -615,7 +592,7 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                 head_anchor_sending.append(head_id_values_anchor[0])
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[2])
-#                print('48',term_saving[3],term_saving[0],term_saving[1],term_saving[2],head_id_values[3],head_id_values[0],head_id_values[1],head_id_values[2])
+
             else:
                 head_id_sending.append(head_id_values[0])
                 head_id_sending.append(head_id_values[1])
@@ -626,29 +603,26 @@ def head_from_NAF(image_id,head_finding_temp,caption):
                 head_anchor_sending.append(head_id_values_anchor[1])
                 head_anchor_sending.append(head_id_values_anchor[2])
                 head_anchor_sending.append(head_id_values_anchor[3])
-#                print('49',term_sa1ving[0],term_saving[1],term_saving[2],head_id_values[0],head_id_values[1],head_id_values[2])
 
-
-    
-    
-#    print(head_sending)
     return head_id_sending,head_anchor_sending
 
 def Alignment_PIKES_Flickr(flickr_NP_data_temp_Caption,pikes_entities_data_Caption,image_id):
+    """
+    This function takes in input Flickr30k noun-phrase, captions and PIKES recognized and linked entities for 
+    alignment with visual bounding boxes and also received and stored the header information. At the end stored 
+    all these annotations into RDF graphs for .ttl file storage.
+    input:
+        flickr_NP_data_temp_Caption - Flickr30k noun-phrases 
+        pikes_entities_data_Caption - PIKES recognized and linked textual entities with respect to caption(s)
+        image_id - image ID
+    
+    output:
 
+    """    
     np_ids_Caption=[]
     pikes_flickr_temp=[]
     pikes_flickr_align=[]
-#    local=0
-#    print('\npikes_entities_data_Caption-->',len(pikes_entities_data_Caption))
-##    print(flickr_NP_data_temp_Caption)
-#    for i in range(len(flickr_NP_data_temp_Caption)):
-#        for j in range(len(flickr_NP_data_temp_Caption[i])):
-#            print(flickr_NP_data_temp_Caption[i][j])
-#    print('\n')   
-#    for i in range(len(pikes_entities_data_Caption)):
-#        print(i,pikes_entities_data_Caption[i])
-#    print('\n')
+    
     for i in range(len(pikes_entities_data_Caption)):
         for j in range(5):
             for k in range(len(flickr_NP_data_temp_Caption[j])):
@@ -665,13 +639,10 @@ def Alignment_PIKES_Flickr(flickr_NP_data_temp_Caption,pikes_entities_data_Capti
                     pikes_flickr_align.append(pikes_flickr_temp)
                     pikes_flickr_temp=[]
 
-#                    print(i,j,local,pikes_entities_data_Caption[i],flickr_NP_data_temp_Caption[j][k])
 
     local1=0
-#    np_ids_Caption1=[]
     np_ids1=[]
-    for i in range(len(pikes_flickr_align)):
-        
+    for i in range(len(pikes_flickr_align)):        
         if int(pikes_flickr_align[i][0])==local1:
             np_ids1.append(pikes_flickr_align[i][5])
             if i==len(pikes_flickr_align)-1:
@@ -683,35 +654,27 @@ def Alignment_PIKES_Flickr(flickr_NP_data_temp_Caption,pikes_entities_data_Capti
             np_ids1=[]
             np_ids1.append(pikes_flickr_align[i][5])
             local1+=1
-#    for j in range(len(pikes_flickr_align[i])):
-#        print(pikes_flickr_align[i][0],pikes_flickr_align[i][5])
-#    print('-->',np_ids_Caption)
     head_finding_temp=[]
     head_finding=[]
     entity_count=0
-#    print(np_ids_Caption)
     for c in range(len(np_ids_Caption)):
         same_ids_count=Counter(np_ids_Caption[c])
-#        print('\n-----?',c,same_ids_count)
         for np_id in same_ids_count:
-            
             if same_ids_count[np_id]<2:
                 for i in range(len(pikes_flickr_align)):
                     if np_id in pikes_flickr_align[i][5] and c==int(pikes_flickr_align[i][0]) and int(pikes_flickr_align[i][4])>=int(pikes_flickr_align[i][7]):
-#                        print(np_id,pikes_flickr_align[i][5])
-#                        print(np_id,pikes_flickr_align[i][5],pikes_flickr_align[i][0],pikes_flickr_align[i][1],pikes_flickr_align[i][2],pikes_flickr_align[i][3],pikes_flickr_align[i][4],pikes_flickr_align[i][5],pikes_flickr_align[i][6],pikes_flickr_align[i][7])
+
                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+pikes_flickr_align[i][1][21:]])
-#                        print(1,c,sameAs_entity_id,'sameAs',sameAs_entity)
                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-            ###==>#case to hanndle 2 nouns in one phrase
+
             elif same_ids_count[np_id]==2:
-#                print('case-2:',c,same_ids_count)
+
                 entity_count=0
-#                head_returned=[]
+
                 for i in range(len(pikes_flickr_align)):
                     if np_id in pikes_flickr_align[i][5] and c==int(pikes_flickr_align[i][0]) and int(pikes_flickr_align[i][4])>=int(pikes_flickr_align[i][7]):
-#                        print(np_id,pikes_flickr_align[i][5])
+
                         if c<=4:
                             entity_count+=1
                             head_finding_temp.append(pikes_flickr_align[i][1][21:])
@@ -722,93 +685,86 @@ def Alignment_PIKES_Flickr(flickr_NP_data_temp_Caption,pikes_entities_data_Capti
                             head_finding_temp=[]
                             if entity_count==2:
                                 head_returned,head_anchor_sending=head_from_NAF(image_id,head_finding,c)
-#                                print('AAAA',head_returned,head_anchor_sending)
                                 if len(head_returned)==1:
                                     sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                     sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[0]])
                                     g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                    print(2,sameAs_entity_id,'sameAs--->',sameAs_entity)
 
                                 elif len(head_finding)==2 and len(head_returned)==2:
-#                                    print(head_returned,head_anchor_sending)
+
                                     if head_anchor_sending[0]==head_anchor_sending[1]:
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[0]])
                                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                        print(2,sameAs_entity_id,'sameAs--->',sameAs_entity)
+
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[1]]) 
                                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                        print(2,sameAs_entity_id,'sameAs--->',sameAs_entity)
+
                                     else:
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[0]])
                                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                        print(2,sameAs_entity_id,'sameAs--->',sameAs_entity)
+
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[1]]) 
                                         g1.add(( sameAs_entity_id, URIRef(owl['partOf']),sameAs_entity ))
-#                                        print(2,sameAs_entity_id,'partOf--->',sameAs_entity)
 
 
                                 head_finding=[]
                                 head_returned=[]
                                 entity_count=0
-            ###==>#case to hanndle 3 nouns in one phrase
+
             elif same_ids_count[np_id]==3:
-#                print('case 3:',c,same_ids_count)
+
                 head_finding=[]
                 head_returned=[]
                 for i in range(len(pikes_flickr_align)):
                     if np_id in pikes_flickr_align[i][5] and c==int(pikes_flickr_align[i][0]) and int(pikes_flickr_align[i][4])>=int(pikes_flickr_align[i][7]):
-#                        print(np_id,pikes_flickr_align[i])
+
                         if c<=4:
                             entity_count+=1
-#                            head_finding_temp.append(pikes_flickr_align[i][0])
-#                            head_finding_temp.append(pikes_flickr_align[i][1])
+
                             head_finding_temp.append(pikes_flickr_align[i][1][21:])
                             head_finding_temp.append(pikes_flickr_align[i][2])
                             head_finding_temp.append(pikes_flickr_align[i][3])
                             head_finding_temp.append(pikes_flickr_align[i][4])
-#                            head_finding_temp1.append(pikes_flickr_align[i][5])
-#                            head_finding_temp.append(pikes_flickr_align[i][6])
-#                            head_finding_temp.append(pikes_flickr_align[i][7])
+
                             head_finding.append(head_finding_temp)
                             head_finding_temp=[]
-#                            print(pikes_flickr_align)
-#                            print(entity_count,pikes_flickr_align[i][5],pikes_flickr_align[i][0],pikes_flickr_align[i][1],pikes_flickr_align[i][2],pikes_flickr_align[i][3],pikes_flickr_align[i][4],pikes_flickr_align[i][5],pikes_flickr_align[i][6],pikes_flickr_align[i][7],pikes_flickr_align[i][8])
+
                             if entity_count==3:
-#                                print(head_finding)
+
                                 head_returned,head_anchor_sending=head_from_NAF(image_id,head_finding,c)
-#                                print(head_anchor_sending)
+
                                 if len(head_returned)==3:
-#                                    print(pikes_flickr_align[i][5],head_returned)
+
                                     if head_anchor_sending[0]==head_anchor_sending[1] or head_anchor_sending[0]==head_anchor_sending[2]:
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[0]])
                                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                        print(3,sameAs_entity_id,'sameAs--->',sameAs_entity)
+
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[1]]) 
                                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                        print(3,sameAs_entity_id,'sameAs--->',sameAs_entity)
+
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[2]]) 
                                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                        print(3,sameAs_entity_id,'sameAs--->',sameAs_entity)
+
                                     else :
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[0]])
                                         g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-#                                        print(3,sameAs_entity_id,'sameAs--->',sameAs_entity)
+
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[1]]) 
                                         g1.add(( sameAs_entity_id, URIRef(owl['partOf']),sameAs_entity ))
-#                                        print(3,sameAs_entity_id,'partOf--->',sameAs_entity)
+
                                         sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                         sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[2]]) 
                                         g1.add(( sameAs_entity_id, URIRef(owl['partOf']),sameAs_entity ))
-#                                        print(3,sameAs_entity_id,'partOf--->',sameAs_entity)
+
 
 
 
@@ -816,14 +772,13 @@ def Alignment_PIKES_Flickr(flickr_NP_data_temp_Caption,pikes_entities_data_Capti
                                 head_returned=[]
                                 entity_count=0
 
-            ###==>#case to hanndle 4 nouns in one phrase
             elif same_ids_count[np_id]>=4:
                 print('case 4+:',c,same_ids_count)
                 head_finding=[]
                 head_returned=[]
                 for i in range(len(pikes_flickr_align)):
                     if np_id in pikes_flickr_align[i][5] and c==int(pikes_flickr_align[i][0]) and int(pikes_flickr_align[i][4])>=int(pikes_flickr_align[i][7]):
-#                        print(np_id,pikes_flickr_align[i][5])
+
                         if c<=4:
                             entity_count+=1
                             head_finding_temp.append(pikes_flickr_align[i][2])
@@ -835,35 +790,34 @@ def Alignment_PIKES_Flickr(flickr_NP_data_temp_Caption,pikes_entities_data_Capti
                                 print(head_finding)
                                 head_returned,head_anchor_sending=head_from_NAF(image_id,head_finding,c)
                                 if len(head_returned)==4:
-#                                    print(pikes_flickr_align[i][5],head_returned)
+
                                     sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                     sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[0]])
                                     g1.add(( sameAs_entity_id, URIRef(owl['sameAs']),sameAs_entity ))
-                                    print(4,sameAs_entity_id,'sameAs--->',sameAs_entity)
+ 
                                     sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                     sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[1]]) 
                                     g1.add(( sameAs_entity_id, URIRef(owl['partOf']),sameAs_entity ))
-                                    print(4,sameAs_entity_id,'partOf--->',sameAs_entity)
+
                                     sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                     sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[2]]) 
                                     g1.add(( sameAs_entity_id, URIRef(owl['partOf']),sameAs_entity ))
-                                    print(4,sameAs_entity_id,'partOf--->',sameAs_entity)
+
                                     sameAs_entity_id=URIRef(vtkel[image_id+'#'+pikes_flickr_align[i][5]])
                                     sameAs_entity=URIRef(vtkel[str(image_id)+'C'+str(c)+'/#'+head_returned[3]]) 
                                     g1.add(( sameAs_entity_id, URIRef(owl['partOf']),sameAs_entity ))
-                                    print(4,sameAs_entity_id,'partOf--->',sameAs_entity)
 
 
                                 head_finding=[]
                                 head_returned=[]
                                 entity_count=0
 
-
-
+## Flickr30k images directory
 image_file_counter=0
 images_directory_path='F:/PhD/VKS Flickr30k/Nov-2008/V4/VTKEL and Flickr30k annotations/script/input images/insert/'
 g1.add( (URIRef(vtkel), URIRef(rdf['type']), URIRef(dcmit['Software'])) )
 
+## resource meta data information triples
 t= datetime.datetime.now()
 creation_time=Literal( str(t.year)+'-'+str(t.month)+'-'+str(t.day)+':'+'-'+str(t.hour)+':'+str(t.minute)+':'+str(t.second))
 g1.add( (URIRef(vtkel), URIRef(dct['created']), creation_time) )
@@ -878,6 +832,7 @@ g1.add( (URIRef(vtkel), URIRef(dct['creator']), authors) )
 g1.add( (URIRef(vtkel['FlickrAnnotator']), URIRef(rdf['type']), URIRef(prov['Agent'])) )
 g1.add( (URIRef(vtkel['PikesAnnotator']), URIRef(rdf['type']), URIRef(prov['Agent'])) )
 
+##takes one by one image file from image directory to produced VTKEL dataset
 for filename in os.listdir(images_directory_path):
 
     image_file_counter+=1    
@@ -898,13 +853,7 @@ for filename in os.listdir(images_directory_path):
 
         image_captions=get_sentence_data('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_caption/'+image_id+'.txt')
 
-        #==> image captions
-        print('----------------------------------------------------\nImage captions processing....\n')
-        print('C0:',image_captions[0]['sentence'])
-        print('C1:',image_captions[1]['sentence'])
-        print('C2:',image_captions[2]['sentence'])
-        print('C3:',image_captions[3]['sentence'])
-        print('C4:',image_captions[4]['sentence'],'\n-------------------------------------')
+        #==> image captions info storage
         flickr_NP_data_temp=[]
         flickr_NP_data_temp_C0=[]
         flickr_NP_data_temp_Caption=[]
@@ -923,12 +872,12 @@ for filename in os.listdir(images_directory_path):
                 g1.add( ( URIRef(vtkel[image_id+'C'+str(c)]), URIRef(dct['identifier']),Literal(image_id+'C'+str(c)) ))
                 g1.add( ( URIRef(vtkel[image_id+'C'+str(c)]), URIRef(dct['isPartOf']),URIRef(vtkel[image_id]) ))
     
-#                print('\n',c,image_captions[c]['phrases'][i])
-#                print(image_captions[c]['phrases'][i]['first_word_index'])
                 flickr_textual_entity_id=URIRef(vtkel[str(image_id)+'#'+str(image_captions[c]['phrases'][i]['phrase_id'])])
                 g1.add( (flickr_textual_entity_id, URIRef(rdf['type']),URIRef(ks['Entity']) ))
                 flickr_type=image_captions[c]['phrases'][i]['phrase_type'][0]
                 g1.add( (flickr_textual_entity_id, URIRef(rdf['type']),URIRef(flickrOntology[flickr_type]) ))
+                
+                
                 word_len=0
                 start_index=0
                 end_index=0
@@ -937,21 +886,19 @@ for filename in os.listdir(images_directory_path):
                     word_len=word_len+len(caption[j])
                 start_index=start_index+word_len
                 end_index=start_index+(len(image_captions[c]['phrases'][i]['phrase']))
-#                print('start_index',start_index,end_index)
+
                 char_noun_phrase=str(image_id)+'C'+str(c)+'/#char='+str(start_index)+','+str(end_index)
                 g1.add( (flickr_textual_entity_id, URIRef(gaf['denotedBy']),URIRef(vtkel[char_noun_phrase]) ))            
     
                 g1.add( (URIRef(vtkel[char_noun_phrase]), URIRef(rdf['type']),URIRef(ks['TextualEntityMention'] ) ))    
                 g1.add( (URIRef(vtkel[char_noun_phrase]), URIRef(nif['anchorOf']), Literal(image_captions[c]['phrases'][i]['phrase']) ))
-#                print('\n')
+
                 g1.add( (URIRef(vtkel[char_noun_phrase]), URIRef(nif['beginIndex']), Literal(start_index) ))   
                 g1.add( (URIRef(vtkel[char_noun_phrase]), URIRef(nif['endIndex']), Literal(end_index) ))   
                 g1.add( (URIRef(vtkel[char_noun_phrase]), URIRef(prov['wasAttributedTo']), URIRef(vtkel['FlickrAnnotator']) ))   
     
                 g1.add( ( URIRef(vtkel[image_id+'C'+str(c)]), URIRef(ks['hasMention']), URIRef(vtkel[char_noun_phrase]) ))    
 
-#            if c<1:
-#                    print(image_captions[c]['phrases'][i]['phrase'],start_index,end_index)
                 flickr_NP_data_temp.append(image_captions[c]['phrases'][i]['phrase_id'])
                 flickr_NP_data_temp.append(image_captions[c]['phrases'][i]['phrase'])
                 flickr_NP_data_temp.append(start_index)
@@ -961,12 +908,9 @@ for filename in os.listdir(images_directory_path):
             flickr_NP_data_temp_Caption.append(flickr_NP_data_temp_C0)
             flickr_NP_data_temp_C0=[]
 
-        ##==> flickr30k bounding boxes phase
-        print("---------------------------Flcikr Bounding Box-------------------------")
-        image_bb_annotations=get_annotations('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_bb/Annotations/'+image_id+'.xml')
-#        print('scene',image_bb_annotations['scene'])
-#        print('nobox',image_bb_annotations['nobox'])
-#        print(image_bb_annotations['boxes'])  
+        ##==> flickr30k bounding boxes phase and storing
+
+        image_bb_annotations=get_annotations('F:/PhD/VKS Flickr30k/Nov-2008/V4/Flickr30k_bb/Annotations/'+image_id+'.xml')  
 
         g1.add( ( URIRef(vtkel[image_id+'I']), URIRef(rdf['type']),URIRef(ks['Resource']) ))
         g1.add( ( URIRef(vtkel[image_id+'I']), URIRef(rdf['type']),URIRef(dcmit['Image']) ))
@@ -982,11 +926,10 @@ for filename in os.listdir(images_directory_path):
         g1.add( ( URIRef(vtkel[image_id+'I']), URIRef(nfo['verticalResolution']),Literal(Height) ))
 
         for bb_id in image_bb_annotations['boxes']:
-#            print(bb_id,image_bb_annotations['boxes'][bb_id][0])1
+
             for bb_v in range(len(image_bb_annotations['boxes'][bb_id])):
                 flickr_visual_entity_id=URIRef(vtkel[str(image_id)+'#'+str(bb_id)])
                 xywh=str(image_bb_annotations['boxes'][bb_id][bb_v][0]+1)+','+str(image_bb_annotations['boxes'][bb_id][bb_v][1]+1)+','+str(image_bb_annotations['boxes'][bb_id][bb_v][2]+1)+','+str(image_bb_annotations['boxes'][bb_id][bb_v][3]+1)
-#                print(xywh)
                 flickr_visual_entity_xywh=URIRef(vtkel[str(image_id)+'I/#xywh='+xywh])
                 g1.add( (flickr_visual_entity_id, URIRef(gaf['denotedBy']),flickr_visual_entity_xywh ))
 
@@ -1000,23 +943,19 @@ for filename in os.listdir(images_directory_path):
                 g1.add( (URIRef(vtkel[image_id+'I']), URIRef(ks['hasVisualMention']), flickr_visual_entity_xywh ))
                 
 
-#                print(flickr_visual_entity_id)
             for i in range(5):
                 for j in range(len(image_captions[i]['phrases'])):  
                     if bb_id==image_captions[i]['phrases'][j]['phrase_id']:
                         g1.add( ( URIRef(vtkel[image_id+'C'+str(i)]), URIRef(rdf['type']),URIRef(ks['Resource']) ))
 
-        ###==> PIKES System Phase
+        ### PIKES System Phase
         textual_entities=[]
         textual_entities_YAGO_type=[]
         
-        ###pikes phase
         pikes_entities_data_Caption=pikes_textual_entities_annotation(image_id)
-#        print(pikes_entities_data_Caption[0],flickr_NP_data_temp_Caption[1])
+
         Alignment_PIKES_Flickr(flickr_NP_data_temp_Caption,pikes_entities_data_Caption,image_id)
         
-        ###===>>> cosine similarity
-#        curr_similarity=cosine_similarity(first_word, second_word)
         
 g1.serialize(destination='F:/PhD/VKS Flickr30k/Nov-2008/V4/1 VTK ttl/1 big ttl/VTKEL_dataset.ttl', format='turtle')
 
