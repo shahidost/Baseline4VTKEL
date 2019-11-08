@@ -1,6 +1,6 @@
-# Running VTKEL System in your local machine
+# Running VT-LinKEr in your local machine
 
-To run **VTKEL system** in your local machine follow below steps carefully.
+To run **VT-LinKEr** in your local machine, please follow these steps.
 
 **Step 1:**
 
@@ -12,11 +12,11 @@ Download python source [code](https://github.com/shahidost/Baseline4VTKEL/tree/m
 
 **Step 3:**
 
-Save the source code and required files in a directory.
+Save the source code and required files in a directory ($root).
 
 **Step 4:**
 
-Update below python file in your local machine.
+Update python file in your local machine.
 
 1. [main_VT-LinKEr_System.py](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/main_VT-LinKEr_System.py)
 
@@ -29,8 +29,8 @@ Update below python file in your local machine.
 
 2. Run *main_VT-LinKEr_System.py* by using the command for VT-LinKEr:
 ```
-> python main_VT-LinKEr_System.py
+> python code/main_VT-LinKEr_System.py
 ```
-3. You can see the output .ttl and .jpg files in your local machine respective directory.
+3. You can find the annotated output *.ttl* and *.jpg* files in your local machine.
 
-4. The debugging/execution of VTKEL system will take some time due to the processing of huge YAGO ontology according to the speed of your local machine.
+4. The debugging/execution of VT-LinKEr will take some time due to the processing of huge YAGO ontology according to the speed of your machine.
