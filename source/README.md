@@ -20,17 +20,17 @@ Update python file in your local machine.
 
 1. [main_VT-LinKEr_System.py](https://github.com/shahidost/Baseline4VTKEL/blob/master/source/code/main_VT-LinKEr_System.py)
 
--	Line 489: insert YAGO taxonomy file path.
--	Line 495: insert insert image directory.
--	Line 508: insert image captions file path.
--	Line 538: insert YOLO pre-train files path.
--	Line 642: to save output images from YOLO object detector insert directory path.
--	Line 645: to save output VT-LinKEr annotations file insert directory path.
+-	Line 461: insert path for YAGO taxonomy .ttl file.
+-	Line 470: insert image (images should be downloaded from Flickr30k-entities dataset) directory path.
+-	Line 486: insert image captions directory path.
+-	Line 513 & 516: insert YOLO pre-train files path.
+-	Line 633: insert directory path to save annotated image-files from VT-LinKEr.
+-	Line 637: insert directory path to save Turtle annotated file from VT-LinKEr.
 
 2. Run *main_VT-LinKEr_System.py* by using the command for VT-LinKEr:
 ```
-> python code/main_VT-LinKEr_System.py
+> python $root/code/main_VT-LinKEr_System.py
 ```
 3. You can find the annotated output *.ttl* and *.jpg* files in your local machine.
 
-4. The debugging/execution of VT-LinKEr will take some time due to the processing of huge YAGO ontology according to the speed of your machine.
+4. The debugging/execution of VT-LinKEr will take some time due to the processing of YAGO-ontology w.r.t to the speed of your machine.
