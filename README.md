@@ -1,7 +1,7 @@
-# Baseline system for Visual-Textual-Knowledge entity linking
+# VT-LinKEr: System for Visual-Textual-Knowledge entity linking
 
 ### Introduction:
-This reposirtoy consists of problem, novel dataset for the task of **Visual-Textual-Knowledge Entity linking** and the first baseline system for solving *VTKEL*. The proposed baseline system is develpoed by using state-of-the-art tools for object detection using [**YOLO version 3**](https://pjreddie.com/darknet/yolo/), entity recognition and linking to ontologies in text using [**PIKES**](kes.fbk.eu), and alignment and mapping of visual-textual mentions using [**YAGO knowledgebase**](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/). The experimental evaluation shows an overall accuracy of **56%**. Being VTKEL a new task, the proposed approach can be considered as a first baseline for further improvements. 
+This reposirtoy consists of novel problem, dataset for the task of **Visual-Textual-Knowledge Entity linking** and the first baseline system for solving *VTKEL* called **VT-LinKEr**. The *VT-LinKEr* is develpoed by using state-of-the-art tools for object detection using [**YOLO version 3**](https://pjreddie.com/darknet/yolo/), entity recognition and linking to ontologies in text using [**PIKES**](kes.fbk.eu), and alignment and mapping of visual-textual mentions using [**YAGO knowledgebase**](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/). The experimental evaluation shows an overall accuracy of **58%**. Being VTKEL a new and novel task, the proposed VT-LinKEr can be considered as a first baseline for further improvements. 
 
 ### Problem (Visual-Textual-Knowledge Entity Linking):
 Given a document *d* composed of a text *d<sub>t</sub>* and an image *d<sub>i</sub>* and a knowledge base **K**, *VTKEL* is the problem of detecting all the entities mentioned in *d<sub>t</sub>* and and/or shown in *d<sub>i</sub>*, and linking them to the corresponding named entities in **K**, if they are present, or linking them to new entities, extending the **A-box** of **K** with its type assertion(s),  i.e. adding *C(e<sup>new</sup>)* for each new entity *C(e<sup>new</sup>)* of type **C** mentioned in *d*.
@@ -15,7 +15,7 @@ Consider the document shown in *Figure 1*, which is composed of one picture	and 
 The solution of the *VTKEL* task requires:
 (i) detecting the visual and	textual entity mentions of the considered types, and linking them to	either (ii) the correct, existing, named entities, or (iii) newly	created entities, adding the corresponding type assertions.
 
-The visual and textual mentions of a *man* shown in the red text and in	the red box refer to the same entity, and they should be linked together. The other visual mention i.e. *racket*, *ball* and *logo* should be linked to different entities. These three	entities are not known (i.e., they are not part of the initial	knowledge base **K**), and therefore three new entities of type *racket, ball* and *logo* should be added to the knowledge base, i.e., the **A-box** of **K** should be extended with the assertions *Racket(e<sup>new1</sup>)*, *Ball(e<sup>new2</sup>)* and *Logo(e<sup>new3</sup>)*. The visual and textual mentions of *R.Federer* are also referring to the same entity. However, this time the entity is known (i.e., **YAGO** contains an	entity for *man*) and  therefore the two mentions should be linked to the same entity.	For the other textual mentions, i.e., *Lukas Lacko*,	*Wimbledon*, *London*, *2018*, we already have instances in the **knowledgebase**, so we	have to link them to these entities.
+The visual and textual mentions of a *man* shown in the red text and in	the red box refer to the same entity, and they should be linked together. The other visual mention i.e. *racket*, *ball* and *logo* should be linked to different entities. These three	entities are not known (i.e., they are not part of the initial	knowledge base **K**), and therefore three new entities of type *racket, ball* and *logo* should be added to the knowledge base, i.e., the **A-box** of **K** should be extended with the assertions *Racket(e<sup>new1</sup>)*, *Ball(e<sup>new2</sup>)* and *Logo(e<sup>new3</sup>)*. The visual and textual mentions of *R.Federer* are also referring to the same entity. However, this time the entity is known (i.e., **YAGO** contains an	entity for *man*) and  therefore the two mentions should be linked to the same entity.	For the other textual mentions, i.e., *Lukas Lacko*,	*Wimbledon*, *London*, *2018*, we already have instances in the **knowledgebase**, so we	have to link them to these entities. (For details read our papers: coming soon!)
 
 ### VTKEL system architecture:
 *VTKEL* is a multimodal complex problem, which closed the loop between *natural language processing*, *computer vision* and *knowledge representation*. *Figure 2* shows the architecture of baseline system in details (the numbering shows the sub-modules of architecture).
@@ -41,7 +41,7 @@ VTKEL baseline produced a terse [**RDF**](https://www.w3.org/TR/turtle/) (Resour
 - Inernet connection for enabling PIKES tool
 
 ### Running VTKEL system:
-Follow step by step [guidelines](https://github.com/shahidost/Baseline4VTKEL/tree/master/source) to run VTKEL system.
+Follow step by step these [guidelines](https://github.com/shahidost/Baseline4VTKEL/tree/master/source) to run VTKEL system in your local machine.
 
 ### Quality of VTKEL baseline:
 The quality of *VTKEL* system evaluation is shown in below *Table* and for details evaluations please read our paper:
@@ -50,11 +50,12 @@ The quality of *VTKEL* system evaluation is shown in below *Table* and for detai
   <img width="500" height="120" src="https://user-images.githubusercontent.com/25593410/59092675-719c5c00-8912-11e9-9249-5eed3c213970.png">
 </p>
 
-### Citing VTKEL baseline:
+### Citing:
+If you find VTKEL problem, datasets, or framework helpful in your work please cite the papers:
 TBW
 
 ### License:
-The VTKEL baseline system and their codes are licensed under [CC BY 4.0](https://creativecommons.org/2014/01/07/plaintext-versions-of-creative-commons-4-0-licenses/).
+The VTKEL problem, dataset and framework and their codes are licensed under [CC BY 4.0](https://creativecommons.org/2014/01/07/plaintext-versions-of-creative-commons-4-0-licenses/).
 
 ### Contributors:
 - [Luciano Serafini](https://dkm.fbk.eu/people/profile/serafini)
@@ -69,7 +70,8 @@ The VTKEL baseline system and their codes are licensed under [CC BY 4.0](https:/
 - [PIKES](http://pikes.fbk.eu)
 - [Flickr30k](http://bryanplummer.com/Flickr30kEntities/)
 - [RDF](https://www.w3.org/TR/turtle/)
+- [GenderClassifier](https://www.cv-foundation.org/openaccess/content_cvpr_workshops_2015/W08/html/Levi_Age_and_Gender_2015_CVPR_paper.html)
 
 
 ### Contact
-If you have any query regarding VTKEL system or want to contribute to the system contact on ***sdost[at]fbk.eu***.
+If you have any query regarding VTKEL problem, dataset, or VT-LinKEr or want to contribute to the system contact on ***sdost[at]fbk.eu***.
