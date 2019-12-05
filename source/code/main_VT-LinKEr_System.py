@@ -16,12 +16,13 @@ import numpy as np
 from rdflib import Graph, URIRef, Literal, Namespace, ConjunctiveGraph
 import datetime
 from collections import Counter
+from textblob import TextBlob
 
 #Integrated functions
 from get_sentence_data import *
-from Textual_Entities_rdfTripes import *
 from Bounding_boxes_annotations import *
 from VTKEL_annotations import *
+from Gender.AgeGender import *
 
 
 #==> Prefixes to use for RDF graph (triples)
@@ -143,75 +144,99 @@ COCO_TO_YAGO = {
 PUBLIC_PIKES_SERVER = 'https://knowledgestore2.fbk.eu/pikes-demo/api/'
 LOCAL_PIKES_SERVER = 'http://localhost:8011/'
 
-def pikes_text2rdf(x):
+def pikes_text2rdf(img_caption):
     """
-    Takes a input natural language sentence and passed through ‘PIKES server’ for knowledge graph extraction 
+    This function takes a natural language sentence and passed through ‘PIKES server’ for knowledge graph extraction 
     input:
-      x – input natural language text
+      img_caption – input natural language text
     
     output:
       .ttl file – a turtle RDF format output file,  which stored the knowledge graph of natural language in Triples form
 
     """
-    return requests.get(PUBLIC_PIKES_SERVER+"text2rdf?",{'text':x})
+    return requests.get(PUBLIC_PIKES_SERVER+"text2rdf?",{'text':img_caption})
 
 def get_entities_from_text(text):
     """
-    This function extract RDF graph for textual entities and their type, processed by PIKES tool.
+    This function extract RDF graph for textual entities, their YAGO type, beginindex and endindex, processed by PIKES tool.
     input:
-      x –  Image caption of Flickr30k entities dataset
+      text –  Image caption of Flickr30k entities dataset
     
     output:
      sparql query result  – stored textual entities recognized and linked by PIKES
 
     """
+
     pikes_answer = pikes_text2rdf(text.lower())
     
     g = ConjunctiveGraph()
     g.parse(data = pikes_answer.content.decode('utf-8'),format="trig")
-    sparql_query = """SELECT ?s ?o
+    #Sparql query for entities information extraction
+    sparql_query = """SELECT ?TED ?TEM ?TET ?anchor ?beginindex ?endindex
            WHERE {
-           GRAPH ?gg {?s a ks:Entity}
-           GRAPH ?g {?s rdf:type ?o}
+           GRAPH ?g1 {?TED <http://groundedannotationframework.org/gaf#denotedBy> ?TEM}
+           GRAPH ?g2 {?TED a ?TET}
+           GRAPH ?g3 {?TEM nif:anchorOf ?anchor}
+           GRAPH ?g4 {?TEM nif:beginIndex ?beginindex}
+           GRAPH ?g5 {?TEM nif:endIndex ?endindex}
            }"""
 
     return g.query(sparql_query)
 
-def Textual_entities_detetction_linking():
+def Textual_entities_detetction_linking(image_id):
     print('\n-------------------------------------------------\nPIKES entities processing....')
     """
-    This function extract textual entities of image captions (five captions per image) using PIKES tool.  
+    This function detects and links textual entities from image captions (five captions per image) using the PIKES tool and saves it into .ttl file.  
     input:
-        
+        image_id - Flickr30k dataset image id
     output:
         textual_entities - Textual entities detected by PIKES
         textual_entities_YAGO_type - Textual entities YAGO types linked by PIKES
         """    
-    textual_entities=[]
-    textual_entities_YAGO_type=[]
     temp_textual_entity=[]
     temp_textual_entity_type=[]
 
+    #TED and TET using PIKES
+    textual_entities=[]
+    textual_entities_YAGO_type=[]
+    
+    #TEM and indexed extracting and saving into .ttl file
     for i in range(5):
         caption=image_captions[i]['sentence']
-        caption_entities = get_entities_from_text(caption)
-        for row in caption_entities:
-            if 'http://dbpedia.org/class/yago/' in row[1] and 'http://www.newsreader-project.eu/time/P1D' not in row[0]:
-                temp_textual_entity.append(row[0][21:])
-                temp_textual_entity_type.append(row[1])
+        caption_entities_index=get_entities_from_text(caption)
+        for row1 in caption_entities_index:
+            if 'http://dbpedia.org/class/yago/' in row1[2] and 'http://www.newsreader-project.eu/time/P1D' not in row1[0]:
+                
+                uri_textual_entity=URIRef(vtkel[image_id]+'C'+str(i)+'/#'+row1[0][21:])
+                g1.add( (uri_textual_entity, URIRef(rdf['type']), URIRef(ks['TextualEntity'])) )
+                g1.add( (uri_textual_entity, URIRef(rdf['type']), URIRef(row1[2])) )
+                
+                uri_textual_entity_mention=URIRef(vtkel[image_id+'C'+str(i)+'/#char='+str(row1[4])+','+str(row1[5])])                    
+                g1.add( (uri_textual_entity, URIRef(gaf['denotedBy']), uri_textual_entity_mention) )  
+                g1.add( (uri_textual_entity_mention, URIRef(rdf['type']), URIRef(ks['TextualEntityMention'])) )
+                uri_caption_id=URIRef(vtkel[image_id]+'C'+str(i)+'/')
+                g1.add( (uri_textual_entity_mention, URIRef(ks['mentionOf']), uri_caption_id) )
+                g1.add( (uri_textual_entity_mention, URIRef(prov['wasAttributedTo']), URIRef(vtkel['PikesAnnotator'])) )
+                g1.add( (uri_textual_entity_mention, URIRef(nif['beginIndex']), Literal(row1[4])) )
+                g1.add( (uri_textual_entity_mention, URIRef(nif['endIndex']), Literal(row1[5])) )                
+                g1.add( (uri_textual_entity_mention, URIRef(nif['anchorOf']), Literal(row1[3])) )
+
+                temp_textual_entity.append(row1[0][21:])
+                temp_textual_entity_type.append(row1[2])
+                
         textual_entities.append(temp_textual_entity)
         textual_entities_YAGO_type.append(temp_textual_entity_type)
         temp_textual_entity=[]
         temp_textual_entity_type=[]
-        for row in caption_entities:
-            if 'http://groundedannotationframework.org/gaf#denotedBy' in row[1] and i==0:
-                print('...')
 
-    return textual_entities,textual_entities_YAGO_type
+    return textual_entities,textual_entities_YAGO_type                    
+
 
 def YAGO_taxonomy_mapping(Sparql_query_YAGO,upper_class,sub_class):
     """
-    This function takes two YAGO classes (i.e. Woman110787470, Person100007846) and find if they are in same or sub class hierarchy by mapping YAGO taxonomy.  
+    This function takes two YAGO classes (i.e. Woman110787470, Person100007846) and finds if they are in the same or sub-class hierarchy by 
+    mapping YAGO taxonomy and vice-versa.  
+    
     input:
       Sparql_query_YAGO – Sparql query for YAGO taxonomy
       upper_class – upper class type
@@ -219,15 +244,15 @@ def YAGO_taxonomy_mapping(Sparql_query_YAGO,upper_class,sub_class):
     output:
     success_flag – binary flag for hierarchy condition (true if same or sub-class success otherwise false)
     YAGO_mapping_hierarchy – the subclass hierarchy between two class extracted from YAGO taxonomy and stored in an array.
-    """
-
+    """            
     upper_class=str('http://dbpedia.org/class/yago/'+upper_class)
     sub_class=str('http://dbpedia.org/class/yago/'+sub_class)    
     YAGO_mapping_hierarchy=[]
     success_flag=False
     taxonomy_loop_counter=0
     temp_upper_class=upper_class
-    while success_flag!=True and taxonomy_loop_counter<3:
+
+    while success_flag!=True and taxonomy_loop_counter<2:
         taxonomy_loop_counter+=1
         if upper_class==sub_class:
             success_flag=True
@@ -248,12 +273,12 @@ def YAGO_taxonomy_mapping(Sparql_query_YAGO,upper_class,sub_class):
                         success_flag=True
                         YAGO_mapping_hierarchy.append(temp_upper_class)
                         break
-            if success_flag==False and taxonomy_loop_counter==3:
+            if success_flag==False and taxonomy_loop_counter==2:
                 break
     return success_flag,YAGO_mapping_hierarchy
 
 """
-Pre-train YOLO version 3 model for detecting visual objects.
+Pre-train YOLO version 3 (aspect ration = 416x416) model for detecting visual objects.
 """    
 
 def get_output_layers(net):
@@ -278,7 +303,8 @@ def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     Pre-train YOLO version 3 model for detecting visual objects.
     """    
     """
-        This function takes x, y, w, h, image.jpg and image id received from YOLO model and draw the bounding boxes.  
+    This function takes x, y, w, h, image.jpg and image id received from YOLO model and draw the bounding boxes.  
+    
     input:
         img – jpg image
         class_id – class id from YOLO pre-trained model
@@ -308,7 +334,9 @@ def draw_bounding_box(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
 
 def same_visual_mentions_handleing(visual_entities):
     """
-    This function assigns names to two or more than two same visual objects detected by YOLO. For example if there are two people in visual objects, this function will differentiable person class between person_1 and person_2 objects.   
+    This function assigns names to two or more than two same visual objects detected by YOLO. For example, if there are two people in 
+    visual objects, this function will differentiable person class between person_1 and person_2 objects.   
+    
     input:
         visual_entities – Visual objects detected by YOLO 
     Output:
@@ -325,174 +353,122 @@ def same_visual_mentions_handleing(visual_entities):
 
     return visual_entities
 
-def Allignment_of_visual_textual_entities(textual_entities,textual_entities_YAGO_type,Sparql_query,YOLO_class_ids,YOLO_class_ids_in_YAGO):
+def allignment_of_visual_textual_entities(image_captions,image_id,YOLO_class_names,YOLO_in_YAGO,yago_taxonomy,textual_entities,textual_entities_YAGO_type):
+
     """
-    This function takes visual entity mentions detected by YOLO object detector and textual entity mentions detected by 
-    PIKES tool and make alignment using YAGO taxonomy mapping. YAGO taxonomy mapping is done by, processing visual-textual classes
-    (visual entity type and textual entity type) and mapped through YAGO taxonomy for same-class or sub-class hierarchy detection.
+    This function takes visual entity mentions detected by YOLO object detector and textual entity mentions detected by PIKES
+    tool and make alignment using YAGO taxonomy mapping. YAGO taxonomy mapping is done by, processing visual-textual classes
+    (i.e. visual and textual entity YAGO-type) and mapped through YAGO taxonomy for same-class or sub-class hierarchy detection.
      
     input:
+        image_captions - Flickr30k dataset image caption text
+        image_id - Flickr30k dataset image id
+        YOLO_class_names - YOLO object labe (with respect to gender classification if having person label)
+        YOLO_in_YAGO - YOLO label YAGO-type
+        yago_taxonomy - YAGO taxonomy parsed file
         textual_entities - Textual entity mentions process by PIKES
-        textual_entities_YAGO_type - Textual entity mentions typed in YAGO
-        Sparql_query – Sparql query for mapping
-        YOLO_class_ids – Visual entity mentions (visual objects) detected by YOLO
-        YOLO_class_ids_in_YAGO – Corresponding YOLO class ids in YAGO class type
+        textual_entities_YAGO_type - Textual entity mentions typed in YAGO process by PIKES
  
      Output:
         
-    """
-
-    mapping_flage=False
-    for i in range(len(YOLO_class_ids_in_YAGO)):
-        visual_class_for_mapping=YOLO_class_ids_in_YAGO[i]
-        visual_mention=YOLO_class_ids[i]
+    """    
+    for i in range(5):
         
-        for caption_id in range(5):
-            same_visual_mention_count=0
-            for j in range(len(textual_entities_YAGO_type[caption_id])):
-                textual_class_for_mapping=textual_entities_YAGO_type[caption_id][j][30:]
+        #create temporary list for VED, VET, TED and TET
+        temp_VED=YOLO_class_names.copy()
+        temp_VET=YOLO_in_YAGO.copy()
+        temp_TED=textual_entities[i]
+        temp_TET=textual_entities_YAGO_type[i]
+        switch_flag=False
+        VE_length=len(YOLO_class_names)-1
+
+        while len(temp_VED)>=1 and VE_length>=0:
+            VE_temp=temp_VET[VE_length]
+            index_VE=VE_length
+            VE_length-=1
+            # find alignment between VET and TET one by one
+            for k in range(len(textual_entities[i])):
                 mapping_hierarchy=[]
-                mapping_flage,mapping_hierarchy=YAGO_taxonomy_mapping(Sparql_query,visual_class_for_mapping,textual_class_for_mapping)
-
+                temp_VE_class=VE_temp
+                temp_TE_class=temp_TET[k][30:]
+                mapping_flage,mapping_hierarchy=YAGO_taxonomy_mapping(yago_taxonomy,temp_TE_class,temp_VE_class)
+                
+                #swtiched TET with VET for YAGO-hierarchy checking
+                if mapping_flage==False:
+                        mapping_flage,mapping_hierarchy=YAGO_taxonomy_mapping(yago_taxonomy,temp_VE_class,temp_TE_class)
+                        if mapping_flage==True:
+                            switch_flag=True
+                            
                 if mapping_flage==True:
-                    same_visual_mention_count+=1
-                    if visual_class_for_mapping!=textual_class_for_mapping:
-                        g1.add( (URIRef(yago[visual_class_for_mapping]), URIRef(rdfs['subClassOf']), URIRef(yago[textual_class_for_mapping])) )
-                    if same_visual_mention_count==1:
-                        uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                        uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                        g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
 
-                    elif same_visual_mention_count==2:
-                        for k in range(len(YOLO_class_ids)):
-                            if YOLO_class_ids[k][-2:]=='_2':
-                                visual_mention=YOLO_class_ids[k]
-                                uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-                            elif visual_class_for_mapping==textual_class_for_mapping:
-                                visual_mention=YOLO_class_ids[k]
-                                uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-
-                    elif same_visual_mention_count==3:
-                        for k in range(len(YOLO_class_ids)):
-                            if YOLO_class_ids[k][-2:]=='_3':
-                                visual_mention=YOLO_class_ids[k]
-                                uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-                            elif visual_class_for_mapping==textual_class_for_mapping:
-                                visual_mention=YOLO_class_ids[k]
-                                uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-
-                    elif same_visual_mention_count==4:
-                        for k in range(len(YOLO_class_ids)):
-                            if YOLO_class_ids[k][-2:]=='_4':
-                                visual_mention=YOLO_class_ids[k]
-                                uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-                            elif visual_class_for_mapping==textual_class_for_mapping:
-                                visual_mention=YOLO_class_ids[k]
-                                uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-                                                                         
-                    g1.add( (uri_textual_entity, URIRef(rdf['type']), URIRef(textual_entities_YAGO_type[caption_id][j])) )
-
-                    start_index=0
-                    start_index=image_captions[caption_id]['sentence'].find(textual_entities[caption_id][j],start_index)
-                    end_index=len(textual_entities[caption_id][j])+start_index
-                    textual_entity_mention=URIRef(vtkel[image_id+'C'+str(caption_id)+'/#char='+str(start_index)+','+str(end_index)])
-                    g1.add( (uri_textual_entity, URIRef(gaf['denotedBy']), textual_entity_mention) )
-                    g1.add( (textual_entity_mention, URIRef(rdf['type']), URIRef(ks['TextualEntityMention'])) )
-
-                    uri_caption_id=URIRef(vtkel[image_id+'C'+str(caption_id)+'/'])
-                    g1.add( (textual_entity_mention, URIRef(ks['mentionOf']), uri_caption_id) )
-
-                    g1.add( (textual_entity_mention, URIRef(nif['anchorOf']), Literal(textual_entities[caption_id][j])) )   
-                    g1.add( (textual_entity_mention, URIRef(nif['beginIndex']), Literal(start_index)) )   
-                    g1.add( (textual_entity_mention, URIRef(nif['endIndex']), Literal(end_index)) )   
-                    g1.add( (textual_entity_mention, URIRef(prov['wasAttributedTo']), URIRef(vtkel['PikesAnnotator'])) )                
+                    #stored CRC into .tll file for VT-LinKEr annotations
+                    if temp_TE_class!=temp_VE_class and switch_flag==False:
+                        g1.add( (URIRef(yago[temp_TE_class]), URIRef(rdfs['subClassOf']), URIRef(yago[temp_VE_class])) )
+                    elif temp_TE_class!=temp_VE_class and switch_flag==True:
+                        g1.add( (URIRef(yago[temp_VE_class]), URIRef(rdfs['subClassOf']), URIRef(yago[temp_TE_class])) )
                         
-                elif mapping_flage==False:
-                    mapping_flage,mapping_hierarchy=YAGO_taxonomy_mapping(Sparql_query,textual_class_for_mapping,visual_class_for_mapping)
-                    if mapping_flage==True:
-                        same_visual_mention_count+=1
-                        if visual_class_for_mapping!=textual_class_for_mapping:
-                            g1.add( (URIRef(yago[textual_class_for_mapping]), URIRef(rdfs['subClassOf']), URIRef(yago[visual_class_for_mapping])) )
+                    uri_textual_entity=URIRef(vtkel[image_id+'C'+str(i)]+'/#'+temp_TED[k])
+                    uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+temp_VED[index_VE]])
+                    g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )                    
+                    g1.add( (uri_textual_entity, URIRef(rdf['type']), URIRef(yago[temp_TE_class])) )
 
-                        if same_visual_mention_count==1:
-                            uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                            uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                            g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
+                    temp_VED.pop(index_VE)
+                    temp_VET.pop(index_VE)
+                    temp_TED.pop(k)
+                    temp_TET.pop(k)
+                    break
+
+            if mapping_flage==False:
+                temp_VED.pop(index_VE)
+                temp_VET.pop(index_VE)            
+
+
+def gender_classification(gender_data, bboxes,YOLO_in_YAGO,YOLO_class_names,bounding_boxes):
+
+    """
+    This function takes gender data from the Gender-classification algorithm and compared it with the YOLO person label to classify 
+    the person class between Male and Female. If the face detected by gender-classifier overlap with person bounding box then we mark
+    it correct (person->male/female).
+     
+    input:
+        gender_data - gender classifier data from algorithm 
+        bboxes -  gender face bounding boxes data
+        YOLO_in_YAGO -  YAGO typed of YOLO
+        YOLO_class_names - YOLO class labels
+        bounding_boxes - YOLO bounding boxes data
  
-                        elif same_visual_mention_count==2:
-                            for k in range(len(YOLO_class_ids)):
-                                if YOLO_class_ids[k][-2:]=='_2':
-                                    visual_mention=YOLO_class_ids[k]
-                                    uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                    uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                    g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-                                elif visual_class_for_mapping==textual_class_for_mapping:
-                                    visual_mention=YOLO_class_ids[k]
-                                    uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                    uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                    g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-
-                        elif same_visual_mention_count==3:
-                            for k in range(len(YOLO_class_ids)):
-                                if YOLO_class_ids[k][-2:]=='_3':
-                                    visual_mention=YOLO_class_ids[k]
-                                    uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                    uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                    g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-                                elif visual_class_for_mapping==textual_class_for_mapping:
-                                    visual_mention=YOLO_class_ids[k]
-                                    uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                    uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                    g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-
-                        elif same_visual_mention_count==4:
-                            for k in range(len(YOLO_class_ids)):
-                                if YOLO_class_ids[k][-2:]=='_4':
-                                    visual_mention=YOLO_class_ids[k]
-                                    uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                    uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                    g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
-                                elif visual_class_for_mapping==textual_class_for_mapping:
-                                    visual_mention=YOLO_class_ids[k]
-                                    uri_textual_entity=URIRef(vtkel[image_id+'C'+str(caption_id)]+'/#'+textual_entities[caption_id][j])
-                                    uri_visual_entity=URIRef(vtkel[image_id+'I'+'/#'+visual_mention])
-                                    g1.add( (uri_textual_entity, URIRef(owl['sameAs']), uri_visual_entity) )
+     Output:
+        YOLO_in_YAGO - YAGO typed YOLO class lables (with respect to gender-classifier)
+        YOLO_class_names - YOLO class lables (with respect to gender-classifier)
+    """        
     
-                        g1.add( (uri_textual_entity, URIRef(rdf['type']), URIRef(textual_entities_YAGO_type[caption_id][j])) )
-                        start_index=0
-                        start_index=image_captions[caption_id]['sentence'].find(textual_entities[caption_id][j],start_index)
-                        end_index=len(textual_entities[caption_id][j])+start_index
-                        textual_entity_mention=URIRef(vtkel[image_id+'C'+str(caption_id)+'/#char='+str(start_index)+','+str(end_index)])
-                        g1.add( (uri_textual_entity, URIRef(gaf['denotedBy']), textual_entity_mention) )
-                        g1.add( (textual_entity_mention, URIRef(rdf['type']), URIRef(ks['TextualEntityMention'])) )
-                        uri_caption_id=URIRef(vtkel[image_id+'C'+str(caption_id)+'/'])
-                        g1.add( (textual_entity_mention, URIRef(ks['mentionOf']), uri_caption_id) )
-                        g1.add( (textual_entity_mention, URIRef(nif['anchorOf']), Literal(textual_entities[caption_id][j])) )
-                        g1.add( (textual_entity_mention, URIRef(nif['beginIndex']), Literal(start_index)) )
-                        g1.add( (textual_entity_mention, URIRef(nif['endIndex']), Literal(end_index)) )
-                        g1.add( (textual_entity_mention, URIRef(prov['wasAttributedTo']), URIRef(vtkel['PikesAnnotator'])) )  
+    for i in range(len(gender_data)):
+        for j in range(len(YOLO_in_YAGO)):
+            if 'person' in YOLO_class_names[j]:
 
+                if (bboxes[i][0]>=bounding_boxes[j][0] and bboxes[i][1]>=bounding_boxes[j][1] and (bboxes[i][2]>=bounding_boxes[j][0] and bboxes[i][2]<=bounding_boxes[j][2]) and (bboxes[i][3]>=bounding_boxes[j][1] and bboxes[i][3]<=bounding_boxes[j][3]) ):
 
-###YAGO Taxonomy .ttl file path
-yago_taxonomy_file_path="yago taxonomy file path"
+                    if 'Male' in gender_data[i]:
+                        YOLO_in_YAGO[j]='Male109624168'
+                        YOLO_class_names[j]='male'
+                    elif 'Female' in gender_data[i]:
+                        YOLO_in_YAGO[j]='Female109619168'
+                        YOLO_class_names[j]='female'
+
+    return YOLO_in_YAGO,YOLO_class_names
+        
+#path file of YAGO Taxonomy .ttl file path
+yago_taxonomy_file_path='/root-directory/yago_taxonomy-v1.1.ttl'
+
+#parsing YAGO taxonomy file
 graph_1=ConjunctiveGraph()
 yago_taxonomy=graph_1.parse(yago_taxonomy_file_path, format="turtle")
 
-#upload image folder
 image_file_counter=0
-images_directory_path='image folder path'
+
+#upload image folder path
+images_directory_path='/root-directory/Image-Folder/'
+
 for filename in os.listdir(images_directory_path):
 
     image_file_counter+=1    
@@ -505,9 +481,11 @@ for filename in os.listdir(images_directory_path):
                 
         #==> read the image caption file
         image_id=image_id[:-4]
-        image_captions=get_sentence_data('image captions folder path'+image_id+'.txt')
+        
+        #Flickr30k captions directory
+        image_captions=get_sentence_data('/root-directory/Flickr30k_caption/'+image_id+'.txt')
 
-        #==> image captions
+        #==> dispaly image-captions
         print('----------------------------------------------------\nImage captions processing....\n')
         print('C0:',image_captions[0]['sentence'])
         print('C1:',image_captions[1]['sentence'])
@@ -515,14 +493,14 @@ for filename in os.listdir(images_directory_path):
         print('C3:',image_captions[3]['sentence'])
         print('C4:',image_captions[4]['sentence'])
                 
-        ###==> PIKES System Phase
+        # PIKES tool processing phase
         print('\n-------------------------------------------------\nPIKES processing....')
         textual_entities=[]
         textual_entities_YAGO_type=[]
-        textual_entities,textual_entities_YAGO_type=Textual_entities_detetction_linking()
+        textual_entities,textual_entities_YAGO_type=Textual_entities_detetction_linking(image_id)
         
-        ###==> YOLO System Phase
-        print('\n-------------------------------------------------\nYOLO objects detection processing....')        
+        # YOLO tool processing phase
+        print('\n-------------------------------------------------\nYOLO objects detection processing....')  
         Width = image.shape[1]
         Height = image.shape[0]
         scale = 0.00392
@@ -530,12 +508,12 @@ for filename in os.listdir(images_directory_path):
         """
         Pre-train YOLO version 3 model for detecting visual objects.
         """    
-        # read class names from text file
+        # read class names from text file (YOLO-tool helping files paths)
         classes = None
-        with open('yolov3.txt', 'r') as f:
+        with open('/root-directory/yolov3.txt', 'r') as f:
             classes = [line.strip() for line in f.readlines()]
         COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
-        net = cv2.dnn.readNet('yolov3_.weights file path', 'yolov3.cfg file path')
+        net = cv2.dnn.readNet('/root-directory/yolov31.weights', '/root-directory/yolov3.cfg')
         
         # create input blob
         blob = cv2.dnn.blobFromImage(image, scale, (416,416), (0,0,0), True, crop=False)
@@ -555,6 +533,7 @@ for filename in os.listdir(images_directory_path):
         confidences = []
         boxes = []
         conf_threshold = 0.3
+        
         #Non-maximum suppression (NMS)
         nms_threshold = 0.4
         
@@ -598,50 +577,63 @@ for filename in os.listdir(images_directory_path):
             temp_storing_bb=[]
 
         yolo_class_in_YAGO=[]
+        for i in range(len(YOLO_class_names)):
+            for x in COCO_TO_YAGO:
+                if YOLO_class_names[i]==x:
+                    yolo_class_in_YAGO.append(COCO_TO_YAGO[x])        
         
-        for l in range(len(YOLO_class_names)):
-            yolo_class_in_YAGO.append(COCO_TO_YAGO[YOLO_class_names[l]])
+        YOLO_class_in_YAGO=yolo_class_in_YAGO
 
-        ###==> Visual-Textual alignment Phase
+        # Visual-Textual alignment (VTC) phase processing
         print('\n-------------------------------------------------\nAlignment processing....')   
-        graph_2=Textual_Entities_rdfTripes(textual_entities,textual_entities_YAGO_type,image_id,image_captions)
+
+        # differentiate same visual entities mentions (i.e. person, person -> person_1 & person_2)                               
+        YOLO_class_names_unique=same_visual_mentions_handleing(YOLO_class_names)
+
+        # Gender identification phase processing
+        gender_data, bboxes=Gender_main(image_path)
+        YOLO_in_YAGO_gender,YOLO_class_names_gender=gender_classification(gender_data, bboxes,YOLO_class_in_YAGO,YOLO_class_names_unique,bounding_boxes)
+
+
+        graph_2=Bounding_boxes_annotations(bounding_boxes,YOLO_class_in_YAGO,YOLO_class_names_unique,image_id)
+
+        # add to the existing RDF graphs
         g1=g1+graph_2
-        #=> same YAGO class merge to avoid extrac processing of YAGO taxonomy
-        b = set()
-        unique_YOLO_class_in_YAGO = []
-        for x in yolo_class_in_YAGO:
-            if x not in b:
-                unique_YOLO_class_in_YAGO.append(x)
-                b.add(x)
-                                       
-        YOLO_class_names_unique=same_visual_mentions_handleing(yolo_class_in_YAGO)
-        graph_3=Bounding_boxes_annotations(bounding_boxes,yolo_class_in_YAGO,YOLO_class_names_unique,image_id)
-        g1=g1+graph_3
-     
-        Allignment_of_visual_textual_entities(textual_entities,textual_entities_YAGO_type,yago_taxonomy,YOLO_class_names_unique,unique_YOLO_class_in_YAGO)
+                
+        # Visual-textual alignment function-call
+        allignment_of_visual_textual_entities(image_captions,image_id,YOLO_class_names_gender,YOLO_in_YAGO_gender,yago_taxonomy,textual_entities,textual_entities_YAGO_type)
         
+        # META data information RDF triples
         RDF1_s=URIRef(vtkel)
         g1.add( (URIRef(vtkel), URIRef(rdf['type']), URIRef("http://purl.org/dc/dcmitype/Software")) )
 
+        # autherization
         authors=Literal("Shahi Dost & Luciano Serafini")
         g1.add( (URIRef(vtkel), URIRef("http://purl.org/dc/terms/creator"), authors) )        
 
+        #time and language information
         t= datetime.datetime.now()
         creation_time=Literal( str(t.year)+'-'+str(t.month)+'-'+str(t.day)+':'+'-'+str(t.hour)+':'+str(t.minute)+':'+str(t.second))
         g1.add( (URIRef(vtkel), URIRef("http://purl.org/dc/terms/created"), creation_time) )
         g1.add( (URIRef(vtkel), URIRef("http://purl.org/dc/terms/language"), URIRef("http://lexvo.org/id/iso639-3/eng")) )
 
+        # VT-LinKEr triple
         uri_VT_LinKEr_title=Literal("Visual Textual Linker of Entities with Knowledge (VT-LinKEr)")
         g1.add( (URIRef(vtkel), URIRef("http://purl.org/dc/terms/title"), uri_VT_LinKEr_title) )
         g1.add( (URIRef(vtkel["#"+image_id]), URIRef(rdf['type']), URIRef("http://purl.org/dc/dcmitype/Collection")) )
         
-        g2=VTKEL_annotations(image_id,image_captions)
-        g1=g1+g2
-        print('end of VT-LinkEr')
-        #==> stored the resultant image file .jpg form
-        cv2.imwrite('folder path to stored resultant images from yolo/'+image_id+'_yolo.jpg', image)
-        cv2.destroyAllWindows()        
+        # VTKEL annoations function call                      
+        graph_3=VTKEL_annotations(image_id,image_captions)
         
-g1.serialize(destination='file path to stored annotated file(.ttl format)'+'VT-LinKEr_annotations.ttl', format='turtle')
+        # add to the existing RDF graphs
+        g1=g1+graph_3
+        print('\nend of VT-LinkEr tool! :)')
+
+        # stored the resultant image files into .jpg form
+        cv2.imwrite('/root-directory/output-images/'+image_id+'_VT-LinKEr'+'image_file_counter'+'.jpg', image)
+        cv2.destroyAllWindows()        
+
+# stored VT-LinKEr output annotated file in .ttl formate        
+g1.serialize(destination='/root-directory/annoation-folder/VT-LinKEr_.ttl', format='turtle')
         
         
