@@ -1,0 +1,3145 @@
+@prefix dc: <http://purl.org/dc/elements/1.1#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gaf: <http://groundedannotationframework.org/gaf#> .
+@prefix ks: <http://dkm.fbk.eu/ontologies/knowledgestore#> .
+@prefix nfo: <http://oscaf.sourceforge.net/> .
+@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <https://www.w3.org/TR/prov-o/#prov-o-at-a-glance/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vtkel: <http://vksflickr30k.fbk.eu/resource/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix yago: <http://dbpedia.org/class/yago/> .
+
+vtkel: a <http://purl.org/dc/dcmitype/Software> ;
+    dct:created "2019-12-5:-16:12:2",
+        "2019-12-5:-16:22:3",
+        "2019-12-5:-16:23:51",
+        "2019-12-5:-16:2:31",
+        "2019-12-5:-16:40:17",
+        "2019-12-5:-16:50:9",
+        "2019-12-5:-16:55:47",
+        "2019-12-5:-16:7:36",
+        "2019-12-5:-17:17:19",
+        "2019-12-5:-17:34:43" ;
+    dct:creator "Shahi Dost & Luciano Serafini" ;
+    dct:language <http://lexvo.org/id/iso639-3/eng> ;
+    dct:title "Visual Textual Linker of Entities with Knowledge (VT-LinKEr)" .
+
+<http://vksflickr30k.fbk.eu/resource/#205842> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#2148982> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#23008340> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#256063> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#36979> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#371902> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#4378823> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#65567> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#793558> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/#881336> a <http://purl.org/dc/dcmitype/Collection> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#backpack> a yago:Backpack102769748,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C0/#char=39,47> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#boy> a yago:MaleChild110285313,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C0/#char=68,71> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C0/#char=9,13> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C0/#char=88,93> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#shirt_2> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C0/#char=29,34> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#stroller> a yago:Saunterer110553235,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C0/#char=104,112> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#boy> a yago:MaleChild110285313,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C1/#char=48,51> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C1/#char=9,13> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#outfit> a yago:Kit103619396,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C1/#char=24,30> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#outfit_2> a yago:Kit103619396,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C1/#char=63,69> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#stroller> a yago:Saunterer110553235,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C1/#char=75,83> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#boy> a yago:MaleChild110285313,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C2/#char=55,58> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C2/#char=2,6> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#outfit> a yago:Kit103619396,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C2/#char=17,23> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#stroller> a yago:Saunterer110553235,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C2/#char=39,47> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#backpack> a yago:Backpack102769748,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C3/#char=17,25> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#brother> a yago:Buddy109877951,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C3/#char=34,41> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C3/#char=7,11> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#stroller> a yago:Saunterer110553235,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C3/#char=45,53> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C4/#child> a yago:Child109917593,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C4/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C4/#sibling> a yago:Sibling110595164,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C4/#char=30,37> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C4/#stroller> a yago:Saunterer110553235,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842C4/#char=43,51> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/205842I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C0/#bottle> a yago:Bottle102876657,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C0/#char=47,53> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/2148982I/#bottle> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C0/#jacket> a yago:Jacket103589791,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C0/#char=19,25> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C0/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C0/#char=2,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/2148982I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C1/#adult> a yago:Adult109605289,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C1/#char=14,20> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/2148982I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C1/#beverage> a yago:Beverage107881800,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C1/#char=40,49> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C1/#party> a yago:Party107447641,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C1/#char=55,60> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#company> a yago:Company108058098,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C2/#char=31,38> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C2/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#liquor> a yago:Liquor107901587,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C2/#char=44,50> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#people> a yago:People107942152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C2/#char=11,17> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/2148982I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C3/#friend> a yago:Friend110112591,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C3/#char=11,18> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/2148982I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C3/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C3/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C4/#kitchen> a yago:Kitchen103619890,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C4/#char=24,31> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C4/#people> a yago:People107942152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982C4/#char=6,12> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/2148982I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#cup> a yago:Cup103147509 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=432,307,466,351> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#male> a yago:Male109624168 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=14,129,242,435>,
+        <http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=218,62,344,444> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#back> a yago:Back102767433,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C0/#char=23,27> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#ball> a yago:Ball102778669,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C0/#char=60,64> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#ball> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#court> a yago:Court108329453,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C0/#char=47,52> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C0/#char=40,46> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C0/#char=8,13> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#ball> a yago:Ball102778669,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C1/#char=65,69> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#ball> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#court> a yago:Court108329453,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C1/#char=35,40> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#player> a yago:Player110439851,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C1/#char=16,22> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C1/#char=9,15> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C2/#player> a yago:Player110439851,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C2/#char=16,22> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C2/#racket> a yago:Racket104039381,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C2/#char=48,54> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#racket> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C2/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C2/#char=9,15> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C3/#char=17,22> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#skirt> a yago:Skirt104230808,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C3/#char=33,38> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C3/#char=47,53> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C3/#char=0,5> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#racket> a yago:Racket104039381,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C4/#char=40,46> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#racket> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C4/#char=19,24> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#tennis> a yago:Tennis100482298,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C4/#char=33,39> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340C4/#char=2,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/23008340I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#clyde> a yago:River109411430,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C0/#char=112,117> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#display> a yago:Display106879521,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C0/#char=33,40> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#farm> a yago:Farm103322099,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C0/#char=121,125> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#market> a yago:GroceryStore103461385,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C0/#char=55,66> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#people> a yago:People107942152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C0/#char=6,12> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/256063I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#product> a yago:Merchandise103748886,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C0/#char=98,106> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#man> a yago:Man110287213,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C1/#char=4,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/256063I/#male> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#produce> a yago:Produce107705711,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C1/#char=35,42> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#stand> a yago:PointOfView106210363,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C1/#char=43,48> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C1/#char=14,19> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/256063I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C2/#jelly> a yago:Jelly114925198,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C2/#char=38,43> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C2/#kind> a yago:Kind105839024,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C2/#char=30,34> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C2/#people> a yago:People107942152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C2/#char=10,16> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/256063I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#farmer> a yago:Farmer110078806,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C3/#char=27,34> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/256063I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#market> a yago:GroceryStore103461385,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C3/#char=35,41> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#product> a yago:Merchandise103748886,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C3/#char=13,21> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#vendor> a yago:Seller110577284,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C3/#char=0,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/256063I/#person_3> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C4/#farmer> a yago:Farmer110078806,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C4/#char=0,6> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/256063I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C4/#selling> a yago:Selling101113068,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C4/#char=10,17> .
+
+<http://vksflickr30k.fbk.eu/resource/256063C4/#van> a yago:Van104520382,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063C4/#char=37,40> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#card> a yago:Card102962545,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C0/#char=27,32> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#friend> a yago:Friend110112591,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C0/#char=11,18> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/36979I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C0/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#mistake> a yago:Mistake100070965,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C0/#char=89,96> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#college> a yago:College108278324,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C1/#char=11,18> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C1/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#poker> a yago:Poker100494768,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C1/#char=58,63> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#student> a yago:Student110665698,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C1/#char=19,27> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/36979I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C2/#card> a yago:Card102962545,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C2/#char=17,22> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C2/#man> a yago:Homo102472293,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C2/#char=8,11> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C2/#table> a yago:Table104379243,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C2/#char=44,49> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C3/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C3/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C3/#man> a yago:Homo102472293,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C3/#char=19,22> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C3/#poker> a yago:Poker100494768,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C3/#char=31,36> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C4/#male> a yago:Male109624168,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C4/#char=10,15> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/36979I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C4/#poker> a yago:Poker100494768,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979C4/#char=24,29> .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#cup> a yago:Cup103147509 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979I/#xywh=266,164,278,186> .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#person_2> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979I/#xywh=354,42,472,208> .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#person_3> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979I/#xywh=-4,77,194,373> .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#person_4> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979I/#xywh=266,50,366,196> .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#person_5> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979I/#xywh=185,58,263,168> .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#person_6> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979I/#xywh=318,50,500,386> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#foreground> a yago:Foreground103382708,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C0/#char=69,79> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#grill> a yago:Grill103459591,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C0/#char=56,61> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#man> a yago:Man110287213,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C0/#char=4,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/371902I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#patio> a yago:Patio103899768,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C0/#char=37,42> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C0/#char=14,19> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/371902I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#barbecue> a yago:Barbecue107576781,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C1/#char=27,35> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#man> a yago:Man110287213,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C1/#char=4,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/371902I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#rooftop> a yago:Rooftop108663774,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C1/#char=41,48> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C1/#char=14,19> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/371902I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C2/#barbecue> a yago:Barbecue107576781,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C2/#char=36,44> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C2/#friend> a yago:Friend110112591,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C2/#char=11,18> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/371902I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C2/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C2/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C3/#friend> a yago:Friend110112591,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C3/#char=6,13> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/371902I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C3/#table> a yago:Table104379243,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C3/#char=38,43> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C4/#adult> a yago:Adult109605289,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C4/#char=6,12> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/371902I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C4/#food> a yago:Food105811214,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C4/#char=22,26> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C4/#grill> a yago:Grill103459591,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902C4/#char=36,41> .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#chair> a yago:Chair103001627 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=130,226,232,364> .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#chair_2> a yago:Chair103001627 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=58,142,100,194> .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#chair_3> a yago:Chair103001627 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=342,221,434,369> .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#cup> a yago:Cup103147509 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=181,217,197,231> .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#cup_2> a yago:Cup103147509 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=192,198,206,214> .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#person_3> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=240,132,438,352> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#cellphone> a yago:CellularTelephone102992529,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C0/#char=47,56> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#daughter> a yago:Daughter109992837,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C0/#char=75,83> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#dress> a yago:Apparel102728440,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C0/#char=106,111> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#poncho> a yago:Poncho103980874,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C0/#char=22,28> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C0/#char=2,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#cellphone> a yago:CellularTelephone102992529,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C1/#char=47,56> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#dress> a yago:Apparel102728440,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C1/#char=96,101> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C1/#char=81,85> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#shawl> a yago:Shawl104186455,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C1/#char=31,36> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#wear> a yago:Record100047745,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C1/#char=8,15> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C1/#char=2,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#cellphone> a yago:CellularTelephone102992529,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C2/#char=27,36> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#dress> a yago:Apparel102728440,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C2/#char=79,84> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C2/#char=52,56> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C2/#char=14,19> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#cellphone> a yago:CellularTelephone102992529,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C3/#char=69,78> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#dress> a yago:Dress103236735,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C3/#char=24,29> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C3/#char=9,13> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C3/#char=49,54> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#cellphone> a yago:CellularTelephone102992529,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C4/#char=60,69> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#costume> a yago:Costume103113657,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C4/#char=31,38> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#toddler> a yago:Toddler110714465,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C4/#char=18,25> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823C4/#char=2,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/4378823I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#car> a yago:Car102958343 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=216,38,248,70> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#car_2> a yago:Car102958343 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=296,30,368,66> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#female> a yago:Female109619168 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=14,14,304,486>,
+        <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=195,53,451,499> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#person_3> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=370,10,406,62> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#person_4> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=1,18,83,158> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#person_5> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=240,17,270,77> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#person_6> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=255,17,307,73> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C0/#dress> a yago:Apparel102728440,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C0/#char=36,41> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C0/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C0/#char=22,26> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/65567I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C0/#man> a yago:Man110287213,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C0/#char=10,13> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/65567I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C1/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C1/#char=4,9> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C1/#people> a yago:People107942152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C1/#char=13,19> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/65567I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C1/#wedding> a yago:Wedding107452074,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C1/#char=41,48> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#function> a yago:Function100720565,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C2/#char=38,46> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#man> a yago:Man110287213,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C2/#char=2,5> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/65567I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#wedding> a yago:Wedding107452074,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C2/#char=30,37> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C2/#char=10,15> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/65567I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#arm> a yago:Weapon104565375,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C3/#char=23,26> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#event> a yago:Event100029378,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C3/#char=39,44> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#man> a yago:Man110287213,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C3/#char=16,19> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/65567I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C3/#char=2,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/65567I/#person_2> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C4/#building> a yago:Building102913152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C4/#char=31,39> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C4/#party> a yago:Party108252602,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C4/#char=10,15> .
+
+<http://vksflickr30k.fbk.eu/resource/65567C4/#wedding> a yago:Wedding107452074,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567C4/#char=2,9> .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#female> a yago:Female109619168 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567I/#xywh=170,96,322,500> .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#male> a yago:Male109624168 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567I/#xywh=17,72,203,492> .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#person_3> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567I/#xywh=0,86,78,500> .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#tie> a yago:Necktie103815615 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567I/#xywh=113,160,131,230> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#boy> a yago:MaleChild110285313,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C0/#char=62,65> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C0/#char=8,12> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/793558I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C0/#char=85,90> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#shirt_2> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C0/#char=39,44> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#shoelace> a yago:Shoelace104200637,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C0/#char=109,118> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#boy> a yago:MaleChild110285313,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C1/#char=9,12> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#dress> a yago:Dress103236735,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C1/#char=62,67> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C1/#char=43,47> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/793558I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#ground> a yago:Land109334396,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C1/#char=87,93> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C1/#char=24,29> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#boy> a yago:Son110624074,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C2/#char=57,60> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#dress> a yago:Dress103236735,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C2/#char=18,23> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C2/#char=8,12> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/793558I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C2/#char=72,77> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#shoe> a yago:Shoe104199027,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C2/#char=38,43> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#boy> a yago:MaleChild110285313,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C3/#char=29,32> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#girl> a yago:Girl110129825,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C3/#char=9,13> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/793558I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#shoe> a yago:Shoe104199027,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C3/#char=36,40> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#street> a yago:Street104334599,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C3/#char=48,54> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C4/#child> a yago:Child109917593,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C4/#char=4,9> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/793558I/#person> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C4/#shoe> a yago:Shoe104199027,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C4/#char=26,31> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C4/#tie> a yago:Necktie103815615,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558C4/#char=10,14> .
+
+<http://vksflickr30k.fbk.eu/resource/793558I/#person_2> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558I/#xywh=130,8,242,354> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#card> a yago:Card102962545,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C0/#char=79,83> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#drink> a yago:Drink100748515,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C0/#char=35,41> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#energy> a yago:ExecutiveDepartment108123167,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C0/#char=53,59> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#game> a yago:Game100455599,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C0/#char=84,89> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#kitchen> a yago:Kitchen103619890,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C1/#char=76,83> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#man> a yago:Man110287213,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C1/#char=35,38> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/881336I/#male> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#shirt> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C1/#char=51,56> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#shirt_2> a yago:Shirt104197391,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C1/#char=21,26> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C1/#char=2,7> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/881336I/#female> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#card> a yago:Card102962545,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C2/#char=66,71> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#drinking> a yago:Drink100748515,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C2/#char=37,45> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#group> a yago:Group100031264,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C2/#char=2,7> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#kitchen> a yago:Kitchen103619890,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C2/#char=23,30> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#people> a yago:People107942152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C2/#char=11,17> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/881336I/#female> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#table> a yago:Table104379243,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C2/#char=31,36> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#kitchen> a yago:Kitchen103619890,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C3/#char=16,23> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#kitchen_2> a yago:Kitchen103619890,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C3/#char=57,64> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#people> a yago:People107942152,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C3/#char=0,6> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/881336I/#female> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#table> a yago:Table104379243,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C3/#char=65,70> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#drinking> a yago:Drink100748515,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C4/#char=20,28> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#game> a yago:Game100455599,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C4/#char=20,33> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#kitchen> a yago:Kitchen103619890,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C4/#char=41,48> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#woman> a yago:Woman110787470,
+        ks:TextualEntity ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336C4/#char=4,9> ;
+    owl:sameAs <http://vksflickr30k.fbk.eu/resource/881336I/#female> .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#bottle> a yago:Bottle102876657 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336I/#xywh=132,173,158,225> .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#oven> a yago:Oven103862676 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336I/#xywh=358,248,494,378> .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#phone> a yago:Telephone104401088 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336I/#xywh=268,316,316,328> .
+
+yago:Daughter109992837 rdfs:subClassOf yago:Person100007846 .
+
+yago:Seller110577284 rdfs:subClassOf yago:Person100007846 .
+
+yago:Sibling110595164 rdfs:subClassOf yago:Person100007846 .
+
+yago:Student110665698 rdfs:subClassOf yago:Person100007846 .
+
+yago:Toddler110714465 rdfs:subClassOf yago:Person100007846 .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#char=104,112> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C0/> ;
+    nif:anchorOf "stroller" ;
+    nif:beginIndex "104"^^xsd:int ;
+    nif:endIndex "112"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#char=29,34> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C0/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "29"^^xsd:int ;
+    nif:endIndex "34"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#char=39,47> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C0/> ;
+    nif:anchorOf "backpack" ;
+    nif:beginIndex "39"^^xsd:int ;
+    nif:endIndex "47"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#char=68,71> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C0/> ;
+    nif:anchorOf "boy" ;
+    nif:beginIndex "68"^^xsd:int ;
+    nif:endIndex "71"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#char=88,93> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C0/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "88"^^xsd:int ;
+    nif:endIndex "93"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/#char=9,13> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C0/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "9"^^xsd:int ;
+    nif:endIndex "13"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#char=24,30> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C1/> ;
+    nif:anchorOf "outfit" ;
+    nif:beginIndex "24"^^xsd:int ;
+    nif:endIndex "30"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#char=48,51> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C1/> ;
+    nif:anchorOf "boy" ;
+    nif:beginIndex "48"^^xsd:int ;
+    nif:endIndex "51"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#char=63,69> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C1/> ;
+    nif:anchorOf "outfit" ;
+    nif:beginIndex "63"^^xsd:int ;
+    nif:endIndex "69"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#char=75,83> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C1/> ;
+    nif:anchorOf "stroller" ;
+    nif:beginIndex "75"^^xsd:int ;
+    nif:endIndex "83"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/#char=9,13> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C1/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "9"^^xsd:int ;
+    nif:endIndex "13"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#char=17,23> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C2/> ;
+    nif:anchorOf "outfit" ;
+    nif:beginIndex "17"^^xsd:int ;
+    nif:endIndex "23"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#char=2,6> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C2/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "6"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#char=39,47> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C2/> ;
+    nif:anchorOf "stroller" ;
+    nif:beginIndex "39"^^xsd:int ;
+    nif:endIndex "47"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/#char=55,58> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C2/> ;
+    nif:anchorOf "boy" ;
+    nif:beginIndex "55"^^xsd:int ;
+    nif:endIndex "58"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#char=17,25> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C3/> ;
+    nif:anchorOf "backpack" ;
+    nif:beginIndex "17"^^xsd:int ;
+    nif:endIndex "25"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#char=34,41> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C3/> ;
+    nif:anchorOf "brother" ;
+    nif:beginIndex "34"^^xsd:int ;
+    nif:endIndex "41"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#char=45,53> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C3/> ;
+    nif:anchorOf "stroller" ;
+    nif:beginIndex "45"^^xsd:int ;
+    nif:endIndex "53"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/#char=7,11> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C3/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "7"^^xsd:int ;
+    nif:endIndex "11"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C4/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C4/> ;
+    nif:anchorOf "child" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C4/#char=30,37> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C4/> ;
+    nif:anchorOf "sibling" ;
+    nif:beginIndex "30"^^xsd:int ;
+    nif:endIndex "37"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842C4/#char=43,51> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/205842C4/> ;
+    nif:anchorOf "stroller" ;
+    nif:beginIndex "43"^^xsd:int ;
+    nif:endIndex "51"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842I/#xywh=1,122,147,300> a ks:VisualEntityMention ;
+    ks:xmax 147 ;
+    ks:xmin 1 ;
+    ks:ymax 300 ;
+    ks:ymin 122 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/205842I/#xywh=160,-3,344,253> a ks:VisualEntityMention ;
+    ks:xmax 344 ;
+    ks:xmin 160 ;
+    ks:ymax 253 ;
+    ks:ymin -3 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C0/#char=19,25> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C0/> ;
+    nif:anchorOf "jacket" ;
+    nif:beginIndex "19"^^xsd:int ;
+    nif:endIndex "25"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C0/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C0/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C0/#char=47,53> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C0/> ;
+    nif:anchorOf "bottle" ;
+    nif:beginIndex "47"^^xsd:int ;
+    nif:endIndex "53"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C1/#char=14,20> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C1/> ;
+    nif:anchorOf "adults" ;
+    nif:beginIndex "14"^^xsd:int ;
+    nif:endIndex "20"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C1/#char=40,49> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C1/> ;
+    nif:anchorOf "beverages" ;
+    nif:beginIndex "40"^^xsd:int ;
+    nif:endIndex "49"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C1/#char=55,60> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C1/> ;
+    nif:anchorOf "party" ;
+    nif:beginIndex "55"^^xsd:int ;
+    nif:endIndex "60"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#char=11,17> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C2/> ;
+    nif:anchorOf "people" ;
+    nif:beginIndex "11"^^xsd:int ;
+    nif:endIndex "17"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C2/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#char=31,38> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C2/> ;
+    nif:anchorOf "company" ;
+    nif:beginIndex "31"^^xsd:int ;
+    nif:endIndex "38"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/#char=44,50> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C2/> ;
+    nif:anchorOf "liquor" ;
+    nif:beginIndex "44"^^xsd:int ;
+    nif:endIndex "50"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C3/#char=11,18> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C3/> ;
+    nif:anchorOf "friends" ;
+    nif:beginIndex "11"^^xsd:int ;
+    nif:endIndex "18"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C3/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C3/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C4/#char=24,31> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C4/> ;
+    nif:anchorOf "kitchen" ;
+    nif:beginIndex "24"^^xsd:int ;
+    nif:endIndex "31"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C4/#char=6,12> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/2148982C4/> ;
+    nif:anchorOf "people" ;
+    nif:beginIndex "6"^^xsd:int ;
+    nif:endIndex "12"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#bottle> a yago:Bottle102876657 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=476,241,498,347> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=14,129,242,435> a ks:VisualEntityMention ;
+    ks:xmax 242 ;
+    ks:xmin 14 ;
+    ks:ymax 435 ;
+    ks:ymin 129 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=218,62,344,444> a ks:VisualEntityMention ;
+    ks:xmax 344 ;
+    ks:xmin 218 ;
+    ks:ymax 444 ;
+    ks:ymin 62 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=342,13,472,445> a ks:VisualEntityMention ;
+    ks:xmax 472 ;
+    ks:xmin 342 ;
+    ks:ymax 445 ;
+    ks:ymin 13 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=432,307,466,351> a ks:VisualEntityMention ;
+    ks:xmax 466 ;
+    ks:xmin 432 ;
+    ks:ymax 351 ;
+    ks:ymin 307 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=476,241,498,347> a ks:VisualEntityMention ;
+    ks:xmax 498 ;
+    ks:xmin 476 ;
+    ks:ymax 347 ;
+    ks:ymin 241 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#char=23,27> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C0/> ;
+    nif:anchorOf "back" ;
+    nif:beginIndex "23"^^xsd:int ;
+    nif:endIndex "27"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#char=40,46> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C0/> ;
+    nif:anchorOf "tennis" ;
+    nif:beginIndex "40"^^xsd:int ;
+    nif:endIndex "46"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#char=47,52> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C0/> ;
+    nif:anchorOf "court" ;
+    nif:beginIndex "47"^^xsd:int ;
+    nif:endIndex "52"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#char=60,64> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C0/> ;
+    nif:anchorOf "ball" ;
+    nif:beginIndex "60"^^xsd:int ;
+    nif:endIndex "64"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/#char=8,13> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C0/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "8"^^xsd:int ;
+    nif:endIndex "13"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#char=16,22> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C1/> ;
+    nif:anchorOf "player" ;
+    nif:beginIndex "16"^^xsd:int ;
+    nif:endIndex "22"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#char=35,40> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C1/> ;
+    nif:anchorOf "court" ;
+    nif:beginIndex "35"^^xsd:int ;
+    nif:endIndex "40"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#char=65,69> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C1/> ;
+    nif:anchorOf "ball" ;
+    nif:beginIndex "65"^^xsd:int ;
+    nif:endIndex "69"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/#char=9,15> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C1/> ;
+    nif:anchorOf "tennis" ;
+    nif:beginIndex "9"^^xsd:int ;
+    nif:endIndex "15"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C2/#char=16,22> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C2/> ;
+    nif:anchorOf "player" ;
+    nif:beginIndex "16"^^xsd:int ;
+    nif:endIndex "22"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C2/#char=48,54> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C2/> ;
+    nif:anchorOf "racket" ;
+    nif:beginIndex "48"^^xsd:int ;
+    nif:endIndex "54"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C2/#char=9,15> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C2/> ;
+    nif:anchorOf "tennis" ;
+    nif:beginIndex "9"^^xsd:int ;
+    nif:endIndex "15"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#char=0,5> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C3/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "0"^^xsd:int ;
+    nif:endIndex "5"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#char=17,22> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C3/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "17"^^xsd:int ;
+    nif:endIndex "22"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#char=33,38> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C3/> ;
+    nif:anchorOf "skirt" ;
+    nif:beginIndex "33"^^xsd:int ;
+    nif:endIndex "38"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/#char=47,53> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C3/> ;
+    nif:anchorOf "tennis" ;
+    nif:beginIndex "47"^^xsd:int ;
+    nif:endIndex "53"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#char=19,24> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C4/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "19"^^xsd:int ;
+    nif:endIndex "24"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C4/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#char=33,39> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C4/> ;
+    nif:anchorOf "tennis" ;
+    nif:beginIndex "33"^^xsd:int ;
+    nif:endIndex "39"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/#char=40,46> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/23008340C4/> ;
+    nif:anchorOf "racket" ;
+    nif:beginIndex "40"^^xsd:int ;
+    nif:endIndex "46"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340I/#xywh=360,294,376,310> a ks:VisualEntityMention ;
+    ks:xmax 376 ;
+    ks:xmin 360 ;
+    ks:ymax 310 ;
+    ks:ymin 294 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340I/#xywh=41,52,123,174> a ks:VisualEntityMention ;
+    ks:xmax 123 ;
+    ks:xmin 41 ;
+    ks:ymax 174 ;
+    ks:ymin 52 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/23008340I/#xywh=98,18,240,372> a ks:VisualEntityMention ;
+    ks:xmax 240 ;
+    ks:xmin 98 ;
+    ks:ymax 372 ;
+    ks:ymin 18 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#char=112,117> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C0/> ;
+    nif:anchorOf "clyde" ;
+    nif:beginIndex "112"^^xsd:int ;
+    nif:endIndex "117"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#char=121,125> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C0/> ;
+    nif:anchorOf "farm" ;
+    nif:beginIndex "121"^^xsd:int ;
+    nif:endIndex "125"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#char=33,40> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C0/> ;
+    nif:anchorOf "display" ;
+    nif:beginIndex "33"^^xsd:int ;
+    nif:endIndex "40"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#char=55,66> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C0/> ;
+    nif:anchorOf "flea market" ;
+    nif:beginIndex "55"^^xsd:int ;
+    nif:endIndex "66"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#char=6,12> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C0/> ;
+    nif:anchorOf "people" ;
+    nif:beginIndex "6"^^xsd:int ;
+    nif:endIndex "12"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/#char=98,106> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C0/> ;
+    nif:anchorOf "products" ;
+    nif:beginIndex "98"^^xsd:int ;
+    nif:endIndex "106"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#char=14,19> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C1/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "14"^^xsd:int ;
+    nif:endIndex "19"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#char=35,42> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C1/> ;
+    nif:anchorOf "produce" ;
+    nif:beginIndex "35"^^xsd:int ;
+    nif:endIndex "42"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#char=4,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C1/> ;
+    nif:anchorOf "men" ;
+    nif:beginIndex "4"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/#char=43,48> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C1/> ;
+    nif:anchorOf "stand" ;
+    nif:beginIndex "43"^^xsd:int ;
+    nif:endIndex "48"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C2/#char=10,16> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C2/> ;
+    nif:anchorOf "people" ;
+    nif:beginIndex "10"^^xsd:int ;
+    nif:endIndex "16"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C2/#char=30,34> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C2/> ;
+    nif:anchorOf "kind" ;
+    nif:beginIndex "30"^^xsd:int ;
+    nif:endIndex "34"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C2/#char=38,43> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C2/> ;
+    nif:anchorOf "jelly" ;
+    nif:beginIndex "38"^^xsd:int ;
+    nif:endIndex "43"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#char=0,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C3/> ;
+    nif:anchorOf "vendors" ;
+    nif:beginIndex "0"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#char=13,21> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C3/> ;
+    nif:anchorOf "products" ;
+    nif:beginIndex "13"^^xsd:int ;
+    nif:endIndex "21"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#char=27,34> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C3/> ;
+    nif:anchorOf "farmers" ;
+    nif:beginIndex "27"^^xsd:int ;
+    nif:endIndex "34"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/#char=35,41> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C3/> ;
+    nif:anchorOf "market" ;
+    nif:beginIndex "35"^^xsd:int ;
+    nif:endIndex "41"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C4/#char=0,6> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C4/> ;
+    nif:anchorOf "farmer" ;
+    nif:beginIndex "0"^^xsd:int ;
+    nif:endIndex "6"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C4/#char=10,17> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C4/> ;
+    nif:anchorOf "selling" ;
+    nif:beginIndex "10"^^xsd:int ;
+    nif:endIndex "17"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063C4/#char=37,40> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/256063C4/> ;
+    nif:anchorOf "van" ;
+    nif:beginIndex "37"^^xsd:int ;
+    nif:endIndex "40"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063I/#male> a yago:Male109624168 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063I/#xywh=188,119,374,331> .
+
+<http://vksflickr30k.fbk.eu/resource/256063I/#person_3> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063I/#xywh=317,66,465,322> .
+
+<http://vksflickr30k.fbk.eu/resource/256063I/#xywh=188,119,374,331> a ks:VisualEntityMention ;
+    ks:xmax 374 ;
+    ks:xmin 188 ;
+    ks:ymax 331 ;
+    ks:ymin 119 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063I/#xywh=317,66,465,322> a ks:VisualEntityMention ;
+    ks:xmax 465 ;
+    ks:xmin 317 ;
+    ks:ymax 322 ;
+    ks:ymin 66 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/256063I/#xywh=6,34,158,240> a ks:VisualEntityMention ;
+    ks:xmax 158 ;
+    ks:xmin 6 ;
+    ks:ymax 240 ;
+    ks:ymin 34 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#char=11,18> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C0/> ;
+    nif:anchorOf "friends" ;
+    nif:beginIndex "11"^^xsd:int ;
+    nif:endIndex "18"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C0/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#char=27,32> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C0/> ;
+    nif:anchorOf "cards" ;
+    nif:beginIndex "27"^^xsd:int ;
+    nif:endIndex "32"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/#char=89,96> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C0/> ;
+    nif:anchorOf "mistake" ;
+    nif:beginIndex "89"^^xsd:int ;
+    nif:endIndex "96"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#char=11,18> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C1/> ;
+    nif:anchorOf "college" ;
+    nif:beginIndex "11"^^xsd:int ;
+    nif:endIndex "18"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#char=19,27> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C1/> ;
+    nif:anchorOf "students" ;
+    nif:beginIndex "19"^^xsd:int ;
+    nif:endIndex "27"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C1/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/#char=58,63> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C1/> ;
+    nif:anchorOf "poker" ;
+    nif:beginIndex "58"^^xsd:int ;
+    nif:endIndex "63"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C2/#char=17,22> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C2/> ;
+    nif:anchorOf "cards" ;
+    nif:beginIndex "17"^^xsd:int ;
+    nif:endIndex "22"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C2/#char=44,49> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C2/> ;
+    nif:anchorOf "table" ;
+    nif:beginIndex "44"^^xsd:int ;
+    nif:endIndex "49"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C2/#char=8,11> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C2/> ;
+    nif:anchorOf "men" ;
+    nif:beginIndex "8"^^xsd:int ;
+    nif:endIndex "11"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C3/#char=19,22> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C3/> ;
+    nif:anchorOf "men" ;
+    nif:beginIndex "19"^^xsd:int ;
+    nif:endIndex "22"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C3/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C3/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C3/#char=31,36> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C3/> ;
+    nif:anchorOf "poker" ;
+    nif:beginIndex "31"^^xsd:int ;
+    nif:endIndex "36"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C4/#char=10,15> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C4/> ;
+    nif:anchorOf "males" ;
+    nif:beginIndex "10"^^xsd:int ;
+    nif:endIndex "15"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979C4/#char=24,29> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/36979C4/> ;
+    nif:anchorOf "poker" ;
+    nif:beginIndex "24"^^xsd:int ;
+    nif:endIndex "29"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#xywh=-4,77,194,373> a ks:VisualEntityMention ;
+    ks:xmax 194 ;
+    ks:xmin -4 ;
+    ks:ymax 373 ;
+    ks:ymin 77 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#xywh=185,58,263,168> a ks:VisualEntityMention ;
+    ks:xmax 263 ;
+    ks:xmin 185 ;
+    ks:ymax 168 ;
+    ks:ymin 58 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#xywh=266,164,278,186> a ks:VisualEntityMention ;
+    ks:xmax 278 ;
+    ks:xmin 266 ;
+    ks:ymax 186 ;
+    ks:ymin 164 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#xywh=266,50,366,196> a ks:VisualEntityMention ;
+    ks:xmax 366 ;
+    ks:xmin 266 ;
+    ks:ymax 196 ;
+    ks:ymin 50 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#xywh=318,50,500,386> a ks:VisualEntityMention ;
+    ks:xmax 500 ;
+    ks:xmin 318 ;
+    ks:ymax 386 ;
+    ks:ymin 50 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#xywh=35,56,71,76> a ks:VisualEntityMention ;
+    ks:xmax 71 ;
+    ks:xmin 35 ;
+    ks:ymax 76 ;
+    ks:ymin 56 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#xywh=354,42,472,208> a ks:VisualEntityMention ;
+    ks:xmax 472 ;
+    ks:xmin 354 ;
+    ks:ymax 208 ;
+    ks:ymin 42 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#char=14,19> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C0/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "14"^^xsd:int ;
+    nif:endIndex "19"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#char=37,42> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C0/> ;
+    nif:anchorOf "patio" ;
+    nif:beginIndex "37"^^xsd:int ;
+    nif:endIndex "42"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#char=4,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C0/> ;
+    nif:anchorOf "men" ;
+    nif:beginIndex "4"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#char=56,61> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C0/> ;
+    nif:anchorOf "grill" ;
+    nif:beginIndex "56"^^xsd:int ;
+    nif:endIndex "61"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/#char=69,79> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C0/> ;
+    nif:anchorOf "foreground" ;
+    nif:beginIndex "69"^^xsd:int ;
+    nif:endIndex "79"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#char=14,19> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C1/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "14"^^xsd:int ;
+    nif:endIndex "19"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#char=27,35> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C1/> ;
+    nif:anchorOf "barbecue" ;
+    nif:beginIndex "27"^^xsd:int ;
+    nif:endIndex "35"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#char=4,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C1/> ;
+    nif:anchorOf "men" ;
+    nif:beginIndex "4"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/#char=41,48> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C1/> ;
+    nif:anchorOf "rooftop" ;
+    nif:beginIndex "41"^^xsd:int ;
+    nif:endIndex "48"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C2/#char=11,18> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C2/> ;
+    nif:anchorOf "friends" ;
+    nif:beginIndex "11"^^xsd:int ;
+    nif:endIndex "18"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C2/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C2/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C2/#char=36,44> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C2/> ;
+    nif:anchorOf "barbecue" ;
+    nif:beginIndex "36"^^xsd:int ;
+    nif:endIndex "44"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C3/#char=38,43> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C3/> ;
+    nif:anchorOf "table" ;
+    nif:beginIndex "38"^^xsd:int ;
+    nif:endIndex "43"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C3/#char=6,13> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C3/> ;
+    nif:anchorOf "friends" ;
+    nif:beginIndex "6"^^xsd:int ;
+    nif:endIndex "13"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C4/#char=22,26> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C4/> ;
+    nif:anchorOf "food" ;
+    nif:beginIndex "22"^^xsd:int ;
+    nif:endIndex "26"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C4/#char=36,41> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C4/> ;
+    nif:anchorOf "grill" ;
+    nif:beginIndex "36"^^xsd:int ;
+    nif:endIndex "41"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902C4/#char=6,12> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/371902C4/> ;
+    nif:anchorOf "adults" ;
+    nif:beginIndex "6"^^xsd:int ;
+    nif:endIndex "12"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=130,226,232,364> a ks:VisualEntityMention ;
+    ks:xmax 232 ;
+    ks:xmin 130 ;
+    ks:ymax 364 ;
+    ks:ymin 226 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=181,217,197,231> a ks:VisualEntityMention ;
+    ks:xmax 197 ;
+    ks:xmin 181 ;
+    ks:ymax 231 ;
+    ks:ymin 217 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=192,146,312,274> a ks:VisualEntityMention ;
+    ks:xmax 312 ;
+    ks:xmin 192 ;
+    ks:ymax 274 ;
+    ks:ymin 146 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=192,198,206,214> a ks:VisualEntityMention ;
+    ks:xmax 206 ;
+    ks:xmin 192 ;
+    ks:ymax 214 ;
+    ks:ymin 198 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=240,132,438,352> a ks:VisualEntityMention ;
+    ks:xmax 438 ;
+    ks:xmin 240 ;
+    ks:ymax 352 ;
+    ks:ymin 132 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=342,221,434,369> a ks:VisualEntityMention ;
+    ks:xmax 434 ;
+    ks:xmin 342 ;
+    ks:ymax 369 ;
+    ks:ymin 221 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=58,142,100,194> a ks:VisualEntityMention ;
+    ks:xmax 100 ;
+    ks:xmin 58 ;
+    ks:ymax 194 ;
+    ks:ymin 142 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#xywh=77,120,161,212> a ks:VisualEntityMention ;
+    ks:xmax 161 ;
+    ks:xmin 77 ;
+    ks:ymax 212 ;
+    ks:ymin 120 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#char=106,111> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C0/> ;
+    nif:anchorOf "dress" ;
+    nif:beginIndex "106"^^xsd:int ;
+    nif:endIndex "111"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C0/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#char=22,28> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C0/> ;
+    nif:anchorOf "poncho" ;
+    nif:beginIndex "22"^^xsd:int ;
+    nif:endIndex "28"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#char=47,56> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C0/> ;
+    nif:anchorOf "cellphone" ;
+    nif:beginIndex "47"^^xsd:int ;
+    nif:endIndex "56"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/#char=75,83> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C0/> ;
+    nif:anchorOf "daughter" ;
+    nif:beginIndex "75"^^xsd:int ;
+    nif:endIndex "83"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C1/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#char=31,36> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C1/> ;
+    nif:anchorOf "shawl" ;
+    nif:beginIndex "31"^^xsd:int ;
+    nif:endIndex "36"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#char=47,56> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C1/> ;
+    nif:anchorOf "cellphone" ;
+    nif:beginIndex "47"^^xsd:int ;
+    nif:endIndex "56"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#char=8,15> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C1/> ;
+    nif:anchorOf "wearing" ;
+    nif:beginIndex "8"^^xsd:int ;
+    nif:endIndex "15"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#char=81,85> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C1/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "81"^^xsd:int ;
+    nif:endIndex "85"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/#char=96,101> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C1/> ;
+    nif:anchorOf "dress" ;
+    nif:beginIndex "96"^^xsd:int ;
+    nif:endIndex "101"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#char=14,19> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C2/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "14"^^xsd:int ;
+    nif:endIndex "19"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#char=27,36> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C2/> ;
+    nif:anchorOf "cellphone" ;
+    nif:beginIndex "27"^^xsd:int ;
+    nif:endIndex "36"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#char=52,56> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C2/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "52"^^xsd:int ;
+    nif:endIndex "56"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/#char=79,84> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C2/> ;
+    nif:anchorOf "dress" ;
+    nif:beginIndex "79"^^xsd:int ;
+    nif:endIndex "84"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#char=24,29> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C3/> ;
+    nif:anchorOf "dress" ;
+    nif:beginIndex "24"^^xsd:int ;
+    nif:endIndex "29"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#char=49,54> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C3/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "49"^^xsd:int ;
+    nif:endIndex "54"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#char=69,78> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C3/> ;
+    nif:anchorOf "cellphone" ;
+    nif:beginIndex "69"^^xsd:int ;
+    nif:endIndex "78"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/#char=9,13> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C3/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "9"^^xsd:int ;
+    nif:endIndex "13"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#char=18,25> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C4/> ;
+    nif:anchorOf "toddler" ;
+    nif:beginIndex "18"^^xsd:int ;
+    nif:endIndex "25"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C4/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#char=31,38> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C4/> ;
+    nif:anchorOf "costume" ;
+    nif:beginIndex "31"^^xsd:int ;
+    nif:endIndex "38"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/#char=60,69> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/4378823C4/> ;
+    nif:anchorOf "cellphone" ;
+    nif:beginIndex "60"^^xsd:int ;
+    nif:endIndex "69"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=1,18,83,158> a ks:VisualEntityMention ;
+    ks:xmax 83 ;
+    ks:xmin 1 ;
+    ks:ymax 158 ;
+    ks:ymin 18 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=14,14,304,486> a ks:VisualEntityMention ;
+    ks:xmax 304 ;
+    ks:xmin 14 ;
+    ks:ymax 486 ;
+    ks:ymin 14 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=195,53,451,499> a ks:VisualEntityMention ;
+    ks:xmax 451 ;
+    ks:xmin 195 ;
+    ks:ymax 499 ;
+    ks:ymin 53 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=2,30,54,298> a ks:VisualEntityMention ;
+    ks:xmax 54 ;
+    ks:xmin 2 ;
+    ks:ymax 298 ;
+    ks:ymin 30 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=216,38,248,70> a ks:VisualEntityMention ;
+    ks:xmax 248 ;
+    ks:xmin 216 ;
+    ks:ymax 70 ;
+    ks:ymin 38 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=240,17,270,77> a ks:VisualEntityMention ;
+    ks:xmax 270 ;
+    ks:xmin 240 ;
+    ks:ymax 77 ;
+    ks:ymin 17 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=255,17,307,73> a ks:VisualEntityMention ;
+    ks:xmax 307 ;
+    ks:xmin 255 ;
+    ks:ymax 73 ;
+    ks:ymin 17 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=296,30,368,66> a ks:VisualEntityMention ;
+    ks:xmax 368 ;
+    ks:xmin 296 ;
+    ks:ymax 66 ;
+    ks:ymin 30 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=370,10,406,62> a ks:VisualEntityMention ;
+    ks:xmax 406 ;
+    ks:xmin 370 ;
+    ks:ymax 62 ;
+    ks:ymin 10 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=402,13,442,69> a ks:VisualEntityMention ;
+    ks:xmax 442 ;
+    ks:xmin 402 ;
+    ks:ymax 69 ;
+    ks:ymin 13 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C0/#char=10,13> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C0/> ;
+    nif:anchorOf "man" ;
+    nif:beginIndex "10"^^xsd:int ;
+    nif:endIndex "13"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C0/#char=22,26> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C0/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "22"^^xsd:int ;
+    nif:endIndex "26"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C0/#char=36,41> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C0/> ;
+    nif:anchorOf "dress" ;
+    nif:beginIndex "36"^^xsd:int ;
+    nif:endIndex "41"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C1/#char=13,19> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C1/> ;
+    nif:anchorOf "people" ;
+    nif:beginIndex "13"^^xsd:int ;
+    nif:endIndex "19"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C1/#char=4,9> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C1/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "4"^^xsd:int ;
+    nif:endIndex "9"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C1/#char=41,48> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C1/> ;
+    nif:anchorOf "wedding" ;
+    nif:beginIndex "41"^^xsd:int ;
+    nif:endIndex "48"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#char=10,15> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C2/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "10"^^xsd:int ;
+    nif:endIndex "15"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#char=2,5> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C2/> ;
+    nif:anchorOf "man" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "5"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#char=30,37> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C2/> ;
+    nif:anchorOf "wedding" ;
+    nif:beginIndex "30"^^xsd:int ;
+    nif:endIndex "37"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/#char=38,46> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C2/> ;
+    nif:anchorOf "function" ;
+    nif:beginIndex "38"^^xsd:int ;
+    nif:endIndex "46"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#char=16,19> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C3/> ;
+    nif:anchorOf "man" ;
+    nif:beginIndex "16"^^xsd:int ;
+    nif:endIndex "19"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C3/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#char=23,26> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C3/> ;
+    nif:anchorOf "arm" ;
+    nif:beginIndex "23"^^xsd:int ;
+    nif:endIndex "26"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/#char=39,44> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C3/> ;
+    nif:anchorOf "event" ;
+    nif:beginIndex "39"^^xsd:int ;
+    nif:endIndex "44"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C4/#char=10,15> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C4/> ;
+    nif:anchorOf "party" ;
+    nif:beginIndex "10"^^xsd:int ;
+    nif:endIndex "15"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C4/#char=2,9> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C4/> ;
+    nif:anchorOf "wedding" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "9"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567C4/#char=31,39> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/65567C4/> ;
+    nif:anchorOf "building" ;
+    nif:beginIndex "31"^^xsd:int ;
+    nif:endIndex "39"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#xywh=-1,120,33,156> a ks:VisualEntityMention ;
+    ks:xmax 33 ;
+    ks:xmin -1 ;
+    ks:ymax 156 ;
+    ks:ymin 120 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#xywh=0,86,78,500> a ks:VisualEntityMention ;
+    ks:xmax 78 ;
+    ks:xmin 0 ;
+    ks:ymax 500 ;
+    ks:ymin 86 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#xywh=113,160,131,230> a ks:VisualEntityMention ;
+    ks:xmax 131 ;
+    ks:xmin 113 ;
+    ks:ymax 230 ;
+    ks:ymin 160 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#xywh=166,145,212,193> a ks:VisualEntityMention ;
+    ks:xmax 212 ;
+    ks:xmin 166 ;
+    ks:ymax 193 ;
+    ks:ymin 145 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#xywh=17,72,203,492> a ks:VisualEntityMention ;
+    ks:xmax 203 ;
+    ks:xmin 17 ;
+    ks:ymax 492 ;
+    ks:ymin 72 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#xywh=170,96,322,500> a ks:VisualEntityMention ;
+    ks:xmax 322 ;
+    ks:xmin 170 ;
+    ks:ymax 500 ;
+    ks:ymin 96 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#char=109,118> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C0/> ;
+    nif:anchorOf "shoelaces" ;
+    nif:beginIndex "109"^^xsd:int ;
+    nif:endIndex "118"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#char=39,44> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C0/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "39"^^xsd:int ;
+    nif:endIndex "44"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#char=62,65> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C0/> ;
+    nif:anchorOf "boy" ;
+    nif:beginIndex "62"^^xsd:int ;
+    nif:endIndex "65"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#char=8,12> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C0/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "8"^^xsd:int ;
+    nif:endIndex "12"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/#char=85,90> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C0/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "85"^^xsd:int ;
+    nif:endIndex "90"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#char=24,29> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C1/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "24"^^xsd:int ;
+    nif:endIndex "29"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#char=43,47> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C1/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "43"^^xsd:int ;
+    nif:endIndex "47"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#char=62,67> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C1/> ;
+    nif:anchorOf "dress" ;
+    nif:beginIndex "62"^^xsd:int ;
+    nif:endIndex "67"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#char=87,93> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C1/> ;
+    nif:anchorOf "ground" ;
+    nif:beginIndex "87"^^xsd:int ;
+    nif:endIndex "93"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/#char=9,12> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C1/> ;
+    nif:anchorOf "boy" ;
+    nif:beginIndex "9"^^xsd:int ;
+    nif:endIndex "12"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#char=18,23> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C2/> ;
+    nif:anchorOf "dress" ;
+    nif:beginIndex "18"^^xsd:int ;
+    nif:endIndex "23"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#char=38,43> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C2/> ;
+    nif:anchorOf "shoes" ;
+    nif:beginIndex "38"^^xsd:int ;
+    nif:endIndex "43"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#char=57,60> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C2/> ;
+    nif:anchorOf "boy" ;
+    nif:beginIndex "57"^^xsd:int ;
+    nif:endIndex "60"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#char=72,77> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C2/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "72"^^xsd:int ;
+    nif:endIndex "77"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/#char=8,12> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C2/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "8"^^xsd:int ;
+    nif:endIndex "12"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#char=29,32> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C3/> ;
+    nif:anchorOf "boy" ;
+    nif:beginIndex "29"^^xsd:int ;
+    nif:endIndex "32"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#char=36,40> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C3/> ;
+    nif:anchorOf "shoe" ;
+    nif:beginIndex "36"^^xsd:int ;
+    nif:endIndex "40"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#char=48,54> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C3/> ;
+    nif:anchorOf "street" ;
+    nif:beginIndex "48"^^xsd:int ;
+    nif:endIndex "54"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/#char=9,13> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C3/> ;
+    nif:anchorOf "girl" ;
+    nif:beginIndex "9"^^xsd:int ;
+    nif:endIndex "13"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C4/#char=10,14> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C4/> ;
+    nif:anchorOf "ties" ;
+    nif:beginIndex "10"^^xsd:int ;
+    nif:endIndex "14"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C4/#char=26,31> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C4/> ;
+    nif:anchorOf "shoes" ;
+    nif:beginIndex "26"^^xsd:int ;
+    nif:endIndex "31"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558C4/#char=4,9> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/793558C4/> ;
+    nif:anchorOf "child" ;
+    nif:beginIndex "4"^^xsd:int ;
+    nif:endIndex "9"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558I/#xywh=130,8,242,354> a ks:VisualEntityMention ;
+    ks:xmax 242 ;
+    ks:xmin 130 ;
+    ks:ymax 354 ;
+    ks:ymin 8 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/793558I/#xywh=193,153,393,375> a ks:VisualEntityMention ;
+    ks:xmax 393 ;
+    ks:xmin 193 ;
+    ks:ymax 375 ;
+    ks:ymin 153 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#char=35,41> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C0/> ;
+    nif:anchorOf "drinks" ;
+    nif:beginIndex "35"^^xsd:int ;
+    nif:endIndex "41"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#char=53,59> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C0/> ;
+    nif:anchorOf "energy" ;
+    nif:beginIndex "53"^^xsd:int ;
+    nif:endIndex "59"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#char=79,83> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C0/> ;
+    nif:anchorOf "card" ;
+    nif:beginIndex "79"^^xsd:int ;
+    nif:endIndex "83"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/#char=84,89> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C0/> ;
+    nif:anchorOf "games" ;
+    nif:beginIndex "84"^^xsd:int ;
+    nif:endIndex "89"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C1/> ;
+    nif:anchorOf "woman" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#char=21,26> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C1/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "21"^^xsd:int ;
+    nif:endIndex "26"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#char=35,38> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C1/> ;
+    nif:anchorOf "man" ;
+    nif:beginIndex "35"^^xsd:int ;
+    nif:endIndex "38"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#char=51,56> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C1/> ;
+    nif:anchorOf "shirt" ;
+    nif:beginIndex "51"^^xsd:int ;
+    nif:endIndex "56"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/#char=76,83> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C1/> ;
+    nif:anchorOf "kitchen" ;
+    nif:beginIndex "76"^^xsd:int ;
+    nif:endIndex "83"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#char=11,17> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C2/> ;
+    nif:anchorOf "people" ;
+    nif:beginIndex "11"^^xsd:int ;
+    nif:endIndex "17"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#char=2,7> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C2/> ;
+    nif:anchorOf "group" ;
+    nif:beginIndex "2"^^xsd:int ;
+    nif:endIndex "7"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#char=23,30> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C2/> ;
+    nif:anchorOf "kitchen" ;
+    nif:beginIndex "23"^^xsd:int ;
+    nif:endIndex "30"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#char=31,36> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C2/> ;
+    nif:anchorOf "table" ;
+    nif:beginIndex "31"^^xsd:int ;
+    nif:endIndex "36"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#char=37,45> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C2/> ;
+    nif:anchorOf "drinking" ;
+    nif:beginIndex "37"^^xsd:int ;
+    nif:endIndex "45"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/#char=66,71> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C2/> ;
+    nif:anchorOf "cards" ;
+    nif:beginIndex "66"^^xsd:int ;
+    nif:endIndex "71"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#char=0,6> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C3/> ;
+    nif:anchorOf "people" ;
+    nif:beginIndex "0"^^xsd:int ;
+    nif:endIndex "6"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#char=16,23> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C3/> ;
+    nif:anchorOf "kitchen" ;
+    nif:beginIndex "16"^^xsd:int ;
+    nif:endIndex "23"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#char=57,64> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C3/> ;
+    nif:anchorOf "kitchen" ;
+    nif:beginIndex "57"^^xsd:int ;
+    nif:endIndex "64"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/#char=65,70> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C3/> ;
+    nif:anchorOf "table" ;
+    nif:beginIndex "65"^^xsd:int ;
+    nif:endIndex "70"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#char=20,28> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C4/> ;
+    nif:anchorOf "drinking" ;
+    nif:beginIndex "20"^^xsd:int ;
+    nif:endIndex "28"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#char=20,33> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C4/> ;
+    nif:anchorOf "drinking game" ;
+    nif:beginIndex "20"^^xsd:int ;
+    nif:endIndex "33"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#char=4,9> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C4/> ;
+    nif:anchorOf "women" ;
+    nif:beginIndex "4"^^xsd:int ;
+    nif:endIndex "9"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/#char=41,48> a ks:TextualEntityMention ;
+    ks:mentionOf <http://vksflickr30k.fbk.eu/resource/881336C4/> ;
+    nif:anchorOf "kitchen" ;
+    nif:beginIndex "41"^^xsd:int ;
+    nif:endIndex "48"^^xsd:int ;
+    prov:wasAttributedTo vtkel:PikesAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#male> a yago:Male109624168 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336I/#xywh=7,3,187,315> .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#xywh=121,132,361,314> a ks:VisualEntityMention ;
+    ks:xmax 361 ;
+    ks:xmin 121 ;
+    ks:ymax 314 ;
+    ks:ymin 132 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#xywh=132,173,158,225> a ks:VisualEntityMention ;
+    ks:xmax 158 ;
+    ks:xmin 132 ;
+    ks:ymax 225 ;
+    ks:ymin 173 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#xywh=268,316,316,328> a ks:VisualEntityMention ;
+    ks:xmax 316 ;
+    ks:xmin 268 ;
+    ks:ymax 328 ;
+    ks:ymin 316 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#xywh=358,248,494,378> a ks:VisualEntityMention ;
+    ks:xmax 494 ;
+    ks:xmin 358 ;
+    ks:ymax 378 ;
+    ks:ymin 248 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#xywh=7,3,187,315> a ks:VisualEntityMention ;
+    ks:xmax 187 ;
+    ks:xmin 7 ;
+    ks:ymax 315 ;
+    ks:ymin 3 ;
+    prov:wasAttributedTo vtkel:YOLOAnnotator .
+
+yago:Adult109605289 rdfs:subClassOf yago:Person100007846 .
+
+yago:Child109917593 rdfs:subClassOf yago:Person100007846 .
+
+yago:Farmer110078806 rdfs:subClassOf yago:Person100007846 .
+
+yago:Player110439851 rdfs:subClassOf yago:Person100007846 .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/2148982C3.txt/> ;
+    dct:identifier "2148982C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/2148982> ;
+    dct:isString "A group of friends drinking and laughing ." .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/2148982C4.txt/> ;
+    dct:identifier "2148982C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/2148982> ;
+    dct:isString "Young people are in the kitchen laughing ." .
+
+<http://vksflickr30k.fbk.eu/resource/23008340I/#ball> a yago:Ball102778669 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340I/#xywh=360,294,376,310> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340I/#racket> a yago:Racket104039381 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340I/#xywh=41,52,123,174> .
+
+<http://vksflickr30k.fbk.eu/resource/36979C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/36979C4.txt/> ;
+    dct:identifier "36979C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/36979> ;
+    dct:isString "Six white males playing poker ." .
+
+<http://vksflickr30k.fbk.eu/resource/371902C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/371902C3.txt/> ;
+    dct:identifier "371902C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/371902> ;
+    dct:isString "Three friends are relaxing around the table ." .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#person_2> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=77,120,161,212> .
+
+<http://vksflickr30k.fbk.eu/resource/205842C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/205842C4.txt/> ;
+    dct:identifier "205842C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/205842> ;
+    dct:isString "A child pushing their younger sibling in a stroller ." .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/2148982C0.txt/> ;
+    dct:identifier "2148982C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/2148982> ;
+    dct:isString "1 woman in a black jacket is drinking out of a bottle while others are smiling ." .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/2148982C1.txt/> ;
+    dct:identifier "2148982C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/2148982> ;
+    dct:isString "Several young adults drinking alcoholic beverages at a party ." .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/23008340C2.txt/> ;
+    dct:identifier "23008340C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/23008340> ;
+    dct:isString "A female tennis player is casually swinging her racket ." .
+
+<http://vksflickr30k.fbk.eu/resource/256063C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/256063C2.txt/> ;
+    dct:identifier "256063C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/256063> ;
+    dct:isString "there are people selling some kind of jelly ." .
+
+<http://vksflickr30k.fbk.eu/resource/256063C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/256063C4.txt/> ;
+    dct:identifier "256063C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/256063> ;
+    dct:isString "Farmer 's selling preserves out of a van ." .
+
+<http://vksflickr30k.fbk.eu/resource/36979C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/36979C2.txt/> ;
+    dct:identifier "36979C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/36979> ;
+    dct:isString "Several men play cards while around a green table ." .
+
+<http://vksflickr30k.fbk.eu/resource/36979C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/36979C3.txt/> ;
+    dct:identifier "36979C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/36979> ;
+    dct:isString "A group of several men playing poker ." .
+
+<http://vksflickr30k.fbk.eu/resource/36979I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/36979I/#xywh=35,56,71,76> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/371902C2.txt/> ;
+    dct:identifier "371902C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/371902> ;
+    dct:isString "A group of friends socializing at a barbecue ." .
+
+<http://vksflickr30k.fbk.eu/resource/371902C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/371902C4.txt/> ;
+    dct:identifier "371902C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/371902> ;
+    dct:isString "Three adults enjoying food around a grill ." .
+
+<http://vksflickr30k.fbk.eu/resource/65567C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/65567C0.txt/> ;
+    dct:identifier "65567C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/65567> ;
+    dct:isString "A bearded man , and a girl in a red dress are getting married ." .
+
+<http://vksflickr30k.fbk.eu/resource/65567C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/65567C1.txt/> ;
+    dct:identifier "65567C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/65567> ;
+    dct:isString "The group of people are assembling for a wedding ." .
+
+<http://vksflickr30k.fbk.eu/resource/65567C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/65567C4.txt/> ;
+    dct:identifier "65567C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/65567> ;
+    dct:isString "A wedding party walks out of a building ." .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#person_2> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567I/#xywh=166,145,212,193> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/793558C4.txt/> ;
+    dct:identifier "793558C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/793558> ;
+    dct:isString "One child ties another 's shoes ." .
+
+yago:Female109619168 rdfs:subClassOf yago:People107942152 .
+
+yago:Friend110112591 rdfs:subClassOf yago:Person100007846 .
+
+<http://vksflickr30k.fbk.eu/resource/205842C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/205842C2.txt/> ;
+    dct:identifier "205842C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/205842> ;
+    dct:isString "A girl in a pink outfit pushing a blue stroller with a boy sitting in it ." .
+
+<http://vksflickr30k.fbk.eu/resource/205842C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/205842C3.txt/> ;
+    dct:identifier "205842C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/205842> ;
+    dct:isString "Little girl with backpack pushing brother in stroller ." .
+
+<http://vksflickr30k.fbk.eu/resource/2148982C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/2148982C2.txt/> ;
+    dct:identifier "2148982C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/2148982> ;
+    dct:isString "A group of people enjoys their company with liquor ." .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/23008340C1.txt/> ;
+    dct:identifier "23008340C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/23008340> ;
+    dct:isString "A female tennis player stands on a court , looking away from the ball ." .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/23008340C3.txt/> ;
+    dct:identifier "23008340C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/23008340> ;
+    dct:isString "Woman in a white shirt and black skirt playing tennis ." .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/23008340C4.txt/> ;
+    dct:identifier "23008340C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/23008340> ;
+    dct:isString "A woman in a white shirt holds a tennis racket ." .
+
+<http://vksflickr30k.fbk.eu/resource/256063C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/256063C1.txt/> ;
+    dct:identifier "256063C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/256063> ;
+    dct:isString "Two men and a woman gather a fresh produce stand ." .
+
+<http://vksflickr30k.fbk.eu/resource/256063C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/256063C3.txt/> ;
+    dct:identifier "256063C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/256063> ;
+    dct:isString "Vendors sell products at a farmers market ." .
+
+<http://vksflickr30k.fbk.eu/resource/36979C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/36979C0.txt/> ;
+    dct:identifier "36979C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/36979> ;
+    dct:isString "A group of friends playing cards and trying to bluff each other \"into\" making a terrible mistake ." .
+
+<http://vksflickr30k.fbk.eu/resource/36979C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/36979C1.txt/> ;
+    dct:identifier "36979C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/36979> ;
+    dct:isString "A group of college students gathers to play texas hold em poker ." .
+
+<http://vksflickr30k.fbk.eu/resource/371902C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/371902C1.txt/> ;
+    dct:identifier "371902C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/371902> ;
+    dct:isString "Two men and a woman have a barbecue on a rooftop ." .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/4378823C2.txt/> ;
+    dct:identifier "4378823C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/4378823> ;
+    dct:isString "A dark-haired woman on her cellphone holds a little girl wearing a bright pink dress ." .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/4378823C3.txt/> ;
+    dct:identifier "4378823C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/4378823> ;
+    dct:isString "A little girl in a pink dress is being held by a woman who is on her cellphone ." .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/4378823C4.txt/> ;
+    dct:identifier "4378823C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/4378823> ;
+    dct:isString "A woman carries a toddler in a costume while talking on her cellphone ." .
+
+<http://vksflickr30k.fbk.eu/resource/65567C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/65567C2.txt/> ;
+    dct:identifier "65567C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/65567> ;
+    dct:isString "a man and woman dressed for a wedding function ." .
+
+<http://vksflickr30k.fbk.eu/resource/65567C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/65567C3.txt/> ;
+    dct:identifier "65567C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/65567> ;
+    dct:isString "A woman holds a man 's arm at a formal event ." .
+
+<http://vksflickr30k.fbk.eu/resource/65567I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/65567I/#xywh=-1,120,33,156> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/793558C3.txt/> ;
+    dct:identifier "793558C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/793558> ;
+    dct:isString "A little girl tying a little boy 's shoe in the street ." .
+
+<http://vksflickr30k.fbk.eu/resource/881336C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/881336C0.txt/> ;
+    dct:identifier "881336C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/881336> ;
+    dct:isString "They are drinking high caffeinated drinks to sustain energy for their favorite card games ." .
+
+<http://vksflickr30k.fbk.eu/resource/881336C3/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/881336C3.txt/> ;
+    dct:identifier "881336C3" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/881336> ;
+    dct:isString "People are in a kitchen , two of them are sitting at the kitchen table ." .
+
+<http://vksflickr30k.fbk.eu/resource/881336C4/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/881336C4.txt/> ;
+    dct:identifier "881336C4" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/881336> ;
+    dct:isString "Two women playing a drinking game in the kitchen ." .
+
+<http://vksflickr30k.fbk.eu/resource/881336I/#female> a yago:Female109619168 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/881336I/#xywh=121,132,361,314> .
+
+yago:Saunterer110553235 rdfs:subClassOf yago:Person100007846 .
+
+<http://vksflickr30k.fbk.eu/resource/205842C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/205842C1.txt/> ;
+    dct:identifier "205842C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/205842> ;
+    dct:isString "A little girl in a pink outfit pushing a little boy in a green outfit in a stroller ." .
+
+<http://vksflickr30k.fbk.eu/resource/205842I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842I/#xywh=1,122,147,300> .
+
+<http://vksflickr30k.fbk.eu/resource/205842I/#person_2> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/205842I/#xywh=160,-3,344,253> .
+
+<http://vksflickr30k.fbk.eu/resource/2148982I/#person_2> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/2148982I/#xywh=342,13,472,445> .
+
+<http://vksflickr30k.fbk.eu/resource/23008340C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/23008340C0.txt/> ;
+    dct:identifier "23008340C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/23008340> ;
+    dct:isString "A young woman with her back turned on a tennis court with a ball coming from behind her ." .
+
+<http://vksflickr30k.fbk.eu/resource/23008340I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/23008340I/#xywh=98,18,240,372> .
+
+<http://vksflickr30k.fbk.eu/resource/256063I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/256063I/#xywh=6,34,158,240> .
+
+<http://vksflickr30k.fbk.eu/resource/371902C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/371902C0.txt/> ;
+    dct:identifier "371902C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/371902> ;
+    dct:isString "Two men and a woman are sitting on a patio with a black grill in the foreground ." .
+
+<http://vksflickr30k.fbk.eu/resource/371902I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/371902I/#xywh=192,146,312,274> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/4378823C0.txt/> ;
+    dct:identifier "4378823C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/4378823> ;
+    dct:isString "A woman wearing a red poncho is talking on her cellphone while holding her daughter who is wearing a pink dress ." .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=2,30,54,298> .
+
+<http://vksflickr30k.fbk.eu/resource/4378823I/#person_2> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/4378823I/#xywh=402,13,442,69> .
+
+<http://vksflickr30k.fbk.eu/resource/793558C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/793558C0.txt/> ;
+    dct:identifier "793558C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/793558> ;
+    dct:isString "A young girl with a white long-sleeved shirt on helps a young boy brown long-sleeved shirt on with tying his shoelaces ." .
+
+<http://vksflickr30k.fbk.eu/resource/793558C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/793558C1.txt/> ;
+    dct:identifier "793558C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/793558> ;
+    dct:isString "A little boy in a brown shirt and a little girl in a flowered dress are looking at the ground ." .
+
+<http://vksflickr30k.fbk.eu/resource/793558C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/793558C2.txt/> ;
+    dct:identifier "793558C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/793558> ;
+    dct:isString "A young girl in a dress kneels at the shoes of a younger boy in a brown shirt ." .
+
+<http://vksflickr30k.fbk.eu/resource/793558I/#person> a yago:Person100007846 ;
+    gaf:denotedBy <http://vksflickr30k.fbk.eu/resource/793558I/#xywh=193,153,393,375> .
+
+<http://vksflickr30k.fbk.eu/resource/881336C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/881336C1.txt/> ;
+    dct:identifier "881336C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/881336> ;
+    dct:isString "A woman , in a black shirt , and a man , in a gray shirt , hanging out in a kitchen ." .
+
+yago:Male109624168 rdfs:subClassOf yago:Person100007846 .
+
+<http://vksflickr30k.fbk.eu/resource/205842C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/205842C0.txt/> ;
+    dct:identifier "205842C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/205842> ;
+    dct:isString "A little girl wearing a pink shirt and backpack is pushing a little boy wearing a green shirt in a blue stroller ." .
+
+<http://vksflickr30k.fbk.eu/resource/256063C0/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/256063C0.txt/> ;
+    dct:identifier "256063C0" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/256063> ;
+    dct:isString "Three people standing behind the display of an outdoor flea market stand selling insecticide-free products from Clyde 's Farm ." .
+
+<http://vksflickr30k.fbk.eu/resource/4378823C1/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/4378823C1.txt/> ;
+    dct:identifier "4378823C1" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/4378823> ;
+    dct:isString "A woman wearing a red flowered shawl is on her cellphone while carrying a little girl in a pink dress ." .
+
+<http://vksflickr30k.fbk.eu/resource/881336C2/> a ks:Resource,
+        ks:Text ;
+    ks:storedAs <http://vksflickr30k.fbk.eu/resource/881336C2.txt/> ;
+    dct:identifier "881336C2" ;
+    dct:isPartOf <http://vksflickr30k.fbk.eu/resource/881336> ;
+    dct:isString "A group of people at a kitchen table drinking Guiness and playing cards ." .
+
+yago:Man110287213 rdfs:subClassOf yago:Male109624168,
+        yago:Person100007846 .
+
+yago:Girl110129825 rdfs:subClassOf yago:Person100007846 .
+
+yago:Woman110787470 rdfs:subClassOf yago:Female109619168,
+        yago:Person100007846 .
+
+yago:Person100007846 rdfs:subClassOf yago:People107942152 .
+
