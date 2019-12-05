@@ -1,1 +1,1 @@
-**This directory consists of files produced by VTKEL system for single entry document.**
+*This directory consists of some inference files produced by VT-LinKEr system.*
