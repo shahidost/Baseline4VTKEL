@@ -28,7 +28,7 @@ The visual and textual mentions of a *man* shown in the red text and in	the red 
 VTKEL baseline produced a terse [**RDF**](https://www.w3.org/TR/turtle/) (Resource Description Framework) triple language (Turtle) file (i.e. *.ttl* file) to store the annotations of resultant visual and textual mentions and entity content, as well as its links to the region of image and text where it derives from. The annotated file is organized in three distinct yet interlinked representations layers: *Resource, Mention* and *Entity*. The details of instantiantions are showns in *Figure 3* in details for visual mentions *person*, (Complete details can be found in the *Example* folder files).
 
 <p align="center">
-  <img width="700" height="700" src="https://user-images.githubusercontent.com/25593410/59091806-65170400-8910-11e9-91c4-1cf774de7876.png">
+  <img width="850" height="600" src="https://user-images.githubusercontent.com/25593410/70332612-4bfcfa80-1842-11ea-8114-a2ccff77dd0c.png">
 </p>
 
 ### Prerequisites:
@@ -47,7 +47,7 @@ Follow step by step these [guidelines](https://github.com/shahidost/Baseline4VTK
 The quality of *VTKEL* system evaluation is shown in below *Table* and for details evaluations please read our paper:
 
 <p align="center">
-  <img width="500" height="120" src="https://user-images.githubusercontent.com/25593410/59092675-719c5c00-8912-11e9-9249-5eed3c213970.png">
+  <img width="480" height="150" src="https://user-images.githubusercontent.com/25593410/70332969-e3624d80-1842-11ea-840f-a7837ad654f3.png">
 </p>
 
 ### Citing:
