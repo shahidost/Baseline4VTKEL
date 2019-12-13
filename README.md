@@ -34,7 +34,6 @@ VTKEL baseline produced a terse [**RDF**](https://www.w3.org/TR/turtle/) (Resour
 ### Prerequisites:
 - Python 3.6(+) or 2.7(+)
 - window or unix machine
-- Pre-Trains model of YOLO version 3 or train on new object detector
 - rdflib library 4.2.2(+)
 - numpy library 1.16.0(+)
 - xml.etree.ElementTree library(+)
