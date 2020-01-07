@@ -1,1 +1,1 @@
-These are helping files to integrate YOLOv3 system into VT-LinKEr. Please download these files from [YOLO](https://figshare.com/articles/YOLO_helping_files/11536479) and save into YOLO folder to run evaluation code.
+These are helping files to integrate the YOLOv3 system into VT-LinKEr. Please download these files from [YOLO](https://figshare.com/articles/YOLO_helping_files/11536479) and save it into the YOLO folder to run the evaluation code.
