@@ -1,0 +1,1 @@
+This directory consists of three datasets of 300, 1000 and 31k+ documents .ttl file for evaluations. We used these files for experiments to evaluate **VT-LinKEr** system. To run the evaluations code please follow the guidelises listed in [Evaluations].
