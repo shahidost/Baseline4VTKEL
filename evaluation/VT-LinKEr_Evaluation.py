@@ -4,7 +4,7 @@ Created on Friday January 01 11:19:47 2020
 
 @author: Shahi Dost
 
-    This is used for the evaluation of VT-LinKEr quality. To run the script please follow the guidelines listed in the main repo of GitHub.
+    This code is used for the evaluation of VT-LinKEr quality. To run the script please follow the guidelines listed in the main repo of GitHub.
 
 """
 
@@ -904,7 +904,7 @@ for filename in os.listdir(images_directory_path):
         cv2.destroyAllWindows()        
         
 
-def Experinment_Statistics(image_file_counter,correct_VE_total,VT_LinKEr_total_VE_total,BM_total_VE_total,correct_TE_total,VT_LinKEr_total_TED_total,BM_total_TED_total,VTC_LinKEr_count_total,VTC_benchmark_count_total):
+def Experinment_Statistics(image_file_counter,correct_VE_total,VT_LinKEr_total_VE_total,BM_total_VE_total,correct_TE_total,VT_LinKEr_total_TED_total,BM_total_TED_total,VTC_LinKEr_correct_total,VTC_benchmark_count_total):
     """
     This function takes visual, textual and visual-textual-coreference evaluations parameters to calculate precision, recall and F1 score of:
         (i) visual-entity detection and typing (VED+VET)
@@ -919,7 +919,7 @@ def Experinment_Statistics(image_file_counter,correct_VE_total,VT_LinKEr_total_V
         correct_TE_total - TP entry for textual-entity detection
         VT_LinKEr_total_TED_total - total textual-entities predicted by VT-LinKEr (TP+FP)
         BM_total_TED_total - total benchmark textual entities
-        VTC_LinKEr_count_total - correct (TP) visual-textual corefernce chains predcited by VT-LinKEr
+        VTC_LinKEr_correct_total - correct (TP) visual-textual corefernce chains predcited by VT-LinKEr
         VTC_benchmark_count_total - total benchmark visual-textual coreferencne chains
  
      Output:
@@ -949,9 +949,9 @@ def Experinment_Statistics(image_file_counter,correct_VE_total,VT_LinKEr_total_V
     F1_TE=((2*Precision_TE*Recall_TE)/(Precision_TE+Recall_TE))
     
     #VTC statistics
-    TP_VTC=VTC_LinKEr_count_total
-    FP_VTC=correct_VE_total-VTC_LinKEr_count_total
-    FN_VTC=VTC_benchmark_count_total-VTC_LinKEr_count_total
+    TP_VTC=VTC_LinKEr_correct_total
+    FP_VTC=BM_total_VE_total-VTC_LinKEr_correct_total
+    FN_VTC=VTC_benchmark_count_total-VTC_LinKEr_correct_total
     
     Precision_VTC=(TP_VTC/(TP_VTC+FP_VTC))
     Recall_VTC=(TP_VTC/(TP_VTC+FN_VTC))
