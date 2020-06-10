@@ -41,9 +41,22 @@ Update python file in your local machine.
 ### Citing:
 If you find the Evaluation, VTKEL dataset or VT-LinKEr helpful in your work please cite the papers:
 ```
-Shahi Dost, Luciano Serafini, Marco Rospocher, Lamberto Ballan, and Alessandro Sperduti. 2020. 
-VTKEL: A resource for Visual-TextualKnowledge Entity Linking. In the 35th ACM/SIGAPP Symposium on
-Applied Computing (SAC’20), https://doi.org/10.1145/3341105.3373958 
+@inproceedings{dost2020vtkel,
+  title={VTKEL: a resource for visual-textual-knowledge entity linking},
+  author={Dost, Shahi and Serafini, Luciano and Rospocher, Marco and Ballan, Lamberto and Sperduti, Alessandro},
+  booktitle={Proceedings of the 35th Annual ACM Symposium on Applied Computing},
+  pages={2021--2028},
+  year={2020}
+}
+
+@inproceedings{dost2020visual,
+  title={On Visual-Textual-Knowledge Entity Linking},
+  author={Dost, Shahi and Serafini, Luciano and Rospocher, Marco and Ballan, Lamberto and Sperduti, Alessandro},
+  booktitle={2020 IEEE 14th International Conference on Semantic Computing (ICSC)},
+  pages={190--193},
+  year={2020},
+  organization={IEEE}
+}
 ```
 ### Note:
 If you have any queries regarding Evaluation, dataset, or VT-LinKEr or want to contribute to the system contact on ***sdost[at]fbk.eu***. OR create an issue.
